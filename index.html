@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="./styles/login.css">
+    <script src="scripts/login.js" defer></script>
+    <script src="scripts/create-user-login.js" defer></script>
+    <title>Game Finder</title>
+</head>
+<body>
+    <header>
+        <img src="./assets/GAMEFINDER.png" alt="Game finder logo">
+    </header>
+    <main>  
+        <div class="auth-page-container">
+            <div class="slide1"><img src="./assets/icons-login/ChevronLeftLigth.svg" alt="Left icon"></div>
+            <div class="auth-page-card">
+                <div class="container-words">
+                    <h1 class="welcome">Welcome! Log in or register </h1>
+                    <div class="login">Log in to find the games you're looking for!</div>
+                </div>
+                <div class="form-container">
+                <form class="auth-page-form">
+                    <div class="input-box-username">
+                        <input class="input-email" type="email" name="email" placeholder="Email" id="username">
+                    </div>
+                <div class="input-box-password">
+                    <input class="input-password" type="password" name="password"  placeholder="Password" maxlength="12" id="input-password">
+                    <img src= "./assets/icons-login/Eye.svg" alt="Eye icon for visibility" class="toggle-password" >
+                </div>
+            </div>
+            <div class="input-box-side">
+                <div class="input-box-remember-me">
+                    <input type="checkbox">
+                    <label class="label-remember-me">Remember me </label>
+                </div> 
+                <a href="" class="forgot-password">Forgot password?</a>
+            </div>
+            <button class="login-button" type="submit">Log in</button>
+        </form>
+            <div class="registration">
+                <span class="registration-none"> Not registred yet?</span>
+                <a href="" class="registration-now"> Register now </a>
+        </div>
+        <div class="line">or</div>
+        <div class="social-media-list">
+            <a href="" class="social-button1">
+            <img src="./assets/icons-login/facebook.svg" alt="Facebook icon"> <div class="social-tittle">Login with Facebook</div></a>
+            <a href="" class="social-button2">
+                <img src="./assets/icons-login/twitter.svg" alt="Twitter icon"><div class="social-tittle">Login with Twitter</div></a>
+            <a href="" class="social-button3">
+                <img src="./assets/icons-login/google.svg" alt="Google icon"><div class="social-tittle">Login with Google</div></a>
+        </div>
+        </div>
+        <div class="slide2"><img src="./assets/icons-login/ChevronRightLight.svg" alt="Right icon"></div>
+     </main>
+     <div class="carrousel"><img src="./assets/icons-login/SliderLight.svg" alt="Carrousel"></div>
+</body>
+</html>
