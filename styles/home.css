@@ -1,0 +1,742 @@
+:root {
+    --green1: #5FE19B;
+    --green2: #36B972;
+    --green3: #0EA152;
+    --green4: #4CC986;
+    --white: #ffffff;
+    --whiteboard: #E5E5E5;
+    --very-light-grey: #F0F0F0;
+    --grey: #515151;
+    --fair-grey2: #939393;
+    --black-gradient: rgba(255,255,255, 0);
+    --dark-grey: #3D3D3D; 
+}
+
+
+a {
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: exo;
+    font-size: 15px;
+    margin:0;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--whiteboard); 
+}
+
+html {
+    width: 100%;
+}
+    
+main {
+    height: 100vh;
+    padding: 0 34px;
+}
+
+.container-main {
+    display:flex;
+    padding-top: 31px;
+    align-items: flex-start;
+}
+
+.container-single {
+    display:none;
+    margin-left: 220px;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/*---------------Header---------------*/
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-image: linear-gradient(var(--green1), var(--green2), var(--green3));
+    height: 94px;
+    box-shadow: 1px -3px 36px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    align-self: center;
+    margin-left: 39px;
+}
+
+
+/* .background-color {
+    display:flex;
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); 
+    justify-content: center;
+    align-items: center;
+    margin-right:5px;
+} */
+
+
+.search-overlay {
+  display: none;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4); 
+  z-index:1;
+  }
+
+.search-bar { 
+    position: relative; 
+    align-self: center;
+    margin-right: 120px;
+    z-index:2;
+}    
+
+.search-bar img {
+    position:absolute;
+    width: 18px;
+    height: 18px;
+    top:15px;
+    margin-left: 11px;
+}
+
+img.close-icon {
+    display: none;
+    position: absolute;
+    margin-left: 330px;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.search-games {
+    width: 362px;
+    height: 47px;
+    border-radius: 4px;
+    border-style: none;
+    padding-left: 41px;
+}
+
+.side {
+    display: flex;
+    gap: 16px;
+    margin-right: 40px;
+}
+
+.log-out {
+    text-decoration: none;
+    color: var(--white);
+    align-self: center;
+}
+
+
+.avatar-user {
+   align-self: center;
+}
+
+/*---------------Title and mode---------------*/
+
+.title {
+    display: flex;
+    flex-direction: column;
+    padding-top:19px;
+}
+
+.title h1 {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--grey);
+    
+}
+
+.title h2 {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--grey);
+}
+
+
+.container-title-mode {
+    display:flex;
+    justify-content: space-between;
+}
+
+.mode {
+    padding-top: 24px;
+}
+
+.dark-mode {
+    display:flex;
+    gap:13px;
+    cursor: pointer;
+}
+
+.thumbnail {
+    display:flex;
+    gap:24px;
+    padding-top: 28px;
+    justify-content: end;
+}
+
+.dark-mode h3{
+    font-size: 15px;
+    color: var(--grey);
+}
+
+img.column-active, img.one-card-inactive {
+    cursor: pointer;
+}
+
+
+/*---------------Sidebar---------------*/
+
+nav {
+    min-width: 163px;
+    padding-right: 57px;
+}
+
+.links-navbar, .links-time, .links-popular {
+    display:flex;
+    flex-direction: column;
+}
+.links-navbar {
+    font-weight: 700;
+    gap: 10px;
+}
+
+.links-home {
+    color: var(--green2);
+    font-size:20px;
+}
+
+.links-dark {
+    color: var(--grey);
+    font-size:20px;
+}
+
+.links-time {
+    margin-top: 37px;
+    gap: 16px;
+}
+
+.links-time a, .links-popular2 a {
+    color: var(--grey);
+}
+
+
+.links-time a {
+    font-size:18px;
+}
+
+.links-popular2, .links-time2 {
+    display: flex;
+    gap: 11px;
+}
+
+.links-popular {
+    margin-top: 55px;
+}
+
+
+.links-popular h2 {
+    margin-bottom: 18px;
+    color: var(--grey);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.links-popular a {
+    font-size:18px;
+}
+
+.links-popular2 {
+    margin-bottom: 10px;
+}
+
+.icon-navbar {
+    color: var(--green2);
+}
+
+
+/*---------------Game Cards---------------*/
+.single-card {
+    display:none;
+}
+
+
+.container-cards {
+    display: flex;
+    flex-flow: wrap;
+    gap: 24px;
+    justify-content: flex-start;
+    flex: 1;
+}
+
+
+article {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    background-color: var(--white);
+    box-shadow: 0px 0px 7px rgba(106, 106, 106, 0.25);
+    cursor:pointer;
+    width: 363px;
+}
+
+
+.heart-icon {
+    position: absolute;
+    right: 0;
+    margin: 15px;
+}
+
+.game-title {
+    font-weight: 700;
+    display:flex;
+    justify-content: space-between;
+    font-size: 24px;
+}
+
+.game-title h2 {
+    font-size: 24px;
+    color: var(--grey);
+    align-self:center;
+}
+
+.game-title h3 {
+    font-size: 18px;
+    color: var(--green2);
+    align-self:center;
+}
+
+.game-information {
+    padding: 16px 16px 10px 16px;
+    
+}
+
+.game-devices-icon {
+    display:flex;
+    justify-content: flex-end;
+}
+
+.game-devices-icon .xbox-icon, .windows-icon {
+    margin-left:16px;
+}
+
+.game-ph img {
+    border-radius: 12px 12px 0px 0px;
+    display: block;
+    width: 363px;
+    height: 190px;
+    object-fit: cover;
+}
+
+.container-game-info {
+    display:flex;
+    margin-top: 14px;
+    justify-content: space-between;
+}
+
+.single-game-info {
+    max-width: 205px;
+}
+
+.single-game-info-release, .single-game-info-genres {
+    display:flex;
+}
+
+.single-game-info-release {
+    gap: 25px;
+}
+
+.single-game-info-genres {
+    gap: 61px;
+    margin-top:10px;
+}
+
+.single-game-info-title {
+    color: var(--fair-grey2);
+    font-size: 14px;
+}
+
+.single-game-info-plus {
+    font-size: 14px;
+    color: var(--grey);
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+img.playstation-icon, img.xbox-icon, img.windows-icon, img.icon, img.switch-icon {
+    height: 20px;
+}
+
+
+/*-----------Single card------------*/
+
+.single-card {
+    width: 697px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    background-color: var(--white);
+    box-shadow: 0px 0px 7px rgba(106, 106, 106, 0.25);
+    padding-bottom: 20px;
+}
+
+
+.heart-icon-sc {
+    position: absolute;
+    right: 0;
+    margin: 25px;
+}
+
+img.heart-icon-sc {
+    width: 27px;
+    height: 25px;
+}
+
+.game-title-sc {
+    font-weight: 700;
+    display:flex;
+    justify-content: space-between;
+    font-size: 32px;
+}
+
+.game-title-sc h2 {
+    font-size: 32px;
+    color: var(--grey);
+    align-self:center;
+}
+
+.game-title-sc h3 {
+    font-size: 24px;
+    color: var(--green2);
+    align-self:center;
+}
+
+.game-information-sc {
+    padding: 16px 16px 10px 16px;
+    
+}
+
+.game-devices-icon-sc {
+    margin-left: auto;
+}
+
+
+.game-ph-sc img {
+    border-radius: 12px 12px 0px 0px;
+    display: block;
+    width: 697px;
+    max-height: 298px;
+    object-fit: cover;
+}
+
+.container-game-info-sc {
+    margin-top: 14px;
+}
+
+.single-game-info-sc {
+   display:flex;
+   gap: 25px;
+}
+
+.single-game-info-release-sc, .single-game-info-genres-sc {
+    display:flex;
+}
+
+.single-game-info-release-sc {
+    gap: 13px;
+}
+
+.single-game-info-genres-sc {
+  gap: 7px;
+}
+
+.single-game-info-title-sc {
+    color: var(--fair-grey2);
+    font-size: 14px;
+}
+
+.single-game-info-plus-sc {
+    font-size: 14px;
+    color: var(--grey);
+}
+
+img.playstation-icon-sc, img.xbox-icon-sc, img.windows-icon-sc, img.icon-sc {
+    height: 20px;
+}
+
+img.playstation-icon-sc, img.xbox-icon-sc {
+    margin-right:10px;
+}
+
+.game-description-sc {
+    max-height: 133px;
+    font-size: 14px;
+    padding-bottom: 20px;
+    overflow: auto;
+}
+
+.game-description-sc p {
+    margin-top: 19px;
+    font-weight: 500;
+}
+
+
+/*-----------Modal card------------*/
+.container-modal {
+    display: none; 
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); 
+    justify-content: center;
+    align-items: center;
+    margin-right:5px;
+}
+
+.cross-icon {
+position:absolute;
+right: 0;
+margin: 34px;
+cursor: pointer;
+}
+
+.modal {
+padding-right: 32px;
+padding-left: 32px;
+border-radius: 24px;
+background-repeat: no-repeat;
+background-size: cover;
+display: flex;
+height: 77%;
+width: 75%;
+display:flex;
+position: relative;
+background-color: var(--very-light-grey);
+}
+
+.modal-text {
+align-self:center;
+margin-right: 24px;
+}
+
+.title-modal h2 {
+font-size: 48px;
+font-weight: 800;
+color: var(--white);
+text-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+}
+
+.extra-info-modal {
+display:flex;
+gap:8px;
+margin-top: 10px;
+margin-bottom: 15px;
+}
+
+.extra-info-modal p:first-of-type{
+background-color: var(--green2);
+color: var(--white);
+}
+
+.extra-info-modal p:last-of-type {
+width: 85px;
+}
+
+.extra-info-modal p {
+background-color: var(--white);
+border-radius: 62px;
+font-size: 16px;
+font-weight: 500;
+width: 125px;
+height: 28px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.first-letter {
+color: var(--green2);
+font-weight: 800;
+margin-right:7px;
+}
+
+.game-info-modal p {
+font-size: 16px;
+}
+
+.game-info-modal p::selection {
+background-color: var(--green4);
+}
+
+.links-modal {
+display: flex;
+gap:24px;
+margin-top: 15px;
+}
+
+.links-modal a {
+font-size: 18px;
+font-weight: 700;
+text-decoration: none;
+}
+
+.links-modal-wishlist, .links-modal-purchase {
+display:flex;
+justify-content: center;
+width: 228px;
+height: 47px;
+border-radius: 6px;
+}
+
+.links-modal-wishlist {
+background-color: var(--green4);
+gap:8px;
+}
+
+.heart-icon-modal {
+    color: var(--white);
+    align-self:center;
+}
+
+.links-modal-wishlist a {
+color: var(--white);
+align-self:center;
+}
+
+.links-modal-purchase {
+border: 2px solid var(--green2);
+}
+
+.links-modal-purchase a {
+color: var(--green2);
+align-self:center;
+}
+
+.details-modal {
+display:flex;
+margin-top: 20px;
+}
+
+.right-column, .left-column {
+display:flex;
+flex-direction: column;
+gap: 24px;
+}
+
+.platforms-modal, .release-modal, .publisher-modal, .website-modal, .genre-modal, .developer-modal, .age-modal {
+display:flex;
+flex-direction: column;
+gap: 5px;
+}
+
+.platforms-modal-title, .release-modal-title, .publisher-modal-title, .website-modal-title, .genre-modal-title, .developer-modal-title, .age-modal-title {
+color: var(--fair-grey2);
+}
+
+.left-column {
+width: 226px;
+margin-right: 25px;
+}
+
+.images-modal {
+display: flex;
+flex-wrap: wrap;
+gap: 16px 14px;
+align-self: flex-end;
+padding-bottom: 46px;
+}
+
+.images-modal-one, .images-modal-two {
+    display:flex;
+    gap:14px
+}
+
+/*-----------Footer------------*/
+
+ .footer {
+    border: 1px #d8d8d8 dashed;
+  }
+  
+.footer:after {
+    content: "";
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: linear-gradient(to bottom, var(--black-gradient), var(--white) 90%);
+    width: 100%;
+    height: 4em;
+  }
+
+.container-games-list {
+    width: 100%;
+    height: 50%;
+    position: relative;
+    z-index: 1;
+}
+
+.games-list {
+    display:none;
+    flex-direction: column;
+    box-shadow: 0px 0px 4px rgba(140, 140, 140, 0.25);
+    border-radius: 4px;
+    width: 100%;
+    position: absolute;
+    top: 9px;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.games-list ol {
+    background-color: var(--white);
+    box-shadow: 0px 0px 4px rgba(140, 140, 140, 0.25);
+    border-radius: 4px; 
+    padding: 10px 8px 10px 14px;
+    max-height: 211px;
+    overflow: auto;
+}
+
+hr {
+    border-bottom: 0.5px solid #E1E1E4;
+    opacity: 20%;
+}
+
+hr:last-child {
+    display:none;
+}
+
+.games-list li {
+    padding: 10px 0px 10px 0px;
+    list-style-type: none;
+    font-size: 15px;
+    color: var(--dark-grey);
+    cursor:pointer;
+}
+
+/*-----------Dark mode------------*/
+
+.dark-mode-func {
+    background-color: #141414;
+    color: var(--white);
+
+}
