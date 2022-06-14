@@ -1,19 +1,14 @@
 {
   "users": [
     {
-      "email": "s@mail.com",
-      "password": "1234567",
-      "id": 1
+      "email": "stephyr@mail.com",
+      "password": "$2a$10$U2aokVVB8qhFFUDJAUc59.sJqOTGPfyymLGEIB/jnEfkGytODFQqa",
+      "id": 15
     },
     {
-      "email": "steph@mail.com",
-      "password": "$2a$10$8Bb5vcIMWZMwF9WyfKPCcesjiR03j/ZvwP1NM6cI1jMoS5YR1ygM6",
-      "id": 2
-    },
-    {
-      "email": "stephy@mail.com",
-      "password": "$2a$10$tZdwbYY7sqEoljgQFjkt3eSrzSGD.12Y7u/nv4nopnn4JA4fzU9VG",
-      "id": 3
+      "email": "myemail@mail.com",
+      "password": "$2a$10$GvUEUGsuLluAn6Y6sy/qJuuFuKa9VD4PmAPKzvALeO2VptgsefXPm",
+      "id": 16
     }
   ]
 }
