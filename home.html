@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/home.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="scripts/logout.js" defer></script>
+    <script src="home/home-fetch.js" defer></script>
+    <script src="home/home-handlers.js" defer></script>
+    <script src="home/home-render.js" defer></script>
+    <title>Game finder</title>
+</head>
+<body>
+    <div class="search-overlay"></div>
+    <header>
+        <div class="logo">
+        <img src="./assets/game-finder-logo-white.png" alt="Game finder logo">
+    </div>
+    <form class="search-bar">
+        <img src="./assets/icons-home/search-bar.svg" alt="Search icon">
+        <input class= "search-games" onfocus="this.value=''" type="text" placeholder="Search games...">
+        <img src= "./assets/close-icon.svg" alt= "Close icon" class="close-icon">
+        <div class="container-games-list">
+            <div class="games-list">
+            <ol class="list">
+                <li class="games-list-game"></li>
+            </ol>
+            </div>
+        </div>
+    </form>  
+    <div class="side">
+    <a href="#" class= "log-out">Log out</a>
+    <span class="avatar-user">
+    </span> 
+    </div>
+   </header>
+<main>
+    <div class="container-title-mode">
+        <div class="title">
+            <h1>New and trending</h1>
+            <h2>Based on player counts and release date</h2>
+        </div>
+        <div class="mode">
+            <div class="dark-mode">
+                <h3>Dark mode</h3>
+                <img src="./assets/icons-mode/Dark-mode-off.svg" class="dark-off" alt="dark mode off">
+            </div>
+            <div class="thumbnail">
+                <img src="./assets/icons-mode/Multiple-Active.svg" class="column-active" alt="thumbnails active">
+                <img src="./assets/icons-mode/Single-Inactive.svg" class="one-card-inactive" alt="thumbnails inactive">
+            </div>
+        </div>
+    </div>
+    <div class="container-main">
+        <nav>
+            <div class="links-navbar">
+                <a class="links-home" href="">Home</a>
+                <a class= "links-dark" href="">Review</a>
+                <a class="links-dark" href="">New releases</a>
+            </div>
+
+            <div class="links-time">
+                <div class="links-time2">
+                    <div class="icon-navbar">
+                        <img src="./assets/icons-home/star.svg" alt="Star icon">
+                    </div>
+                    <a class="links-time-week" href="">This week</a>
+                </div>
+                <div class="links-time2">
+                    <div class="icon-navbar">
+                        <img src="./assets/icons-home/calendar.svg" alt="Calendar icon">
+                    </div>
+                    <a href="">This month</a>
+                </div>
+                <div class="links-time2">
+                    <div class="icon-navbar">
+                        <img src="./assets/icons-home/clock.svg" alt="Clock icon">
+                    </div>
+                    <a href="">Coming soon</a>
+                </div>
+            </div>
+
+            <div class="links-popular">
+                <h2>Popular</h2>
+                <div class="links-popular2">
+                    <div class="icon-navbar-popular">
+                        <img src="./assets/icons-home/search.svg" alt="Search icon">
+                    </div>
+                    <a href="#" class="last-search">Last searches</a>
+                </div>
+                <div class="links-popular2">
+                    <div class="icon-navbar-popular">
+                        <img src="./assets/icons-home/thumbs.svg" alt="Thumbs up icon">
+                    </div>
+                    <a href="">Best of the year</a>
+                </div>
+        </nav>
+        <div class="container-single">
+        </div>
+        <div class="loading"></div>
+        <section class="container-cards">
+        </section>
+    </div>
+    <div class="container-modal">
+    </div>  
+</main>
+<footer class="footer"></footer>
+</body>
+</html>
