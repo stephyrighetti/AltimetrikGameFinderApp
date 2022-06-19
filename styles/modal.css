@@ -1,0 +1,209 @@
+:root {
+    --green1: #5FE19B;
+    --green2: #36B972;
+    --green3: #0EA152;
+    --green4: #4CC986;
+    --white: #ffffff;
+    --whiteboard: #E5E5E5;
+    --very-light-grey: #F0F0F0;
+    --grey: #515151;
+    --fair-grey2: #939393;
+    --black-gradient: rgba(255,255,255, 0);
+    --dark-grey: #3D3D3D; 
+}
+/* 
+.open-modal {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:10px;
+    margin-right:5px;
+} */
+
+
+* {
+    box-sizing: border-box;
+    font-family: exo;
+    font-size: 15px;
+    color: var(--grey);
+    margin:0;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--whiteboard); 
+    /* overflow-y: hidden;  */
+}
+
+html {
+    width: 100%;
+}
+
+.container-modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+    
+.cross-icon {
+    position:absolute;
+    right: 0;
+    margin: 34px;
+    cursor: pointer;
+}
+
+.modal {
+    padding-right: 32px;
+    padding-left: 32px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #F0F0F0 63.23%, #F0F0F0 75.85%);
+    border-radius: 24px;
+    background-image: url('../assets/10.1.png');
+    background-repeat: no-repeat;
+    display: flex;
+    max-width: 1076px;
+    height: 793px;
+    display:flex;
+    position: relative;
+    background-color: var(--very-light-grey);
+}
+
+.modal-text {
+    align-self:center;
+    margin-right: 24px;
+}
+
+.title-modal h2 {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--white);
+    text-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+}
+
+.extra-info-modal {
+    display:flex;
+    gap:8px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.extra-info-modal p:first-of-type{
+    background-color: var(--green2);
+    color: var(--white);
+}
+
+.extra-info-modal p:last-of-type {
+    width: 85px;
+}
+
+.extra-info-modal p {
+    background-color: var(--white);
+    border-radius: 62px;
+    font-size: 16px;
+    font-weight: 500;
+    width: 125px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.first-letter {
+    color: var(--green2);
+    font-weight: 800;
+    margin-right:7px;
+}
+
+.game-info-modal p {
+    font-size: 16px;
+}
+
+.game-info-modal p::selection {
+   background-color: var(--green4);
+}
+
+.links-modal {
+    display: flex;
+    gap:24px;
+    margin-top: 15px;
+}
+
+.links-modal a {
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.links-modal-wishlist, .links-modal-purchase {
+    display:flex;
+    justify-content: center;
+    width: 228px;
+    height: 47px;
+    border-radius: 6px;
+}
+
+.links-modal-wishlist {
+    background-color: var(--green4);
+    gap:8px;
+}
+
+.links-modal-wishlist a {
+    color: var(--white);
+    align-self:center;
+}
+
+.heart-icon-modal {
+    color: var(--white);
+    align-self:center;
+}
+
+.links-modal-purchase {
+    border: 2px solid var(--green2);
+}
+
+.links-modal-purchase a {
+    color: var(--green2);
+    align-self:center;
+}
+
+.details-modal {
+    display:flex;
+    margin-top: 20px;
+    align-items: flex-end;
+}
+
+.right-column, .left-column {
+    display:flex;
+    flex-direction: column;
+    gap:15px;
+}
+
+.platforms-modal, .release-modal, .publisher-modal, .website-modal, .genre-modal, .developer-modal, .age-modal {
+    display:flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.platforms-modal-title, .release-modal-title, .publisher-modal-title, .website-modal-title, .genre-modal-title, .developer-modal-title, .age-modal-title {
+    color: var(--fair-grey2);
+}
+
+.left-column {
+    width: 226px;
+    margin-right: 25px;
+}
+
+.images-modal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 14px;
+    align-self: flex-end;
+    padding-bottom: 46px;
+}

@@ -13,6 +13,30 @@
 }
 
 
+
+.loading {
+    display: none;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loading::after {
+    content:"";
+    width: 50px;
+    height: 50px;
+    border: 10px solid #dddddd;
+    border-top-color: var(--green3);
+    border-radius: 50%;
+    animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
 a {
     text-decoration: none;
 }
@@ -144,6 +168,12 @@ img.close-icon {
    align-self: center;
 }
 
+.avatar-user img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
 /*---------------Title and mode---------------*/
 
 .title {
@@ -267,6 +297,11 @@ nav {
     color: var(--green2);
 }
 
+.not-found {
+    font-size: 24px;
+    color: red;
+    font-weight: bold;
+}
 
 /*---------------Game Cards---------------*/
 .single-card {
@@ -275,7 +310,7 @@ nav {
 
 
 .container-cards {
-    display: flex;
+    display: none;
     flex-flow: wrap;
     gap: 24px;
     justify-content: flex-start;
@@ -490,6 +525,18 @@ img.playstation-icon-sc, img.xbox-icon-sc {
     overflow: auto;
 }
 
+.game-description-sc::-webkit-scrollbar {
+    width: 7px;
+}
+
+.game-description-sc::-webkit-scrollbar-track {
+    background: var(--very-light-grey);
+}
+
+.game-description-sc::-webkit-scrollbar-thumb {
+    background-color: var(--green4);
+}
+
 .game-description-sc p {
     margin-top: 19px;
     font-weight: 500;
@@ -580,6 +627,23 @@ font-weight: 800;
 margin-right:7px;
 }
 
+.game-info-modal {
+    max-height: 122px;
+    overflow:auto;
+}
+
+.game-info-modal::-webkit-scrollbar {
+    width: 7px;
+}
+
+.game-info-modal::-webkit-scrollbar-track {
+    background: var(--fair-grey2);
+}
+
+.game-info-modal::-webkit-scrollbar-thumb {
+    background-color: var(--green2);
+}
+
 .game-info-modal p {
 font-size: 16px;
 }
@@ -637,6 +701,10 @@ display:flex;
 margin-top: 20px;
 }
 
+.details-icons-modal {
+    margin-top: 55px;
+}
+
 .right-column, .left-column {
 display:flex;
 flex-direction: column;
@@ -653,9 +721,13 @@ gap: 5px;
 color: var(--fair-grey2);
 }
 
+.line {
+text-decoration: underline;
+}
+
 .left-column {
 width: 226px;
-margin-right: 25px;
+margin-right: 45px;
 }
 
 .images-modal {
@@ -712,7 +784,7 @@ padding-bottom: 46px;
     box-shadow: 0px 0px 4px rgba(140, 140, 140, 0.25);
     border-radius: 4px; 
     padding: 10px 8px 10px 14px;
-    max-height: 211px;
+    max-height: 180px;
     overflow: auto;
 }
 

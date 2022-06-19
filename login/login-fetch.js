@@ -1,28 +1,25 @@
 
- 
-function fetchApi (apiUrl, payload) {
+// Fetch for login
+function fetchApi(apiUrl, payload) {
 
     const settings = {
         method: 'POST',
         headers: {
             'Content-type': 'application/json'
         },
-        body: JSON.stringify(payload)
-
+        body: JSON.stringify(payload),
     }
 
-    fetch (apiUrl, settings)
-    .then (respuesta => respuesta.json())
-    .then (data => {
-        console.log(data);
-        console.log(data.accessToken);
-        if (data.accessToken) {
-            localStorage.setItem('jwt', data.accessToken);
-            location.href = 'http://localhost:5500/home.html';
-        }
-
-    })
-    .catch (error => {
-        console.log(error);
-    })
+    fetch(apiUrl, settings)
+        .then(response => response.json())
+        .then(data => {
+            if (data.accessToken) {
+                localStorage.setItem('jwt', data.accessToken)
+                localStorage.setItem('id', data.user.id)
+                location.href = 'http://localhost:5500/home.html'
+            }
+        })
+        .catch (() => {
+            renderError()
+        })
 }

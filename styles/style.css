@@ -4,18 +4,14 @@
 }
 
 
-:root {
-    --green: #4CC986;
-    --secondary-green: #36B972;
-    --white: #ffffff;
-    --light-grey:  #E1E1E4;
-    --grey: #515151;
-    --fair-grey: #8F8F8F;
-    --dark-grey: #3D3D3D;
-    --whiteboard: #F0F0F0;
-    --red: #ff0000;
+.slide1 {
+    margin: 32px;
 }
 
+.slide2 {
+    padding-left:25px;
+    padding-right: 10px;
+}
 
 html {
     height: 100%;
@@ -24,54 +20,14 @@ html {
 }
 
 body {
-    background-image: url("../assets/background-1.jpg");
+   background-image: url("/assets/background.png");
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0; 
     background-attachment: fixed;
-    
+ 
 } 
-
-.active {
-    cursor: pointer;
-    display: flex;
-    background-color: var(--grey);
-    opacity: 100% !important;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%
-}
-
-.carrousel-dot-1, .carrousel-dot-2, .carrousel-dot-3, .carrousel-dot-4, .carrousel-dot-5, .carrousel-dot-6 {
-    cursor: pointer;
-    display: flex;
-    opacity: 25%;
-    background-color: var(--grey);
-    width: 7px;
-    height: 7px;
-    border-radius: 50%
-}
-
-
-main {
-    display:block;
-}
-
-.slide1 {
-    margin: 32px;
-}
-
-.slide2 {
-    padding-left:25px;
-    padding-right: 20px;
-}
-
-.slide1, .slide2 {
-    cursor: pointer;
-}
-
-/*-------------Header-------------*/
 
 header {
     display: flex;
@@ -88,19 +44,20 @@ header img {
     margin-left: 53.23px;
 }
 
-
-/*-------------Login-------------*/
+main {
+    display:block;
+}
 
 .auth-page-container {
     display:flex;
     justify-content: space-between;
     margin-top: 63px;
-    margin-right: 5px;
+    margin-right: 20px;
     align-items: center;
 }
 
 .auth-page-card {
-    background: var(--whiteboard);
+    background: #F0F0F0;
     border-radius: 12px;
     padding: 25px 50px 40px 50px;
     display: flex;
@@ -119,7 +76,7 @@ header img {
     
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--grey);
+    color:#515151; 
     margin-bottom:8px;
 }
 
@@ -140,12 +97,12 @@ header img {
     position: relative;
 }
 
-img.toggle-password {
+#togglePassword {
     position: absolute;
     right:3px;
     top: 15px;
     margin-right: 7px;
-    color: var(--green);
+    color: #4CC986;
     cursor: pointer;
 }
 
@@ -155,7 +112,7 @@ img.toggle-password {
 
 .input-email, .input-password {
     width: 100%;
-    background-color: var(--white);
+    background-color: white;
     height: 47px;
     border-style: none;
     padding: 15px;
@@ -165,7 +122,7 @@ img.toggle-password {
 
 
 input[type='password'] {
-    color: var(--dark-grey);
+    color: #3D3D3D;
 
 }
 
@@ -185,48 +142,38 @@ input[type='password'] {
     font-size: 14px;
 }
 
-#error-container {
-    color: var(--red);
-    font-weight: 600;
-}
-
 input[type=checkbox] {
     -webkit-appearance: none;
     width: 1.25rem;
     height: 1.25rem;
-    color: var(--fair-grey);
-    border: 1.5px solid var(--fair-grey);
+    color: #8F8F8F;
+    border: 1.5px solid #8F8F8F;
     border-radius: 4px;
     cursor: pointer;
 }
 
 input[type=checkbox]:checked {
-    background-color: var(--secondary-green);
-    background-image: url("../assets/icons-login/Tick.png");
+    background-color:#36B972;
+    background-image: url("/assets/Tick.png");
     background-repeat: no-repeat;
     background-position: center;
 } 
 
 .forgot-password {
-    color: var(--green);
+    color: #4CC986;
     margin-left:115px;
     font-size: 14px;
     font-weight: 600;
     align-self: center;
     cursor: pointer;
-    text-decoration: none;
-}
-
-.forgot-password:hover {
-    text-decoration:underline;
 }
 
 .login-button {
     height: 47px;
     font-size: 1.12rem;
     font-weight: 700;
-    background-color: var(--green);
-    color: var(--white);
+    background-color: #4CC986;
+    color: white;
     cursor: pointer;
     border-style: none;
     border-radius: 6px;
@@ -248,13 +195,34 @@ input[type=checkbox]:checked {
 .registration-now {
     font-size: 14px;
     font-weight: 600;
-    color: var(--secondary-green);
+    color: #36B972;
     cursor: pointer;
-    text-decoration: none;
 }
 
-.registration-now:hover {
-    text-decoration: underline;
+.social-media-list {
+    display:flex;
+    flex-direction: column;
+    justify-content:space-around;
+    gap: 24px;
+}
+
+.social-button {
+    display: flex;
+    justify-content: center;
+    color: #36B972;
+    border-color: #36B972;
+    height: 47px;
+    font-size: 1.12rem;
+    border-radius: 6px;
+    border: 2px solid #36B972;
+    gap: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+.social-tittle, .social-button img {
+    align-self: center;
 }
 
 .line {
@@ -264,7 +232,7 @@ input[type=checkbox]:checked {
     font-size: 14px;
     line-height: 19px;
     text-align: center;
-    color: var(--grey);
+    color: #515151;
     align-self: center;
     margin-bottom: 29.29px;
     gap: 10px;
@@ -273,7 +241,7 @@ input[type=checkbox]:checked {
 .line:before, .line:after {
     content: "";
     flex: 1 1;
-    border-bottom: 1px solid var(--grey);
+    border-bottom: 1px solid #515151;
     margin: auto;
 }
 
@@ -285,56 +253,10 @@ input[type=checkbox]:checked {
     margin-left: 10px;
 }
 
-.social-media-list {
-    display:flex;
-    flex-direction: column;
-    justify-content:space-around;
-    gap: 24px;
-}
-
-.social-button1, .social-button2, .social-button3 {
-    display: flex;
-    position: relative;
-    justify-content: center;
-    color: var(--secondary-green);
-    border-color: var(--secondary-green);
-    height: 47px;
-    font-size: 1.12rem;
-    border-radius: 6px;
-    border: 2px solid var(--secondary-green);
-    gap: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-
-.social-button2, .social-button3 {
-    min-width: 50px;
-}
-
-.social-tittle, .social-button1 img, .social-button2 img, .social-button3 img {
-    align-self: center;
-}
-
-a img {
-    position: absolute;
-    left: 60px;
-}
-
-
 .carrousel {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 120px;
-    height: 27px;
-    background-color: var(--light-grey);
-    border-radius: 18px;
-    padding-left:13px;
-    margin-left: 650px;
-    margin-top:70px;
-
+    display:flex;
+    justify-content: center;
+    margin: 120px;
 }
 
 /*--------------Media Queries ---------------- */
@@ -359,7 +281,6 @@ a img {
 
     .carrousel {
         margin-top:65px;
-        margin-left: 300px
     }
 
     .slide1 {

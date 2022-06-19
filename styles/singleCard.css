@@ -1,0 +1,135 @@
+:root {
+    --green1: #5FE19B;
+    --green2: #36B972;
+    --green3: #0EA152;
+    --white: #ffffff;
+    --whiteboard: #E5E5E5;
+    --grey: #515151;
+    --fair-grey2: #939393;
+    --black-gradient: rgba(255,255,255, 0);
+}
+
+a {
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: exo;
+    font-size: 15px;
+    margin:0;
+}
+
+body {
+    height: 100vh;
+    background-color: var(--whiteboard); 
+    /* overflow-y: hidden;  */
+}
+
+html {
+    width: 100%;
+}
+    
+main {
+    height: 100vh;
+    padding: 0 34px;
+}
+
+
+.single-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    background-color: var(--white);
+    box-shadow: 0px 0px 7px rgba(106, 106, 106, 0.25);
+}
+
+
+.heart-icon-sc {
+    position: absolute;
+    right: 0;
+    margin: 25px;
+}
+
+img.heart-icon-sc {
+    width: 27px;
+    height: 25px;
+}
+
+.game-title-sc {
+    font-weight: 700;
+    display:flex;
+    justify-content: space-between;
+    font-size: 32px;
+}
+
+.game-title-sc h2 {
+    font-size: 32px;
+    color: var(--grey);
+    align-self:center;
+}
+
+.game-title-sc h3 {
+    font-size: 24px;
+    color: var(--green2);
+    align-self:center;
+}
+
+.game-information-sc {
+    padding: 16px 16px 10px 16px;
+    
+}
+
+.game-devices-icon-sc {
+    margin-left: auto;
+}
+
+.game-devices-icon-sc .xbox-icon-sc, .windows-icon-sc {
+    margin-left:16px;
+}
+
+.game-ph-sc img {
+    border-radius: 12px 12px 0px 0px;
+    display: block;
+}
+
+.container-game-info-sc {
+    margin-top: 14px;
+}
+
+.single-game-info-sc {
+   display:flex;
+   gap: 25px;
+}
+
+.single-game-info-release-sc, .single-game-info-genres-sc {
+    display:flex;
+}
+
+.single-game-info-release-sc {
+    gap: 13px;
+}
+
+.single-game-info-genres-sc {
+  gap: 7px;
+}
+
+.single-game-info-title-sc {
+    color: var(--fair-grey2);
+    font-size: 14px;
+}
+
+.single-game-info-plus-sc {
+    font-size: 14px;
+    color: var(--grey);
+}
+
+img.playstation-icon-sc, img.xbox-icon-sc, img.windows-icon-sc, img.icon-sc, img.switch-icon-sc {
+    height: 20px;
+}
+
+.game-description-sc {
+    font-size: 14px;
+    padding-bottom: 20px;
+}
