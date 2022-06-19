@@ -9,6 +9,12 @@
       "email": "myemail@mail.com",
       "password": "$2a$10$GvUEUGsuLluAn6Y6sy/qJuuFuKa9VD4PmAPKzvALeO2VptgsefXPm",
       "id": 16
+    },
+    {
+      "email": "stephy@mail.com",
+      "password": "$2a$10$C.SQWKF2YvNwzA0sOriecuveMmDDm2fBLvDcfG3PjkRvUGYtDqL52",
+      "profile": "./assets/avatar-woman.png",
+      "id": 17
     }
   ]
 }

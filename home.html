@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo" rel="stylesheet">
     <link rel="stylesheet" href="./styles/home.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="scripts/logout.js" defer></script>
     <script src="home/home-fetch.js" defer></script>
     <script src="home/home-handlers.js" defer></script>
@@ -35,7 +38,6 @@
     <div class="side">
     <a href="#" class= "log-out">Log out</a>
     <span class="avatar-user">
-        <img src="./assets/custom.png" alt="Avatar user">
     </span> 
     </div>
    </header>
@@ -102,6 +104,7 @@
         </nav>
         <div class="container-single">
         </div>
+        <div class="loading"></div>
         <section class="container-cards">
         </section>
     </div>
