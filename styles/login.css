@@ -373,49 +373,61 @@ a img {
 }
 
 /*Responsive Mobile */
-/* @media (max-width: 320px) {
+@media (max-width: 320px) {
+    
+    body {
+        overflow-x: hidden;
+    }
+
+    header {
+        height: 78px;
+    }
 
     header img {
         width: 194.17px;
         height: 25px;
     }
 
+    .slide1, .slide2, .carrousel {
+        display: none;
+    }
+
     .auth-page-container {
-        display:flex;
-        justify-content: center;
-        margin:0;
+        margin-top:0px;
     }
 
     .auth-page-card {
-        padding: 40px 30px;
-        height: 689px;
+        border-radius: 12px 12px 0px 0px;
+        padding: 22px 10px 62px 10px;
+        margin-right: 0px;
     }
 
-    .container-words {
-     display: flex;   
+    .input-password, .input-email {
+        width: 288px;
+    }
+
+    .welcome {
+        margin-bottom: 16px;
     }
 
     .login {
-        display: flex;
+        align-self: center;
     }
 
-    .slide1 {
-        display: none;
+    .forgot-password {
+        margin-left: 30px;
     }
 
-    .slide2 {
-        display: none;
+    .input-box-remember-me {
+        gap: 10px;
     }
 
-    .carrousel {
-        display: none;
+    .social-button1, .social-button2, .social-button3 {
+        font-size: 14px;
     }
 
-    .input-email, .input-password {
-        width: 288px;
-        height: 47px;
-        margin-left:35px;
-    
+    a img {
+        left: 45px;
     }
 
-} */
+}
