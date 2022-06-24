@@ -245,6 +245,7 @@ function getCards() {
         .then(games => {
             renderCards(games)
             renderSingleCard(games)
+            console.log(games);
         }) 
         .catch(() => {
             renderError()
@@ -257,7 +258,9 @@ window.onload = () =>{
     const userId = JSON.parse(window.localStorage.getItem('id'))
     fetchUser(userId).then(user => {
         renderProfile(user.profile)
+        renderHamburgerInfo(user)
     })
+
 
     spinner.style.display = "flex"
     getCards().then(() => {
@@ -317,3 +320,31 @@ function renderError() {
         confirmButtonText: 'Ok',
     })
 }
+
+
+//Tablet hamburger
+let hamburger = document.querySelector('.h')
+let containerHam = document.querySelector('.container-hamburger')
+let menuHam = document.querySelector('.menu-hamburger')
+let crossHam = document.querySelector('.cross-hamburger')
+let home = document.querySelector('.navigation-home')
+let logoutHam = document.querySelector('.logt')
+
+hamburger.addEventListener('click', function() {
+   inputSearchBar.style.display = "none"
+    hamburger.style.display = "none"
+    containerHam.style.display= "block"
+    menuHam.style.display = "block"
+})
+
+
+function closeHamburger() {
+    inputSearchBar.style.display = "block"
+     hamburger.style.display = "block"
+     containerHam.style.display= "none"
+     menuHam.style.display = "none"
+ }
+
+crossHam.addEventListener('click', closeHamburger)
+home.addEventListener('click', closeHamburger)
+logoutHam.addEventListener('click', logOut)

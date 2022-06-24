@@ -14,6 +14,7 @@ function fetchApi(apiUrl, payload) {
         .then(response => response.json())
         .then(data => {
             if (data.accessToken) {
+                console.log(data.accessToken);
                 localStorage.setItem('jwt', data.accessToken)
                 localStorage.setItem('id', data.user.id)
                 location.href = 'http://localhost:5500/home.html'

@@ -12,8 +12,10 @@
     },
     {
       "email": "stephy@mail.com",
-      "password": "$2a$10$C.SQWKF2YvNwzA0sOriecuveMmDDm2fBLvDcfG3PjkRvUGYtDqL52",
+      "password": "$2a$10$/V2rGTqKVsxBs0EvD84Heez9U6aw5biCMeIwUjq/dmHKmFNnhdTAa",
       "profile": "./assets/avatar-woman.png",
+      "username": "@stephy",
+      "name": "Stephanie Righ",
       "id": 17
     }
   ]

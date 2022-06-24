@@ -5,6 +5,20 @@ function renderProfile(info) {
     profile.innerHTML = `<img src="${info}" alt="Avatar user">`
 }
 
+//Render information of user for hamburger container
+function renderHamburgerInfo(info) {
+    const profile = document.querySelector('.container-user')
+    profile.innerHTML = 
+    `<span class="avatar">
+        <img src="${info.profile}" alt="Avatar user">
+    </span>
+    <div class="user-info">
+        <p class="user-name">${info.name}</p>
+        <p class="at-user">${info.username}</p>
+    </div>
+    `
+}
+
 //Render three column cards
 function renderCards(list) {
 
@@ -12,7 +26,7 @@ function renderCards(list) {
 
     list.forEach((card, i) => {
 
-        const article = `<article key="${card.id}">
+        const article = `<article key="${card.id}" class="cards-t">
             <div class="heart-icon">
                 <img src="./assets/icons-cards/Heart.svg" alt="Heart icon">
             </div>
@@ -93,7 +107,7 @@ function renderSingleCard(list) {
                         </div>
                     </div>
                     <div class="game-description-sc">
-                        <p>${card.description}</p>
+                        ${card.description}
                     </div>
                 </div>
             </div>

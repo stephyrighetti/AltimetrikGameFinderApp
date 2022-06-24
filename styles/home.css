@@ -10,8 +10,9 @@
     --fair-grey2: #939393;
     --black-gradient: rgba(255,255,255, 0);
     --dark-grey: #3D3D3D; 
+    /* --deep-grey: #141414; */
+    /* --card-grey: #303030; */
 }
-
 
 
 .loading {
@@ -52,12 +53,13 @@ body {
     width: 100%;
     height: 100vh;
     background-color: var(--whiteboard); 
+    color: var(--grey);
 }
 
 html {
     width: 100%;
 }
-    
+
 main {
     height: 100vh;
     padding: 0 34px;
@@ -84,6 +86,14 @@ header {
     background-image: linear-gradient(var(--green1), var(--green2), var(--green3));
     height: 94px;
     box-shadow: 1px -3px 36px rgba(0, 0, 0, 0.5);
+}
+
+.container-hamburger, .hamburger {
+    display: none;
+}
+
+.search-mobile {
+    display:none;
 }
 
 .logo {
@@ -227,7 +237,7 @@ nav {
 }
 
 .links-home {
-    color: var(--green2);
+    color: var(--green2) !important;
     font-size:20px;
 }
 
@@ -343,7 +353,7 @@ article {
 }
 
 .game-devices-icon .xbox-icon, .windows-icon {
-    margin-left:16px;
+    margin-left:10px;
 }
 
 .game-ph img {
@@ -393,6 +403,9 @@ img.playstation-icon, img.xbox-icon, img.windows-icon, img.icon, img.switch-icon
     height: 20px;
 }
 
+img.switch-icon {
+    margin-left: 10px;
+}
 
 /*-----------Single card------------*/
 
@@ -783,9 +796,206 @@ hr:last-child {
 }
 
 /*-----------Dark mode------------*/
-
-.dark-mode-func {
+.dark-mode-f, .dark-mode-f a, .dark-mode-f h1, .dark-mode-f h2, .dark-mode-f h3 {
     background-color: #141414;
-    color: var(--white);
+    color: #ffffff;
+}
+
+/*-----------Media Queries------------*/
+
+/*Responsive Tablet*/
+@media (max-width: 768px) {
+    header {
+        height: 78px;
+    }
+    main {
+        padding: 0 10px;
+    }
+    main nav {
+        display: none;
+    }
+
+    .logo img {
+        display: none;
+    }
+    
+    .side {
+        display:none;
+    }
+    
+    .hamburger {
+        display: flex;
+        height: 16px;
+        margin-left: 24px;
+        align-self: center;
+        cursor: pointer;
+    }
+
+    .container-hamburger {
+        background-color: var(--white);
+        width: 100%;
+    }
+
+    @keyframes Anim-menu {
+        0% {
+            transform: translateX(250px);
+        }
+    
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    .menu-hamburger {
+        display:none;
+        background-color: var(--white);
+        width: 100%;
+        height: 1024px;
+        z-index: 1;
+        position: absolute;
+        padding-left: 16px;
+        animation: Anim-menu 0.3s linear 0s 1 normal forwards;
+    }
+
+    .cross-hamburger {
+        display: flex;
+        justify-content: flex-end;
+        margin: 22px 22px 0px 0px;
+        margin-left: 16px;
+        cursor: pointer;
+    }
+
+    .container-user {
+        display:flex;
+        margin-bottom: 14px;
+        gap:8px;
+    }
+
+    .avatar img {
+        height: 48px;
+        border-radius:50%;
+    }
+
+    .user-info {
+        display:flex;
+        flex-direction: column;
+    }
+
+    .user-name {
+        font-weight: 800;
+        font-size:18px;
+    }
+
+    .at-user {
+        font-size:14px;
+    }
+
+    .navigation-links {
+        display:flex;
+        flex-direction: column;
+        font-weight: 700;
+        font-size: 20px;
+        gap: 32px;
+    }
+
+    .navigation-home {
+        margin-top:18px;
+    }
+    .search-bar {
+        margin-right: 140px;
+    }
+
+    .navigation-links a {
+        color: var(--grey);
+    }
+
+    .logt {
+        margin-top:635px;
+    }
+
+    .navigation-links a:first-child {
+        color: var(--green2);
+    }
+    
+    article, .game-ph img {
+        width: 351px;
+    }
+
+    .container-single {
+        margin-left: 20px;
+    }
+
+    .modal {
+        width: 720px;
+        height: 984px;
+    }
+
+    .game-info-modal {
+        max-height: 122px;
+    }
+}
+
+/*Responsive Mobile */
+@media (max-width: 320px) {
+
+    main {
+        padding: 0 7px;
+    }
+
+    header {
+        height: 50px;
+    }
+
+    .logo img {
+        display:block;
+        width: 137px;
+        margin-right: 80px;
+    }
+
+    .hamburger img {
+      margin-left: 0;
+    }
+
+    .title h1 {
+        font-size: 1.75rem;
+    }
+    
+    .title h2 {
+        font-size: 0.875rem;
+    }
+    .thumbnail, .mode {
+        display:none;
+    }
+
+    .search-bar {
+        display:none;
+    }
+
+    .search-mobile {
+        display:flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .search-mobile img {
+        position:absolute;
+    }
+    
+    article, .game-ph img {
+        width: 288px;
+    }
+
+    .container-game-info {
+        flex-direction: column;
+    }
+
+    .game-devices-icon {
+        justify-content: flex-start;
+        margin-top:16px;
+    }
+    
+    .single-game-info-plus {
+        white-space: normal;
+    }
 
 }
