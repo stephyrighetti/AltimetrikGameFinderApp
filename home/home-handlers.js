@@ -238,7 +238,7 @@ function closeModal() {
 }
 
 //Get cards handler
-let spinner = document.querySelector('.loading')
+let skeleton = document.querySelector('.skeleton')
 
 function getCards() {
     return fetchGames(currentSearch, pageNumber)
@@ -262,9 +262,9 @@ window.onload = () =>{
     })
 
 
-    spinner.style.display = "flex"
+    skeleton.style.display = "flex"
     getCards().then(() => {
-        spinner.style.display = "none"
+        skeleton.style.display = "none"
         showContainer()
     })
 }
@@ -348,3 +348,21 @@ function closeHamburger() {
 crossHam.addEventListener('click', closeHamburger)
 home.addEventListener('click', closeHamburger)
 logoutHam.addEventListener('click', logOut)
+
+//Mobile search 
+let smallSearch = document.querySelector('.search-mobile')
+
+smallSearch.addEventListener('click', function() {
+    
+    inputSearchBar.style.display="block"
+})
+
+
+// function checkMediaQuery() {
+//     if(window.innerWidth > 321){ 
+//         inputSearchBar.style.display= "none";
+//         console.log("clicked");
+//     }
+// }
+
+// closeIcon.addEventListener('click', checkMediaQuery)
