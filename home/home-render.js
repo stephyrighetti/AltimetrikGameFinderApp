@@ -16,6 +16,7 @@ function renderHamburgerInfo(info) {
         <p class="user-name">${info.name}</p>
         <p class="at-user">${info.username}</p>
     </div>
+    <div class="cross-hamburger"><img src= "assets/cross.svg"></div>
     `
 }
 
@@ -152,16 +153,16 @@ function renderModal(game) {
             </div>
             <div class="modal-text">
                 <div class="icons-modal">
-                ${getIconsPlay(game.platforms, "modal")}
-                ${getIconsXbox(game.platforms, "modal")}
-                ${getIconsPc(game.platforms,"modal")}
+                ${getIconsPlay(game?.platforms || "", "modal")}
+                ${getIconsXbox(game?.platforms || "", "modal")}
+                ${getIconsPc(game?.platforms || "","modal")}
                 </div>
                 <div class="title-modal">
                     <h2>${game.name}</h2>
                 </div>
                 <div class="extra-info-modal">
                     <p>${formatDate(game.released)}</p>
-                    <p><span class="first-letter">#${game.rating_top}</span>TOP 2021</p>
+                    <p><span class="first-letter">#${game.rating_top}</span>TOP 2022</p>
                     <p><span class="first-letter">#9</span> RPG</p>
                 </div>
                 <div class="game-info-modal">

@@ -10,6 +10,31 @@
     --fair-grey2: #939393;
     --black-gradient: rgba(255,255,255, 0);
     --dark-grey: #3D3D3D; 
+    --red: #ff0000; 
+}
+
+/*---------------Tooltip---------------*/
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    color: var(--whiteboard);
+}
+
+.tooltip .tiptext {
+    visibility: hidden;
+    width: 150px;
+    background-color: var(--green);
+    text-align: center;
+    border-radius: 3px;
+    padding: 6px 0;
+    position: absolute;
+    z-index: 1;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip:hover .tiptext {
+    visibility: visible;
 }
 
 /*---------------Skeleton---------------*/
@@ -18,7 +43,7 @@
     display: flex;
     flex-direction: column;
     flex-flow: wrap;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 24px;
     max-width: 1137px;
 }
@@ -91,6 +116,7 @@ body {
     height: 100vh;
     background-color: var(--whiteboard); 
     color: var(--grey);
+    overflow-y: visible;
 }
 
 html {
@@ -166,7 +192,8 @@ header {
 img.close-icon {
     display: none;
     position: absolute;
-    margin-left: 330px;
+    right: 10px;
+    top: 13px;
     width: 22px;
     height: 22px;
     cursor: pointer;
@@ -192,6 +219,9 @@ img.close-icon {
     align-self: center;
 }
 
+.avatar img {
+    height: 16px;
+}
 
 .avatar-user {
    align-self: center;
@@ -260,8 +290,11 @@ img.column-active, img.one-card-inactive {
 /*---------------Sidebar---------------*/
 
 nav {
-    min-width: 163px;
-    padding-right: 57px;
+    min-width:200px;
+}
+
+.last-search::selection {
+    color: var(--green3);
 }
 
 .links-navbar, .links-time, .links-popular {
@@ -291,7 +324,6 @@ nav {
 .links-time a, .links-popular2 a {
     color: var(--grey);
 }
-
 
 .links-time a {
     font-size:18px;
@@ -326,12 +358,16 @@ nav {
     color: var(--green2);
 }
 
+.searches-not-found {
+    color: var(--red);
+    font-size: 1.375rem;
+    font-weight: 700;
+}
 
 /*---------------Game Cards---------------*/
 .single-card {
     display:none;
 }
-
 
 .container-cards {
     display: none;
@@ -657,6 +693,7 @@ margin-right:7px;
 .game-info-modal {
     max-height: 122px;
     overflow:auto;
+    text-align:justify;
 }
 
 .game-info-modal::-webkit-scrollbar {
@@ -673,6 +710,7 @@ margin-right:7px;
 
 .game-info-modal p {
 font-size: 16px;
+margin-right:5px;
 }
 
 .game-info-modal p::selection {
@@ -728,10 +766,6 @@ display:flex;
 margin-top: 20px;
 }
 
-.details-icons-modal {
-    margin-top: 55px;
-}
-
 .right-column, .left-column {
 display:flex;
 flex-direction: column;
@@ -772,10 +806,6 @@ padding-bottom: 46px;
 
 /*-----------Footer------------*/
 
- .footer {
-    border: 1px #d8d8d8 dashed;
-  }
-  
 .footer:after {
     content: "";
     position: fixed;
@@ -840,6 +870,14 @@ hr:last-child {
 
 /*-----------Media Queries------------*/
 
+/*Responsive for larger screen*/
+
+@media (min-width: 1920px) {
+    nav {
+        min-width:200px;
+    }
+}
+
 /*Responsive Tablet*/
 @media (max-width: 768px) {
 
@@ -886,24 +924,20 @@ hr:last-child {
 
     .menu-hamburger {
         display:none;
+        flex-direction: column;
         background-color: var(--white);
         width: 100%;
         height: 1024px;
         z-index: 1;
-        position: absolute;
+        position: fixed;
         padding: 0px 16px 0px 16px;
         animation: Anim-menu 0.3s linear 0s 1 normal forwards;
-    }
-
-    .cross-hamburger {
-        display: flex;
-        justify-content: flex-end;
-        cursor: pointer;
     }
 
     .container-user {
         display:flex;
         margin-bottom: 14px;
+        margin-top: 21px;
         gap:8px;
     }
 
@@ -915,6 +949,16 @@ hr:last-child {
     .user-info {
         display:flex;
         flex-direction: column;
+    }
+    
+    .cross-hamburger {
+        /* display:flex;
+        justify-content: flex-end;
+        cursor:pointer;*/
+        height: 18px; 
+        margin-left: auto;
+        align-self: flex-start;
+        cursor:pointer;
     }
 
     .user-name {
@@ -950,13 +994,18 @@ hr:last-child {
     .logt {
         display:flex;
         flex-direction: column;
-        gap: 650px;
+        margin-top: auto;
+        margin-bottom: 20px;
     }
 
     .navigation-links a:first-child {
         color: var(--green2);
     }
     
+    .skeleton {
+        justify-content: flex-start;
+    }
+
     .card-skeleton {
         width: 351px;
     }
@@ -970,8 +1019,8 @@ hr:last-child {
     }
 
     .modal {
-        width: 95%;
-        height: 98%;
+        width: 96%;
+        height: 97%;
     }
 
     .details-modal {
@@ -984,10 +1033,23 @@ hr:last-child {
 
     .game-info-modal {
         max-height: 122px;
+        min-width: 650px;
+    }
+
+    .links-modal-purchase, .links-modal-wishlist {
+        width: 319px;
+    }
+
+    .links-modal-wishlist a {
+        margin-right: 40px;
     }
 
     .details-icons-modal {
         margin-top: 0px;
+    }
+
+    .left-column {
+        margin-bottom: 10px;
     }
 }
 
@@ -1025,6 +1087,10 @@ hr:last-child {
     }
 
     .h img {
+        height: 14px;
+    }
+
+    .cross-hamburger {
         height: 14px;
     }
 
@@ -1071,8 +1137,12 @@ hr:last-child {
     }
 
     .card-skeleton {
-        width: 360px;
+        width: 290px;
         height: 365px;
+    }
+
+    .title-skeleton {
+        width: 85%;
     }
 
     .skeleton {
@@ -1103,10 +1173,6 @@ hr:last-child {
 
     .navigation-links {
         gap: 14px;
-    }
-    
-    .cross-hamburger {
-        margin:0;
     }
 
 }

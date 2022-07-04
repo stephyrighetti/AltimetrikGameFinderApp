@@ -1,5 +1,4 @@
 
-// Slider logic
 const API_URL = 'http://localhost:3000'
 let currentSlide = 1
 
@@ -57,13 +56,17 @@ function renderError() {
         text: 'Sorry, something went wrong, try again!',
         icon: 'error',
         confirmButtonText: 'Ok',
+        confirmButtonColor: '#36B972'
     })
 }
 
+
+// Slider logic
+dotColor(1)
 const buttonSlideRight = document.querySelector('.slide2')
 buttonSlideRight.addEventListener('click', function() {
-    currentSlide++
-    if (currentSlide == 7) currentSlide = 1
+ currentSlide++
+ if (currentSlide == 7) currentSlide = 1 
     slide(currentSlide)
     dotColor(currentSlide)
 })    
@@ -75,6 +78,14 @@ buttonSlideLeft.addEventListener('click', function() {
     slide(currentSlide)
     dotColor(currentSlide)
 })    
+
+const dot1 = document.querySelector('.carrousel-dot-1')
+const dot2 = document.querySelector('.carrousel-dot-2')
+const dot3 = document.querySelector('.carrousel-dot-3')
+const dot4 = document.querySelector('.carrousel-dot-4')
+const dot5 = document.querySelector('.carrousel-dot-5')
+const dot6 = document.querySelector('.carrousel-dot-6')
+
 
 // Function for changing the background image
 function slide(num) {

@@ -17,7 +17,7 @@ function fetchApi(apiUrl, payload) {
                 console.log(data.accessToken);
                 localStorage.setItem('jwt', data.accessToken)
                 localStorage.setItem('id', data.user.id)
-                location.href = 'http://localhost:5500/home.html'
+                location.href = '/home.html'
             }
         })
         .catch (() => {

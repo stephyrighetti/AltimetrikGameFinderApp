@@ -16,6 +16,27 @@
     --red: #ff0000;
 }
 
+.tooltip {
+    position: relative;
+    display: inline-block;
+    color: var(--whiteboard);
+}
+
+.tooltip .tiptext {
+    visibility: hidden;
+    width: 150px;
+    background-color: var(--green);
+    text-align: center;
+    border-radius: 3px;
+    padding: 6px 0;
+    position: absolute;
+    z-index: 1;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip:hover .tiptext {
+    visibility: visible;
+}
 
 html {
     height: 100%;
@@ -322,6 +343,10 @@ a img {
     left: 60px;
 }
 
+.container-carrousel {
+    display:flex;
+    justify-content: center;
+}
 
 .carrousel {
     display: flex;
@@ -332,9 +357,7 @@ a img {
     background-color: var(--light-grey);
     border-radius: 18px;
     padding-left:13px;
-    margin-left: 650px;
     margin-top:70px;
-
 }
 
 /*--------------Media Queries ---------------- */
@@ -359,7 +382,7 @@ a img {
 
     .carrousel {
         margin-top:65px;
-        margin-left: 300px
+        margin-right:40px;
     }
 
     .slide1 {
@@ -413,7 +436,7 @@ a img {
     }
 
     .login {
-        align-self: center;
+        text-align: center;
     }
 
     .forgot-password {

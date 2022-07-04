@@ -269,13 +269,22 @@ window.onload = () =>{
     })
 }
 
+const homeLink = document.querySelector('.links-home') 
+homeLink.addEventListener('click', function() {
+    last.style = "color: var(--grey); font-weight: 400;"
+    currentSearch = ""
+    pageNumber = 1
+    clearCards()
+    getCards()
+})
+
 //Last Searches redirection
 const last = document.querySelector('.last-search')
 
 last.addEventListener('click', function() {
-    
-    if (lastSearches.length == 0) {
-        return
+    last.style = "color: var(--green2); font-weight: 700;"
+    if (lastSearches.length === 0) {
+     return document.querySelector('.container-cards').innerHTML = `<p class="searches-not-found">No last searches were found</p>` 
     }
     
     clearCards()
@@ -289,7 +298,7 @@ last.addEventListener('click', function() {
 function logOut() {
     localStorage.removeItem('jwt')
     localStorage.removeItem('id')
-    location.href = 'http://localhost:5500/index.html';
+    location.href = '/index.html';
 }
 
 window.addEventListener('load', function () {
@@ -299,7 +308,7 @@ window.addEventListener('load', function () {
             text: 'Are you sure you want to log out?',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
+            confirmButtonColor: '#36B972',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, log out!'
         }).then((result) => {
@@ -318,6 +327,7 @@ function renderError() {
         text: 'Sorry, something went wrong, try again!',
         icon: 'error',
         confirmButtonText: 'Ok',
+        confirmButtonColor: '#36B972'
     })
 }
 
@@ -329,12 +339,16 @@ let menuHam = document.querySelector('.menu-hamburger')
 let crossHam = document.querySelector('.cross-hamburger')
 let home = document.querySelector('.navigation-home')
 let logoutHam = document.querySelector('.logt')
+let footer = document.querySelector('footer')
+let body = document.querySelector('body')
 
 hamburger.addEventListener('click', function() {
    inputSearchBar.style.display = "none"
     hamburger.style.display = "none"
     containerHam.style.display= "block"
-    menuHam.style.display = "block"
+    menuHam.style.display = "flex"
+    footer.style.display = "none"
+    body.style = "overflow-y: hidden;"
 })
 
 
@@ -343,6 +357,7 @@ function closeHamburger() {
      hamburger.style.display = "block"
      containerHam.style.display= "none"
      menuHam.style.display = "none"
+     body.style = "overflow-y: visible;"
  }
 
 crossHam.addEventListener('click', closeHamburger)

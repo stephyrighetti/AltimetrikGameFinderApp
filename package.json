@@ -4,7 +4,8 @@
   "description": "Game Finder App \r This is a proyect developed for the BFEDA 2nd edition",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "json-server db.json -m ./node_modules/json-server-auth"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,8 @@
   "homepage": "https://github.com/stephyrighetti/GameFinderApp#readme",
   "devDependencies": {
     "json-server": "^0.17.0",
-    "json-server-auth": "^2.1.0"
+    "json-server-auth": "^2.1.0",
+    "nodemon": "^2.0.18",
+    "npm-run-all": "^4.1.5"
   }
 }
