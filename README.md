@@ -1,5 +1,5 @@
-Game Finder App 🎮 
-This is a proyect developed for the BFEDA 2nd edition bootcamp.
+#Game Finder App 🎮 
+##This is a proyect developed for the BFEDA 2nd edition bootcamp.
 It is developed using HTML, CSS and Javascript Vainilla.
 
 Steps to run the application: 
@@ -8,7 +8,7 @@ Steps to run the application:
 npm install or npm i
 
 2- Run the server with the following command:
-json-server db.json -m ./node_modules/json-server-auth
+npm run server
 
 3-If you are using Visual Studio Code, you can install the extension called "Live server" to run
 the application.
