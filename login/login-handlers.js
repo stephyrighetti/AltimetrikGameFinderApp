@@ -79,12 +79,20 @@ buttonSlideLeft.addEventListener('click', function() {
     dotColor(currentSlide)
 })    
 
-const dot1 = document.querySelector('.carrousel-dot-1')
-const dot2 = document.querySelector('.carrousel-dot-2')
-const dot3 = document.querySelector('.carrousel-dot-3')
-const dot4 = document.querySelector('.carrousel-dot-4')
-const dot5 = document.querySelector('.carrousel-dot-5')
-const dot6 = document.querySelector('.carrousel-dot-6')
+
+function clickSlide(num) {
+    document.querySelector('.carrousel-dot-' + num).addEventListener('click', function () {
+        slide(num)
+        dotColor(num)
+    })
+}
+
+clickSlide(1)
+clickSlide(2)
+clickSlide(3)
+clickSlide(4)
+clickSlide(5)
+clickSlide(6)
 
 
 // Function for changing the background image

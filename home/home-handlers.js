@@ -16,6 +16,12 @@ const overlay = document.querySelector('.search-overlay')
 const containerSearch = document.querySelector(".container-games-list")
 const gameList = document.querySelector('.games-list')
 const completeList = document.querySelector('.list')
+const containerModal = document.querySelector('.container-modal')
+const main = document.querySelector('main')
+
+containerModal.addEventListener('click', function () {
+    containerModal.style.display = "none"
+})
 
 //Redirect user to login if there's not a jwt
 const tokenSession = localStorage.getItem('jwt')
@@ -23,7 +29,8 @@ if (!tokenSession) {
     location.href = ('/index.html')
 }
 
-inputSearchBar.addEventListener ("click", function() {
+
+inputSearchBar.addEventListener("click", function() {
     closeIcon.style.display = "flex"
     gameList.style.display = "flex"
     completeList.style.display = "block"
@@ -52,8 +59,14 @@ function inputBarHandler(event) {
     overlay.style.display = "none"
     list.style.display = "none"
     clearCards()
-    renderCards(store)
-    renderSingleCard(store)
+    if (store.length === 0) {
+        container.innerHTML += `<p class="searches-not-found">No matches found for your search</p>`
+    } else {
+        recordSearch(store[0])
+        recordSearch(store[1])
+        renderCards(store)
+        renderSingleCard(store)
+    }
   }
 }
 
@@ -69,7 +82,12 @@ function inputBarKeyHandler(event) {
             .then(games => {
                 store = games
                 currentSearch = currentWord
-                renderList(games)
+                if(store.some(game => game.name.toLowerCase().includes(currentSearch))) {
+                    renderList(store)
+                } else {
+                    olList.innerHTML = ""
+                   olList.innerHTML += `<p>No matches found for your search</p>`
+                }
             })
             .catch(() => {
                 renderError()
@@ -79,6 +97,7 @@ function inputBarKeyHandler(event) {
     clearTimeout(searchTimeout)
     searchTimeout = setTimeout(handlerSearch, 500)
 }
+
 
 function recordSearch(game) {
     lastSearches.push(game)
@@ -275,7 +294,13 @@ homeLink.addEventListener('click', function() {
     currentSearch = ""
     pageNumber = 1
     clearCards()
-    getCards()
+    
+    skeleton.style.display = "flex"
+    getCards().then(() => {
+        skeleton.style.display = "none"
+        showContainer()
+    })
+
 })
 
 //Last Searches redirection
@@ -288,10 +313,8 @@ last.addEventListener('click', function() {
     }
     
     clearCards()
-    renderCards(lastSearches[0])
-    renderCards(lastSearches[1])
-    renderSingleCard(lastSearches[0])
-    renderSingleCard(lastSearches[1])
+    renderCards(lastSearches)
+    renderSingleCard(lastSearches)
 })
 
 //Logout
@@ -338,11 +361,13 @@ let containerHam = document.querySelector('.container-hamburger')
 let menuHam = document.querySelector('.menu-hamburger')
 let crossHam = document.querySelector('.cross-hamburger')
 let home = document.querySelector('.navigation-home')
-let logoutHam = document.querySelector('.logt')
+let logoutHam = document.querySelector('.log-out-ham')
 let footer = document.querySelector('footer')
 let body = document.querySelector('body')
 
-hamburger.addEventListener('click', function() {
+
+hamburger.addEventListener('click', function(event) {
+    event.stopPropagation()
    inputSearchBar.style.display = "none"
     hamburger.style.display = "none"
     containerHam.style.display= "block"
@@ -373,11 +398,32 @@ smallSearch.addEventListener('click', function() {
 })
 
 
-// function checkMediaQuery() {
-//     if(window.innerWidth > 321){ 
-//         inputSearchBar.style.display= "none";
-//         console.log("clicked");
-//     }
-// }
+//Dark mode 
+const containerMain = document.querySelector('.container-main')
+const darkOff = document.querySelector('.dark-off')
 
-// closeIcon.addEventListener('click', checkMediaQuery)
+
+function changeColor(console) {
+    let device = document.querySelectorAll('.' + console + '-icon')
+    device.forEach(element => element.classList.toggle('dark-mode-white'))
+}
+
+darkOff.addEventListener('click', function(){
+
+    changeColor("xbox");
+    changeColor("playstation")
+    changeColor("switch")
+    changeColor("windows")
+
+    changeColor("xbox-sc");
+    changeColor("playstation-sc")
+    changeColor("switch-sc")
+    changeColor("windows-sc")
+
+    singleCard.classList.toggle('dark-mode-filter')
+    multipleCards.classList.toggle('dark-mode-filter')
+    
+    darkOff.src = "assets/icons-mode/Dark-mode-on.svg"
+    body.classList.toggle('dark-mode-change')
+    
+})

@@ -18,6 +18,17 @@ function renderHamburgerInfo(info) {
     </div>
     <div class="cross-hamburger"><img src= "assets/cross.svg"></div>
     `
+    const crossHam = document.querySelector('.cross-hamburger')
+    crossHam.addEventListener('click', function(event) {
+            event.stopPropagation()
+            inputSearchBar.style.display = "block"
+             hamburger.style.display = "block"
+             containerHam.style.display= "none"
+             menuHam.style.display = "none"
+             body.style = "overflow-y: visible;"
+         
+    })
+
 }
 
 //Render three column cards
@@ -42,11 +53,11 @@ function renderCards(list) {
                 <div class="container-game-info">
                     <div class="single-game-info">
                         <div class="single-game-info-release">
-                            <p class="single-game-info-title">Release date:</p>
+                            <span class="single-game-info-title">Release date:</span>
                             <p class="single-game-info-plus">${formatDate(card.released)}</p>
                         </div>
                         <div class="single-game-info-genres">
-                            <p class="single-game-info-title">Genres:</p>
+                            <span class="single-game-info-title">Genres:</span>
                             <p class="single-game-info-plus">${getGenre(card.genres.slice(-3))}</p>
                         </div>
                     </div>
@@ -65,7 +76,8 @@ function renderCards(list) {
 
     list.forEach(card => {
         const key = document.querySelector(`.container-cards article[key="${card.id}"]`)
-        key.addEventListener('click', function () {
+        key.addEventListener('click', function (event) {
+            event.stopPropagation()
             renderModal(card)
         })
     })
@@ -93,18 +105,18 @@ function renderSingleCard(list) {
                 <div class="container-game-info-sc">
                     <div class="single-game-info-sc">
                         <div class="single-game-info-release-sc">
-                            <p class="single-game-info-title-sc">Release date:</p>
+                            <span class="single-game-info-title-sc">Release date:</span>
                             <p class="single-game-info-plus-sc">${formatDate(card.released)}</p>
                         </div>
                         <div class="single-game-info-genres-sc">
-                            <p class="single-game-info-title-sc">Genres:</p>
+                            <span class="single-game-info-title-sc">Genres:</span>
                             <p class="single-game-info-plus-sc">${getGenre(card.genres)}</p>
                         </div>
                         <div class="game-devices-icon-sc">
-                        ${getIconsPlay(card?.platforms || "", "icons-cards", "playstation-icon-sc")}
-                        ${getIconsXbox(card?.platforms || "", "icons-cards", "xbox-icon-sc")}
-                        ${getIconsPc(card?.platforms || "", "icons-cards", "windows-icon-sc")}
-                        ${getIconsSwitch(card?.platforms || "", "icons-cards", "switch-icon-sc")}
+                        ${getIconsPlay(card?.platforms || "", "icons-cards", "playstation-sc-icon")}
+                        ${getIconsXbox(card?.platforms || "", "icons-cards", "xbox-sc-icon")}
+                        ${getIconsPc(card?.platforms || "", "icons-cards", "windows-sc-icon")}
+                        ${getIconsSwitch(card?.platforms || "", "icons-cards", "switch-sc-icon")}
                         </div>
                     </div>
                     <div class="game-description-sc">
@@ -119,7 +131,8 @@ function renderSingleCard(list) {
 
     list.forEach(card => {
         const key = document.querySelector(`.container-single article[key="${card.id}"]`)
-        key.addEventListener ('click', function () {
+        key.addEventListener ('click', function (event) {
+            event.stopPropagation()
             renderModal(card)
         })
     })
@@ -182,33 +195,33 @@ function renderModal(game) {
                 <div class="details-modal">
                     <div class="left-column">
                         <div class="platforms-modal">
-                            <p class="platforms-modal-title">Platforms</p>
+                            <span class="platforms-modal-title">Platforms</span>
                             <p class="platforms-modal-sp line">${getPlatforms(game.platforms)}</p>
                         </div>
                         <div class="release-modal">
-                            <p class="platforms-modal-title">Release date</p>
+                            <span class="platforms-modal-title">Release date</span>
                             <p class="platforms-modal-sp">${formatDate(game.released)}</p>
                         </div>
                         <div class="publisher-modal">
-                            <p class="platforms-modal-title">Publisher</p>
+                            <span class="platforms-modal-title">Publisher</span>
                             <p class="platforms-modal-sp line">${getName(game.publishers)}</p>
                         </div>
                         <div class="website-modal">
-                            <p class="platforms-modal-title">Website</p>
+                            <span class="platforms-modal-title">Website</span>
                             <a href="#" class="platforms-modal-sp">${game?.website|| "Not available"}</a>
                         </div>
                     </div>
                     <div class="right-column">
                         <div class="genre-modal">
-                            <p class="platforms-modal-title">Genre</p>
+                            <span class="platforms-modal-title">Genre</span>
                             <p class="platforms-modal-sp line">${getGenre(game.genres)}</p>
                         </div>
                         <div class="developer-modal">
-                            <p class="platforms-modal-title">Developer</p>
+                            <span class="platforms-modal-title">Developer</span>
                             <p class="platforms-modal-sp line">${getName(game?.developers || "Not defined")}</p>
                         </div>
                         <div class="age-modal">
-                            <p class="platforms-modal-title">Age rating</p>
+                            <span class="platforms-modal-title">Age rating</span>
                             <p class="platforms-modal-sp">${game.esrb_rating?.name || "Not defined"}</p>
                         </div>
                         <div class="details-icons-modal">
@@ -235,6 +248,8 @@ function renderModal(game) {
     modalContainer.style.display = 'flex'
     modalContainer.innerHTML = modal
     footer.style.display = "none"
+    inputSearchBar.style= "z-index:1";
+    document.querySelector(".modal").addEventListener('click', e => e.stopPropagation())
 }
 
 //Render list of games - searchbar
@@ -252,10 +267,11 @@ function renderList(list) {
 
     list.forEach(element => {
         const filteredList = document.querySelector(`.games-list-game[data-id="${element.id}"]`)
-        filteredList.addEventListener('click', function () {
+        filteredList.addEventListener('click', function (event) {
+            event.stopPropagation()
             overlay.style.display = "none"
             clearCards()
-            recordSearch([ element ])
+            recordSearch(element)
             renderSingleCard([ element ])
             renderCards([ element ])
             renderModal([ element ])
