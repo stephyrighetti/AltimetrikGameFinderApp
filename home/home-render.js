@@ -5,7 +5,7 @@ function renderProfile(info) {
     profile.innerHTML = `<img src="${info}" alt="Avatar user">`
 }
 
-//Render information of user for hamburger container
+//Render information of user for the hamburger container
 function renderHamburgerInfo(info) {
     const profile = document.querySelector('.container-user')
     profile.innerHTML = 

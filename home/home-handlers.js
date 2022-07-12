@@ -398,7 +398,7 @@ smallSearch.addEventListener('click', function() {
 })
 
 
-//Dark mode 
+//Dark mode functionality
 const containerMain = document.querySelector('.container-main')
 const darkOff = document.querySelector('.dark-off')
 

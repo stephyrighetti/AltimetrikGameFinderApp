@@ -1,9 +1,3 @@
-* {
-    box-sizing: border-box;
-    font-family: exo;
-}
-
-
 :root {
     --green: #4CC986;
     --secondary-green: #36B972;
@@ -16,6 +10,27 @@
     --red: #ff0000;
     --header-color: #ffffff4d;
 }
+
+* {
+    box-sizing: border-box;
+    font-family: exo;
+}
+
+html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-image: url("../assets/background-1.jpg");
+    height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0; 
+    background-attachment: fixed;
+} 
+
 
 .tooltip {
     position: relative;
@@ -39,20 +54,6 @@
     visibility: visible;
 }
 
-html {
-    height: 100%;
-    margin: 0;
-}
-
-body {
-    background-image: url("../assets/background-1.jpg");
-    height: 100vh;
-    width: 100vw;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 0; 
-    background-attachment: fixed;
-} 
 
 .active {
     cursor: pointer;

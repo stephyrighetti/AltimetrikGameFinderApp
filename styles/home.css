@@ -16,6 +16,26 @@
     --shadow: #141414;
 }
 
+* {
+    box-sizing: border-box;
+    font-family: exo;
+    font-size: 15px;
+    margin:0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--whiteboard); 
+    color: var(--grey);
+    overflow-y: visible;
+    overflow-x: hidden;
+}
+
+html {
+    width: 100%;
+    max-width:1440px;
+}
 .loading {
     display: flex;
     align-self: center;
@@ -130,26 +150,6 @@ a {
     text-decoration: none;
 }
 
-* {
-    box-sizing: border-box;
-    font-family: exo;
-    font-size: 15px;
-    margin:0;
-}
-
-body {
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--whiteboard); 
-    color: var(--grey);
-    overflow-y: visible;
-    overflow-x: hidden;
-}
-
-html {
-    width: 100%;
-    max-width:1440px;
-}
 
 main {
     height: 100vh;
@@ -637,7 +637,7 @@ img.playstation-sc-icon, img.xbox-sc-icon {
 }
 
 
-/*-----------Modal card------------*/
+/*-----------Modal card-------------*/
 .container-modal {
     display: none; 
     position: fixed;

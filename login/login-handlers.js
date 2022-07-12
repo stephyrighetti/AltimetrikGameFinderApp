@@ -100,7 +100,7 @@ function slide(num) {
     document.querySelector('body').style = `background-image: url(../assets/background-${num}.jpg)`
 }
 
-// Function for the opacity of the dot
+// Function for changing the opacity of the dot
 function dotColor(num) {
     document.querySelectorAll('.carrousel > div').forEach(element => element.style = "opacity:25%;")
     document.querySelector('.carrousel-dot-' + num).style = "opacity: 100%;"
