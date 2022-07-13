@@ -138,6 +138,9 @@ function renderSingleCard(list) {
     })
 }
 
+const lightMode = "background-image:  linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #F0F0F0 63.23%, #F0F0F0 75.85%)"
+const darkModeGradient = "background-image: linear-gradient(180deg, rgba(48, 48, 48, 0.0001) 0%, #303030 84.4%)"
+
 //Render modal
 function renderModal(game) {
 
@@ -149,26 +152,30 @@ function renderModal(game) {
             const video = document.querySelector('.video-preview')
             const screenshot = getImages(game.short_screenshots)[5]
             const style = "width: 392px; height: 217px;"
+            const loading = document.querySelector('.loading-video')
+
             if (trailer) {
+                loading.style.display = "none"
                 video.innerHTML = `
                 <video style="${style}" poster="${screenshot}" controls="">
                     <source src="${trailer}" type="video/mp4">
                 </video>`
             } else {
+                loading.style.display = "none"
                 video.innerHTML = `<img src="${screenshot}" style="${style}" />`
             }
         })
 
     const modal = `
-        <div class="modal" style="background-image:  linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #F0F0F0 63.23%, #F0F0F0 75.85%), url('${game.background_image}');">
+        <div class="modal" style="${lightMode}, url('${game.background_image}');">
             <div class="cross-icon" onclick="closeModal()">
                 <img src="./assets/modal/Cross.svg">
             </div>
             <div class="modal-text">
                 <div class="icons-modal">
-                ${getIconsPlay(game?.platforms || "", "modal")}
-                ${getIconsXbox(game?.platforms || "", "modal")}
-                ${getIconsPc(game?.platforms || "","modal")}
+                ${getIconsPlay(game?.platforms || "", "modal", "playstation-icon-modal")}
+                ${getIconsXbox(game?.platforms || "", "modal", "")}
+                ${getIconsPc(game?.platforms || "","modal", "")}
                 </div>
                 <div class="title-modal">
                     <h2>${game.name}</h2>
@@ -233,6 +240,7 @@ function renderModal(game) {
                 </div>
             </div>
             <div class="images-modal">
+                <div class="loading-video"></div>
                 <div class="video-preview"></div>
                 <div class="images-modal-one">
                     <img src="${getImages(game.short_screenshots)[1]}" style="max-width: 184px;">
@@ -250,6 +258,10 @@ function renderModal(game) {
     footer.style.display = "none"
     inputSearchBar.style= "z-index:1";
     document.querySelector(".modal").addEventListener('click', e => e.stopPropagation())
+
+    darkOff.addEventListener('click', function() {
+      return document.getElementsByClassName('modal').style = `${darkModeGradient}, url('${game.background_image}');`
+    })
 }
 
 //Render list of games - searchbar

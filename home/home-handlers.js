@@ -399,6 +399,7 @@ smallSearch.addEventListener('click', function() {
 
 
 //Dark mode functionality
+const darkOffMobile = document.querySelector('.button-dark-off')
 const containerMain = document.querySelector('.container-main')
 const darkOff = document.querySelector('.dark-off')
 
@@ -407,6 +408,12 @@ function changeColor(console) {
     let device = document.querySelectorAll('.' + console + '-icon')
     device.forEach(element => element.classList.toggle('dark-mode-white'))
 }
+
+darkOffMobile.addEventListener('click', function () {
+    body.classList.toggle('dark-mode-change')
+    darkOffMobile.src = "assets/icons-mode/Dark-mode-on.svg"
+    // menuHam.classList.toggle('dark-mode-mobile-toggle')
+})
 
 darkOff.addEventListener('click', function(){
 
@@ -423,6 +430,7 @@ darkOff.addEventListener('click', function(){
     singleCard.classList.toggle('dark-mode-filter')
     multipleCards.classList.toggle('dark-mode-filter')
     
+    menuHam.classList.toggle('dark-mode-mobile-toggle')
     darkOff.src = "assets/icons-mode/Dark-mode-on.svg"
     body.classList.toggle('dark-mode-change')
     

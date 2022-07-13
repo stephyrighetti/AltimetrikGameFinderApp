@@ -16,6 +16,8 @@
     --shadow: #141414;
 }
 
+
+
 * {
     box-sizing: border-box;
     font-family: exo;
@@ -36,19 +38,20 @@ html {
     width: 100%;
     max-width:1440px;
 }
-.loading {
+
+.loading-video {
     display: flex;
-    align-self: center;
+    margin-bottom: 70px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.loading::after {
+.loading-video::after {
     content:"";
     width: 10px;
     height: 10px;
-    border: 5px solid #dddddd;
-    border-top-color: red;
+    border: 5px solid var(--very-light-grey);
+    border-top-color: var(--green3);
     border-radius: 50%;
     animation: loading 1s linear infinite;
 }
@@ -773,6 +776,10 @@ background-color: var(--green4);
 gap:8px;
 }
 
+.playstation-icon-modal {
+    height: 48px;
+}
+
 .heart-icon-modal {
     color: var(--white);
     align-self:center;
@@ -950,9 +957,9 @@ hr:last-child {
     .side {
         display:none;
     }
-    
-    .container-cards {
-        justify-content: center;
+
+    .mode {
+        padding-right: 25px;
     }
 
     .hamburger {
@@ -1010,7 +1017,8 @@ hr:last-child {
     .cross-hamburger {
         height: 18px; 
         margin-left: auto;
-        align-self: flex-start;
+        padding-right: 15px;
+        align-self: flex-start !important;
         cursor:pointer;
     }
 
@@ -1044,10 +1052,6 @@ hr:last-child {
         z-index:1;
     }
 
-    .search-games {
-        margin-right: 55px;
-    }
-
     .navigation-links a {
         color: var(--grey);
     }
@@ -1056,7 +1060,7 @@ hr:last-child {
         display:flex;
         flex-direction: column;
         margin-top: auto;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
     }
 
     .log-out-ham {
@@ -1124,6 +1128,10 @@ hr:last-child {
 
 /*Responsive Mobile */
 @media (max-width: 420px) {
+
+    /* .dark-mode-mobile-toggle {
+        filter: brightness(100);
+    } */
 
     body {
         overflow-x: hidden;

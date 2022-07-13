@@ -29,6 +29,7 @@ body {
     background-size: cover;
     margin: 0; 
     background-attachment: fixed;
+    overflow-x: hidden;
 } 
 
 
