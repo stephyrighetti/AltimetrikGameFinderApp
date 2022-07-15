@@ -10,7 +10,7 @@
     --fair-grey2: #939393;
     --dark-grey: #303030;
     --black-gradient: rgba(255,255,255, 0);
-    --dark-grey: #3D3D3D; 
+    /* --dark-grey: #3D3D3D;  */
     --red: #ff0000; 
     --black: #000000;
     --shadow: #141414;
@@ -902,6 +902,11 @@ hr:last-child {
 
 /*-----------Dark mode------------*/
 
+.dark-mode-ham-toggle, .dark-mode-ham-toggle a:not(:first-child) {
+    background-color: var(--dark-grey) !important;
+    color: var(--white) !important;
+}
+
 .dark-mode-filter {
     filter: brightness(1) invert(1);
 }
@@ -1018,7 +1023,7 @@ hr:last-child {
         height: 18px; 
         margin-left: auto;
         padding-right: 15px;
-        align-self: flex-start !important;
+        align-self: flex-start;
         cursor:pointer;
     }
 
@@ -1129,10 +1134,6 @@ hr:last-child {
 /*Responsive Mobile */
 @media (max-width: 420px) {
 
-    /* .dark-mode-mobile-toggle {
-        filter: brightness(100);
-    } */
-
     body {
         overflow-x: hidden;
     }
@@ -1239,7 +1240,11 @@ hr:last-child {
         width: 85%;
     }
     
-    article, .game-ph img {
+    article {
+        width: 94%;
+    }
+
+    .game-ph img {
         width: 100%;
     }
 

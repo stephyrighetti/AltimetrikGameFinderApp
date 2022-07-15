@@ -60,7 +60,7 @@ function inputBarHandler(event) {
     list.style.display = "none"
     clearCards()
     if (store.length === 0) {
-        container.innerHTML += `<p class="searches-not-found">No matches found for your search</p>`
+        container.innerHTML += `<span class="searches-not-found">No matches found for your search</span>`
     } else {
         recordSearch(store[0])
         recordSearch(store[1])
@@ -78,7 +78,9 @@ function inputBarKeyHandler(event) {
         
         pageNumber = 1
 
-        fetchGames(currentWord, pageNumber)
+        const [ text, parentPlatform ] = parseSearchQuery(currentWord)
+
+        fetchGames(text, pageNumber, parentPlatform)
             .then(games => {
                 store = games
                 currentSearch = currentWord
@@ -86,7 +88,7 @@ function inputBarKeyHandler(event) {
                     renderList(store)
                 } else {
                     olList.innerHTML = ""
-                   olList.innerHTML += `<p>No matches found for your search</p>`
+                   olList.innerHTML += `<span>No matches found for your search</span>`
                 }
             })
             .catch(() => {
@@ -256,6 +258,7 @@ function closeModal() {
     footer.style.display = 'block'
 }
 
+
 //Get cards handler
 let skeleton = document.querySelector('.skeleton')
 
@@ -272,7 +275,7 @@ function getCards() {
 }
 
 //Window on load display
-window.onload = () =>{
+window.onload = () => {
 
     const userId = JSON.parse(window.localStorage.getItem('id'))
     fetchUser(userId).then(user => {
@@ -356,14 +359,14 @@ function renderError() {
 
 
 //Tablet hamburger
-let hamburger = document.querySelector('.h')
-let containerHam = document.querySelector('.container-hamburger')
-let menuHam = document.querySelector('.menu-hamburger')
-let crossHam = document.querySelector('.cross-hamburger')
-let home = document.querySelector('.navigation-home')
-let logoutHam = document.querySelector('.log-out-ham')
-let footer = document.querySelector('footer')
-let body = document.querySelector('body')
+const hamburger = document.querySelector('.h')
+const containerHam = document.querySelector('.container-hamburger')
+const menuHam = document.querySelector('.menu-hamburger')
+const crossHam = document.querySelector('.cross-hamburger')
+const home = document.querySelector('.navigation-home')
+const logoutHam = document.querySelector('.log-out-ham')
+const footer = document.querySelector('footer')
+const body = document.querySelector('body')
 
 
 hamburger.addEventListener('click', function(event) {
@@ -392,8 +395,7 @@ logoutHam.addEventListener('click', logOut)
 //Mobile search 
 let smallSearch = document.querySelector('.search-mobile')
 
-smallSearch.addEventListener('click', function() {
-    
+smallSearch.addEventListener('click', function() {    
     inputSearchBar.style.display="block"
 })
 
@@ -409,13 +411,17 @@ function changeColor(console) {
     device.forEach(element => element.classList.toggle('dark-mode-white'))
 }
 
-darkOffMobile.addEventListener('click', function () {
-    body.classList.toggle('dark-mode-change')
-    darkOffMobile.src = "assets/icons-mode/Dark-mode-on.svg"
-    // menuHam.classList.toggle('dark-mode-mobile-toggle')
-})
-
-darkOff.addEventListener('click', function(){
+function swapMode() {
+    
+    const mode = getCurrentMode()
+    
+    if (mode == 'light') {
+        darkOff.src = "assets/icons-mode/Dark-mode-on.svg"
+        darkOffMobile.src = "assets/icons-mode/Dark-mode-on.svg"
+    } else {
+        darkOff.src = "assets/icons-mode/Dark-mode-off.svg"
+        darkOffMobile.src = "assets/icons-mode/Dark-mode-off.svg"
+    }
 
     changeColor("xbox");
     changeColor("playstation")
@@ -430,8 +436,29 @@ darkOff.addEventListener('click', function(){
     singleCard.classList.toggle('dark-mode-filter')
     multipleCards.classList.toggle('dark-mode-filter')
     
-    menuHam.classList.toggle('dark-mode-mobile-toggle')
-    darkOff.src = "assets/icons-mode/Dark-mode-on.svg"
+    menuHam.classList.toggle('dark-mode-ham-toggle')
     body.classList.toggle('dark-mode-change')
+    crossHam.classList.toggle('dark-mode-white')
     
-})
+}
+
+function getCurrentMode() {
+    return darkOff.src.match("assets/icons-mode/Dark-mode-off.svg") ? 'light' : 'dark'
+}
+
+darkOff.addEventListener('click', swapMode)
+darkOffMobile.addEventListener('click', swapMode)
+
+
+//Handle search query for console 
+const platforms = {xbox: 3, nintendo: 7, playstation: 2, pc: 1 }
+const keyPlatforms = Object.keys(platforms)
+
+function parseSearchQuery(currentWord) {
+
+    let text = currentWord
+    let parentPlatform = '' 
+
+
+    return [ text, parentPlatform ]
+}

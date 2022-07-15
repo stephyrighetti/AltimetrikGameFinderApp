@@ -138,13 +138,15 @@ function renderSingleCard(list) {
     })
 }
 
-const lightMode = "background-image:  linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #F0F0F0 63.23%, #F0F0F0 75.85%)"
+const lightGradient = "background-image:  linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #F0F0F0 63.23%, #F0F0F0 75.85%)"
 const darkModeGradient = "background-image: linear-gradient(180deg, rgba(48, 48, 48, 0.0001) 0%, #303030 84.4%)"
 
 //Render modal
 function renderModal(game) {
 
-    const footer = document.querySelector(".footer")
+    const mode = getCurrentMode()
+    const gradient = mode == 'light' ? lightGradient : darkModeGradient
+    const footer = document.querySelector("footer")
     const modalContainer = document.querySelector('.container-modal')
 
     fetchTrailer(game.id)  
@@ -167,7 +169,7 @@ function renderModal(game) {
         })
 
     const modal = `
-        <div class="modal" style="${lightMode}, url('${game.background_image}');">
+        <div class="modal" style="${gradient}, url('${game.background_image}');">
             <div class="cross-icon" onclick="closeModal()">
                 <img src="./assets/modal/Cross.svg">
             </div>
@@ -259,9 +261,6 @@ function renderModal(game) {
     inputSearchBar.style= "z-index:1";
     document.querySelector(".modal").addEventListener('click', e => e.stopPropagation())
 
-    darkOff.addEventListener('click', function() {
-      return document.getElementsByClassName('modal').style = `${darkModeGradient}, url('${game.background_image}');`
-    })
 }
 
 //Render list of games - searchbar
