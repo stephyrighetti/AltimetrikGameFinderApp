@@ -308,7 +308,6 @@ img.close-icon {
     display:flex;
     gap:24px;
     padding-top: 28px;
-    justify-content: end;
 }
 
 .dark-mode h3{
@@ -337,7 +336,7 @@ nav {
 }
 .links-navbar {
     font-weight: 700;
-    gap: 10px;
+    gap: 14px;
 }
 
 .links-home {
@@ -840,6 +839,10 @@ padding-bottom: 46px;
 .images-modal-one, .images-modal-two {
     display:flex;
     gap:14px
+}
+
+.details-icons-modal {
+    margin-top: auto;
 }
 
 /*-----------Footer------------*/
