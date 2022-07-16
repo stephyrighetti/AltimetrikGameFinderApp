@@ -10,7 +10,6 @@
     --fair-grey2: #939393;
     --dark-grey: #303030;
     --black-gradient: rgba(255,255,255, 0);
-    /* --dark-grey: #3D3D3D;  */
     --red: #ff0000; 
     --black: #000000;
     --shadow: #141414;
@@ -103,23 +102,24 @@ html {
     width: 363px;
     height: 314px;
     border-radius: 12px;
-    background: linear-gradient(270deg, #FFFFFF 0%, #E5E5E5 50%);
-    border: 1px solid linear-gradient(270deg, #FFFFFF 0%, #E5E5E5 50%);
+    background: linear-gradient(270deg, var(--white) 0%, var(--whiteboard) 50%);
+    border: 1px solid linear-gradient(270deg, var(--white) 0%, var(--whiteboard) 50%);
     box-shadow: 0px 0px 7px 0px #6A6A6A40;
     animation: loadingAnimation 1.5s infinite;
 }
 
 @keyframes loadingAnimation {
     0% {
-      background: white;
+      background: var(--white);
     }
     50% {
-      background: #E5E5E5;
+      background: var(--whiteboard);
     }
     100% {
-      background: white;
+      background: var(--white);
     }
   }
+
 
 .container-sk {
     display: flex;
@@ -301,6 +301,9 @@ img.close-icon {
 .dark-mode {
     display:flex;
     gap:13px;
+}
+
+.dark-mode img {
     cursor: pointer;
 }
 
@@ -696,16 +699,23 @@ margin-top: 10px;
 margin-bottom: 15px;
 }
 
-.extra-info-modal p:first-of-type{
+/* .extra-info-modal p{
 background-color: var(--green2);
 color: var(--white);
+width: 125px;
+border-radius: 62px;
+} */
+
+.extra-info-modal p:first-of-type {
+    background-color: var(--green2);
+    color: var(--white);
 }
 
-.extra-info-modal p:last-of-type {
-width: 85px;
+.extra-info-modal div:last-of-type {
+    width: 85px;
 }
 
-.extra-info-modal p {
+.extra-info-modal div, .extra-info-modal p {
 background-color: var(--white);
 border-radius: 62px;
 font-size: 16px;
@@ -942,7 +952,17 @@ hr:last-child {
     height: 4em;
 }
 
+.menu-hamburger, .container-hamburger {
+    display:none;
+}
+
 /*-----------Media Queries------------*/
+
+/* @media screen and (max-width: 768px) {
+    .menu-hamburger, .container-hamburger {
+        display:none;
+    }
+} */
 
 
 /*Responsive Tablet*/
@@ -968,6 +988,10 @@ hr:last-child {
 
     .mode {
         padding-right: 25px;
+    }
+
+    .thumbnail {
+        margin-left: 26px;
     }
 
     .hamburger {

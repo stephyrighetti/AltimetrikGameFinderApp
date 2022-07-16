@@ -1,9 +1,11 @@
-
+//Global variables
 let pageNumber = 1
 let currentSearch = ""
 let lastSearches = []
 let searchTimeout
 let store
+let parentPlatformId
+let platforms
 
 //Search bar handlers
 const inputBar = document.querySelector(".search-games")
@@ -29,7 +31,7 @@ if (!tokenSession) {
     location.href = ('/index.html')
 }
 
-
+//Search functionality and handlers
 inputSearchBar.addEventListener("click", function() {
     closeIcon.style.display = "flex"
     gameList.style.display = "flex"
@@ -70,6 +72,24 @@ function inputBarHandler(event) {
   }
 }
 
+
+//Handle search query for console 
+function parseSearchQuery(currentWord) {
+   
+    let text = currentWord
+    let parentPlatform = '' 
+
+    for (let i = 0; i < platforms.length; i++) {
+        if(currentWord.toLowerCase() === platforms[i].name.toLowerCase()) {
+            text = ""
+            parentPlatform = platforms[i].id
+           }
+        
+        }
+    
+    return [ text, parentPlatform ]
+}
+
 function inputBarKeyHandler(event) {
     
     const currentWord = event.target.value
@@ -83,7 +103,8 @@ function inputBarKeyHandler(event) {
         fetchGames(text, pageNumber, parentPlatform)
             .then(games => {
                 store = games
-                currentSearch = currentWord
+                currentSearch = text
+                parentPlatformId = parseSearchQuery(currentWord)[1]
                 if(store.some(game => game.name.toLowerCase().includes(currentSearch))) {
                     renderList(store)
                 } else {
@@ -104,6 +125,24 @@ function inputBarKeyHandler(event) {
 function recordSearch(game) {
     lastSearches.push(game)
     lastSearches = lastSearches.slice(-2)
+}
+
+
+//Handle search query for console 
+function parseSearchQuery(currentWord) {
+   
+    let text = currentWord
+    let parentPlatform = '' 
+
+    for (let i = 0; i < platforms.length; i++) {
+        if(currentWord.toLowerCase() === platforms[i].name.toLowerCase()) {
+            text = ""
+            parentPlatform = platforms[i].id
+           }
+        
+        }
+    
+    return [ text, parentPlatform ]
 }
 
 //Display of cards handlers
@@ -186,7 +225,7 @@ function getIconsPlay(list, folder, className) {
         platforms.includes('PlayStation 4') ||
         platforms.includes("Playstation 5")
     ) {
-        return `<img src="./assets/${folder}/Playstation.svg" class="${className}" alt="">`
+        return `<img src="./assets/${folder}/Playstation.svg" class="${className}" alt="${className}">`
     } 
     
     return ""
@@ -197,7 +236,7 @@ function getIconsXbox(list, folder, className) {
     const platforms = list.map(g=> g.platform.name)
     
     if (platforms.includes('Xbox') || platforms.includes('Xbox 360') || platforms.includes('Xbox One')) {
-        return `<img src="./assets/${folder}/Xbox.svg" class="${className}" alt="">`
+        return `<img src="./assets/${folder}/Xbox.svg" class="${className}" alt="${className}">`
     }
 
     return ""
@@ -208,7 +247,7 @@ function getIconsPc(list, folder, className) {
     const platforms = list.map(g=> g.platform.name)
     
     if (platforms.includes('PC') || platforms.includes('macOS') || platforms.includes('Linux')) {
-        return `<img src="./assets/${folder}/Windows.svg" class="${className}" alt="">`
+        return `<img src="./assets/${folder}/Windows.svg" class="${className}" alt="${className}">`
     }
     
     return ""
@@ -219,7 +258,7 @@ function getIconsSwitch(list, folder, className = '') {
     const platforms = list.map(g=> g.platform.name)
     
     if (platforms.includes('Nintendo Switch') || platforms.includes('Nintendo')) {
-        return `<img src="./assets/${folder}/Switch.svg" class="${className}" alt="">`
+        return `<img src="./assets/${folder}/Switch.svg" class="${className}" alt="${className}">`
     }
    
     return ""
@@ -263,7 +302,7 @@ function closeModal() {
 let skeleton = document.querySelector('.skeleton')
 
 function getCards() {
-    return fetchGames(currentSearch, pageNumber)
+    return fetchGames(currentSearch, pageNumber, parentPlatformId)
         .then(games => {
             renderCards(games)
             renderSingleCard(games)
@@ -277,6 +316,7 @@ function getCards() {
 //Window on load display
 window.onload = () => {
 
+    fetchPlatforms()
     const userId = JSON.parse(window.localStorage.getItem('id'))
     fetchUser(userId).then(user => {
         renderProfile(user.profile)
@@ -358,7 +398,7 @@ function renderError() {
 }
 
 
-//Tablet hamburger
+//Tablet and mobile hamburger handlers
 const hamburger = document.querySelector('.h')
 const containerHam = document.querySelector('.container-hamburger')
 const menuHam = document.querySelector('.menu-hamburger')
@@ -392,7 +432,7 @@ crossHam.addEventListener('click', closeHamburger)
 home.addEventListener('click', closeHamburger)
 logoutHam.addEventListener('click', logOut)
 
-//Mobile search 
+//Mobile search handlers
 let smallSearch = document.querySelector('.search-mobile')
 
 smallSearch.addEventListener('click', function() {    
@@ -450,15 +490,3 @@ darkOff.addEventListener('click', swapMode)
 darkOffMobile.addEventListener('click', swapMode)
 
 
-//Handle search query for console 
-const platforms = {xbox: 3, nintendo: 7, playstation: 2, pc: 1 }
-const keyPlatforms = Object.keys(platforms)
-
-function parseSearchQuery(currentWord) {
-
-    let text = currentWord
-    let parentPlatform = '' 
-
-
-    return [ text, parentPlatform ]
-}

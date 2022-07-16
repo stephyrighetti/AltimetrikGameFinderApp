@@ -184,21 +184,21 @@ function renderModal(game) {
                 </div>
                 <div class="extra-info-modal">
                     <p>${formatDate(game.released)}</p>
-                    <p><span class="first-letter">#${game.rating_top}</span>TOP 2022</p>
-                    <p><span class="first-letter">#9</span> RPG</p>
+                    <div><span class="first-letter">#${game.rating_top}</span>TOP 2022</div>
+                    <div><span class="first-letter">#9</span> RPG</div>
                 </div>
                 <div class="game-info-modal">
                     <p>${game.description}</p>
                 </div>
                 <div class="links-modal">
                     <div class="links-modal-wishlist">
-                        <a href="">Add to wishlist</a>
+                        <a href="#">Add to wishlist</a>
                         <div class="heart-icon-modal">
                             <img src="./assets/modal/Heart.svg">
                         </div>
                     </div>
                     <div class="links-modal-purchase">
-                        <a href="">Purchase</a>
+                        <a href="#">Purchase</a>
                     </div>
                 </div>
                 <div class="details-modal">

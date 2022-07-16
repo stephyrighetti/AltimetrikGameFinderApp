@@ -1,6 +1,6 @@
 
 const BASE_URL = 'https://api.rawg.io/api' 
-const API_KEY = 'cdea242576d44b3d951159e38608605f'
+const API_KEY = '2b2a787b5904427a991cdc2a59670674'
 
 // Fetch of games per search queary and page.
 function fetchGames(search = '', page = 1, parentPlatform) {
@@ -44,6 +44,18 @@ function fetchTrailer(gameId) {
         .then(response => response.json())
         .then(data => {
             return data.results[0]?.data.max
+        })
+}
+
+
+//Fetch the platforms for console searching
+function fetchPlatforms() {
+    let URL = `${BASE_URL}/platforms/lists/parents?key=${API_KEY}`
+
+    fetch(URL)
+        .then (response => response.json())
+        .then(data => {
+            return platforms = data.results
         })
 }
 
