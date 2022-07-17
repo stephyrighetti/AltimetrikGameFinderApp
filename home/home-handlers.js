@@ -72,25 +72,11 @@ function inputBarHandler(event) {
   }
 }
 
-
-//Handle search query for console 
-function parseSearchQuery(currentWord) {
-   
-    let text = currentWord
-    let parentPlatform = '' 
-
-    for (let i = 0; i < platforms.length; i++) {
-        if(currentWord.toLowerCase() === platforms[i].name.toLowerCase()) {
-            text = ""
-            parentPlatform = platforms[i].id
-           }
-        
-        }
-    
-    return [ text, parentPlatform ]
-}
+const dotLoad = document.querySelector('.dot-pulse')
 
 function inputBarKeyHandler(event) {
+
+    dotLoad.style.display = "block";
     
     const currentWord = event.target.value
     
@@ -106,6 +92,7 @@ function inputBarKeyHandler(event) {
                 currentSearch = text
                 parentPlatformId = parseSearchQuery(currentWord)[1]
                 if(store.some(game => game.name.toLowerCase().includes(currentSearch))) {
+                    dotLoad.style.display = "none";
                     renderList(store)
                 } else {
                     olList.innerHTML = ""
@@ -333,9 +320,11 @@ window.onload = () => {
 
 const homeLink = document.querySelector('.links-home') 
 homeLink.addEventListener('click', function() {
-    last.style = "color: var(--grey); font-weight: 400;"
+    last.classList.remove("selected")
+    
     currentSearch = ""
     pageNumber = 1
+    parentPlatformId = ""
     clearCards()
     
     skeleton.style.display = "flex"
@@ -350,7 +339,9 @@ homeLink.addEventListener('click', function() {
 const last = document.querySelector('.last-search')
 
 last.addEventListener('click', function() {
-    last.style = "color: var(--green2); font-weight: 700;"
+
+    last.classList.add("selected")
+
     if (lastSearches.length === 0) {
      return document.querySelector('.container-cards').innerHTML = `<p class="searches-not-found">No last searches were found</p>` 
     }
@@ -411,7 +402,7 @@ const body = document.querySelector('body')
 
 hamburger.addEventListener('click', function(event) {
     event.stopPropagation()
-   inputSearchBar.style.display = "none"
+    inputSearchBar.classList.add('block-search')
     hamburger.style.display = "none"
     containerHam.style.display= "block"
     menuHam.style.display = "flex"
@@ -421,22 +412,28 @@ hamburger.addEventListener('click', function(event) {
 
 
 function closeHamburger() {
-    inputSearchBar.style.display = "block"
-     hamburger.style.display = "block"
-     containerHam.style.display= "none"
-     menuHam.style.display = "none"
+    inputSearchBar.classList.remove('block-search')
+     hamburger.style.display = "block;"
+     containerHam.style.display= "none;"
+     menuHam.style.display = "none;"
      body.style = "overflow-y: visible;"
+     footer.style.display = "block;"
  }
 
-crossHam.addEventListener('click', closeHamburger)
+crossHam.addEventListener('click', function(event) {
+    event.stopPropagation()
+    closeHamburger()
+})
+
 home.addEventListener('click', closeHamburger)
 logoutHam.addEventListener('click', logOut)
 
 //Mobile search handlers
 let smallSearch = document.querySelector('.search-mobile')
 
-smallSearch.addEventListener('click', function() {    
-    inputSearchBar.style.display="block"
+smallSearch.addEventListener('click', function(event) { 
+    event.stopPropagation()   
+    inputSearchBar.classList.toggle('block-search')
 })
 
 
@@ -444,12 +441,6 @@ smallSearch.addEventListener('click', function() {
 const darkOffMobile = document.querySelector('.button-dark-off')
 const containerMain = document.querySelector('.container-main')
 const darkOff = document.querySelector('.dark-off')
-
-
-function changeColor(console) {
-    let device = document.querySelectorAll('.' + console + '-icon')
-    device.forEach(element => element.classList.toggle('dark-mode-white'))
-}
 
 function swapMode() {
     
@@ -463,22 +454,10 @@ function swapMode() {
         darkOffMobile.src = "assets/icons-mode/Dark-mode-off.svg"
     }
 
-    changeColor("xbox");
-    changeColor("playstation")
-    changeColor("switch")
-    changeColor("windows")
-
-    changeColor("xbox-sc");
-    changeColor("playstation-sc")
-    changeColor("switch-sc")
-    changeColor("windows-sc")
-
+    body.classList.toggle('dark-mode-change')
     singleCard.classList.toggle('dark-mode-filter')
     multipleCards.classList.toggle('dark-mode-filter')
-    
-    menuHam.classList.toggle('dark-mode-ham-toggle')
-    body.classList.toggle('dark-mode-change')
-    crossHam.classList.toggle('dark-mode-white')
+
     
 }
 

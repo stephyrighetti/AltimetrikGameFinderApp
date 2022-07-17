@@ -21,7 +21,7 @@ function renderHamburgerInfo(info) {
     const crossHam = document.querySelector('.cross-hamburger')
     crossHam.addEventListener('click', function(event) {
             event.stopPropagation()
-            inputSearchBar.style.display = "block"
+            
              hamburger.style.display = "block"
              containerHam.style.display= "none"
              menuHam.style.display = "none"
