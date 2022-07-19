@@ -187,6 +187,7 @@ function renderModal(game) {
                 ${getIconsPlay(game?.platforms || "", "modal", "playstation-icon-modal")}
                 ${getIconsXbox(game?.platforms || "", "modal", "")}
                 ${getIconsPc(game?.platforms || "","modal", "")}
+                ${getIconsSwitch(game?.platforms || "","modal", "")}
                 </div>
                 <div class="title-modal">
                     <h2>${game.name}</h2>

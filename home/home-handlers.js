@@ -341,6 +341,7 @@ homeLink.addEventListener('click', function() {
 
 })
 
+let maincont = document.querySelector('.container-cards')
 //Last Searches redirection
 const last = document.querySelector('.last-search')
 
@@ -351,7 +352,7 @@ last.addEventListener('click', function() {
     if (lastSearches.length === 0) {
      return document.querySelector('.container-cards').innerHTML = `<p class="searches-not-found">No last searches were found</p>` 
     }
-    
+
     clearCards()
     renderCards(lastSearches)
     renderSingleCard(lastSearches)
