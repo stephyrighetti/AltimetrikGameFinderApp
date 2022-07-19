@@ -100,7 +100,7 @@ function inputBarKeyHandler(event) {
                 }
             })
             .catch(() => {
-                renderError()
+                renderModalGeneric("error")
             })
     }
         
@@ -296,12 +296,13 @@ function getCards() {
             console.log(games);
         }) 
         .catch(() => {
-            renderError()
+            renderModalGeneric("error")
         })
 }
 
 //Window on load display
 window.onload = () => {
+    
 
     fetchPlatforms()
     const userId = JSON.parse(window.localStorage.getItem('id'))
@@ -316,6 +317,11 @@ window.onload = () => {
         skeleton.style.display = "none"
         showContainer()
     })
+
+    document.querySelector('.log-out').addEventListener('click', function() {
+        renderModalGeneric("logout")
+            })
+
 }
 
 const homeLink = document.querySelector('.links-home') 
@@ -358,35 +364,28 @@ function logOut() {
     location.href = '/index.html';
 }
 
-window.addEventListener('load', function () {
-    document.querySelector('.log-out').addEventListener('click', function() {
-        Swal.fire({
-            title: 'Log out',
-            text: 'Are you sure you want to log out?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#36B972',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, log out!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                logOut()
-            }
-        })       
-    })
+
+//Handlers for the modals of error and logout
+const error = document.querySelector('.container-modal-error')
+const logoutModal = document.querySelector('.container-modal-logout')
+
+error.addEventListener('click', function() {
+    error.style.display="none"
+    footer.style.display = "block";
 })
 
-//Render error
-function renderError() {
-    clearCards()
-    Swal.fire({
-        title: 'Error!',
-        text: 'Sorry, something went wrong, try again!',
-        icon: 'error',
-        confirmButtonText: 'Ok',
-        confirmButtonColor: '#36B972'
-    })
-}
+const confirm = document.querySelector('.confirm-logout')
+const cancel = document.querySelector('.cancel-logout')
+
+confirm.addEventListener('click', function(event) {
+    event.stopPropagation()
+    logOut()
+})
+
+cancel.addEventListener('click', function() {
+    logoutModal.style.display = "none"
+    footer.style.display = "block"
+})
 
 
 //Tablet and mobile hamburger handlers
@@ -402,7 +401,7 @@ const body = document.querySelector('body')
 
 hamburger.addEventListener('click', function(event) {
     event.stopPropagation()
-    inputSearchBar.classList.add('block-search')
+    //inputSearchBar.style.display = "none"
     hamburger.style.display = "none"
     containerHam.style.display= "block"
     menuHam.style.display = "flex"
@@ -412,7 +411,7 @@ hamburger.addEventListener('click', function(event) {
 
 
 function closeHamburger() {
-    inputSearchBar.classList.remove('block-search')
+   // inputSearchBar.style.display = "block"
      hamburger.style.display = "block;"
      containerHam.style.display= "none;"
      menuHam.style.display = "none;"
@@ -426,14 +425,16 @@ crossHam.addEventListener('click', function(event) {
 })
 
 home.addEventListener('click', closeHamburger)
-logoutHam.addEventListener('click', logOut)
+logoutHam.addEventListener('click', function() {
+    renderModalGeneric('logout')
+})
 
 //Mobile search handlers
 let smallSearch = document.querySelector('.search-mobile')
 
 smallSearch.addEventListener('click', function(event) { 
     event.stopPropagation()   
-    inputSearchBar.classList.toggle('block-search')
+    inputSearchBar.classList.toggle('block-on')
 })
 
 

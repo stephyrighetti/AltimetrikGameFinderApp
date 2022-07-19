@@ -18,7 +18,7 @@ function fetchGames(search = '', page = 1, parentPlatform) {
             return Promise.all(gamesPromises) // New single promise that resolves to a list of games
         })
         .catch(() => {
-            renderError()
+            renderModalGeneric("error")
         })
 }
 
@@ -31,7 +31,7 @@ function fetchGame(generalGame) {
         .then(response => response.json())
         .then(game => Object.assign(generalGame, game))
         .catch(() => {
-            renderError()
+            renderModalGeneric("error")
         })
 }
 

@@ -5,6 +5,15 @@ function renderProfile(info) {
     profile.innerHTML = `<img src="${info}" alt="Avatar user">`
 }
 
+
+//Render generic modals for errors or logout
+function renderModalGeneric(name) {
+    document.querySelector('.container-modal-' + name).style.display = "flex"
+    inputSearchBar.style = "z-index:1;"
+    footer.style.display = "none";
+}
+
+
 //Render information of user for the hamburger container
 function renderHamburgerInfo(info) {
     const profile = document.querySelector('.container-user')

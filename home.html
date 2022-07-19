@@ -9,8 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Exo" rel="stylesheet">
     <link rel="stylesheet" href="./styles/home.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> -->
     <script src="home/home-fetch.js" defer></script>
     <script src="home/home-handlers.js" defer></script>
     <script src="home/home-render.js" defer></script>
@@ -96,6 +96,23 @@
         </div>
     </div>
     <div class="container-main">
+        <div class="container-modal-error">
+            <div class="modal-error">
+                <span class="warning-error">⚠</span>
+                <span class="title-error">Sorry, something went wrong!</span>
+                <button class="confirm-error">Ok</button>
+            </div>
+        </div>
+        <div class="container-modal-logout">
+            <div class="modal-logout">
+                <span class="warning-logout">?</span>
+                <span class="title-logout">Are you sure you want to log out?</span>
+                <div class="button-logout">
+                    <button class="confirm-logout">Ok</button>
+                    <button class="cancel-logout">Cancel</button>
+                </div>
+            </div>
+        </div>
         <nav>
             <div class="links-navbar">
                 <a class="links-home" href="#">Home</a>

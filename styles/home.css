@@ -13,14 +13,16 @@
     --red: #ff0000; 
     --black: #000000;
     --shadow: #141414;
+    --crimson: #DC143C;
+    --box-shadow: #6A6A6A40;
+    --peach: #f8bb86;
 }
-
 
 
 * {
     box-sizing: border-box;
-    font-family: exo;
-    font-size: 15px;
+    font-family: exo, sans-serif;
+    font-size: 0.938rem;
     margin:0;
 }
 
@@ -186,7 +188,7 @@ html {
     border-radius: 12px;
     background: linear-gradient(270deg, var(--white) 0%, var(--whiteboard) 50%);
     border: 1px solid linear-gradient(270deg, var(--white) 0%, var(--whiteboard) 50%);
-    box-shadow: 0px 0px 7px 0px #6A6A6A40;
+    box-shadow: 0px 0px 7px 0px var(--box-shadow);
     animation: loadingAnimation 1.5s infinite;
 }
 
@@ -258,10 +260,75 @@ html {
     background: linear-gradient(270deg, var(--fair-grey2) 0%, var(--shadow) 50%);
 }
 
+
+/*---------------Modal for errors and logout---------------*/
+.container-modal-error, .container-modal-logout {
+    display:none;
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); 
+    justify-content: center;
+    align-items: center;
+    margin-right:5px;
+}
+
+.modal-error, .modal-logout {
+    padding-right: 32px;
+    padding-left: 32px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    height: 300px;
+    width: 400px;
+    background-color: var(--white);
+    position: relative;
+}
+
+.warning-error, .warning-logout {
+    color: var(--peach);
+    align-self: center;
+    font-size: 5rem;
+}
+
+.title-error, .title-logout {
+    color: var(--grey);
+    font-size: 1.41rem;
+    align-self:center;
+}
+
+.button-logout {
+    display:flex;
+    align-self:center;
+    gap:15px;
+}
+
+.confirm-error, .confirm-logout, .cancel-logout {
+    color: var(--white);
+    background-color: var(--green3);
+    border-style: none;
+    border-radius: 2px;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    align-self: center;
+}
+
+.cancel-logout {
+    background-color: var(--crimson);
+}
+
+
 a {
     text-decoration: none;
 }
-
 
 main {
     height: 100vh;
@@ -315,9 +382,10 @@ header {
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.4); 
   z-index:1;
-  }
+}
 
 .search-bar { 
+    display:block;
     position: relative; 
     align-self: center;
     margin-right: 120px;
@@ -385,14 +453,14 @@ img.close-icon {
 }
 
 .title h1 {
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 800;
     color: var(--grey);
     
 }
 
 .title h2 {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 400;
     color: var(--grey);
 }
@@ -423,7 +491,7 @@ img.close-icon {
 }
 
 .dark-mode h3{
-    font-size: 15px;
+    font-size: 0.938rem;
     color: var(--grey);
 }
 
@@ -454,12 +522,12 @@ nav {
 
 .links-home {
     color: var(--green2) !important;
-    font-size:20px;
+    font-size:1.25rem;
 }
 
 .links-dark {
     color: var(--grey);
-    font-size:20px;
+    font-size:1.25rem;
 }
 
 .links-time {
@@ -472,7 +540,7 @@ nav {
 }
 
 .links-time a {
-    font-size:18px;
+    font-size:1.125rem;
 }
 
 .links-popular2, .links-time2 {
@@ -484,16 +552,15 @@ nav {
     margin-top: 55px;
 }
 
-
 .links-popular h2 {
     margin-bottom: 18px;
     color: var(--grey);
-    font-size: 22px;
+    font-size: 1.375rem;
     font-weight: 700;
 }
 
 .links-popular a {
-    font-size:18px;
+    font-size: 1.125rem;
 }
 
 .links-popular2 {
@@ -523,7 +590,6 @@ nav {
     flex: 1;
 }
 
-
 article {
     position: relative;
     display: flex;
@@ -535,7 +601,6 @@ article {
     width: 363px;
 }
 
-
 .heart-icon {
     position: absolute;
     right: 0;
@@ -546,17 +611,17 @@ article {
     font-weight: 700;
     display:flex;
     justify-content: space-between;
-    font-size: 24px;
+    font-size: 1.5rem;
 }
 
 .game-title h2 {
-    font-size: 24px;
+    font-size: 1.5rem;
     color: var(--grey);
     align-self:center;
 }
 
 .game-title h3 {
-    font-size: 18px;
+    font-size: 1.125rem;
     color: var(--green2);
     align-self:center;
 }
@@ -608,11 +673,11 @@ article {
 
 .single-game-info-title {
     color: var(--fair-grey2);
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
 .single-game-info-plus {
-    font-size: 14px;
+    font-size: 0.875rem;
     color: var(--grey);
     white-space: nowrap;
     overflow: hidden;
@@ -655,17 +720,17 @@ img.heart-icon-sc {
     font-weight: 700;
     display:flex;
     justify-content: space-between;
-    font-size: 32px;
+    font-size: 2rem;
 }
 
 .game-title-sc h2 {
-    font-size: 32px;
+    font-size: 2rem;
     color: var(--grey);
     align-self:center;
 }
 
 .game-title-sc h3 {
-    font-size: 24px;
+    font-size: 1.5rem;
     color: var(--green2);
     align-self:center;
 }
@@ -678,7 +743,6 @@ img.heart-icon-sc {
 .game-devices-icon-sc {
     margin-left: auto;
 }
-
 
 .game-ph-sc img {
     border-radius: 12px 12px 0px 0px;
@@ -706,16 +770,16 @@ img.heart-icon-sc {
 }
 
 .single-game-info-genres-sc {
-  gap: 7px;
+   gap: 7px;
 }
 
 .single-game-info-title-sc {
     color: var(--fair-grey2);
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
 .single-game-info-plus-sc {
-    font-size: 14px;
+    font-size: 0.875rem;
     color: var(--grey);
 }
 
@@ -729,7 +793,7 @@ img.playstation-sc-icon, img.xbox-sc-icon {
 
 .game-description-sc {
     max-height: 133px;
-    font-size: 14px;
+    font-size: 0.875rem;
     padding-bottom: 20px;
     overflow: auto;
 }
@@ -770,45 +834,45 @@ img.playstation-sc-icon, img.xbox-sc-icon {
 }
 
 .cross-icon {
-position:absolute;
-right: 0;
-margin: 34px;
-cursor: pointer;
+    position:absolute;
+    right: 0;
+    margin: 34px;
+    cursor: pointer;
 }
 
 .modal {
-padding-right: 32px;
-padding-left: 32px;
-border-radius: 24px;
-background-repeat: no-repeat;
-background-size: cover;
-display: flex;
-height: 77%;
-width: 75%;
-display:flex;
-position: relative;
-background-color: var(--very-light-grey);
+    padding-right: 32px;
+    padding-left: 32px;
+    border-radius: 24px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    height: 77%;
+    width: 75%;
+    position: relative;
+    background-color: var(--very-light-grey);
+    max-width: 1024px;
+    max-height: 790px;
 }
 
 .modal-text {
-align-self:center;
-margin-right: 24px;
+    align-self:center;
+    margin-right: 24px;
 }
 
 .title-modal h2 {
-font-size: 48px;
-font-weight: 800;
-color: var(--white);
-text-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--white);
+    text-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
 }
 
 .extra-info-modal {
-display:flex;
-gap:8px;
-margin-top: 10px;
-margin-bottom: 15px;
+    display:flex;
+    gap:8px;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
-
 
 .extra-info-modal p:first-of-type {
     background-color: var(--green2);
@@ -820,21 +884,21 @@ margin-bottom: 15px;
 }
 
 .extra-info-modal div, .extra-info-modal p {
-background-color: var(--white);
-border-radius: 62px;
-font-size: 16px;
-font-weight: 500;
-width: 125px;
-height: 28px;
-display: flex;
-justify-content: center;
-align-items: center;
+    background-color: var(--white);
+    border-radius: 62px;
+    font-size: 1rem;
+    font-weight: 500;
+    width: 125px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .first-letter {
-color: var(--green2);
-font-weight: 800;
-margin-right:7px;
+    color: var(--green2);
+    font-weight: 800;
+    margin-right:7px;
 }
 
 .game-info-modal {
@@ -856,37 +920,37 @@ margin-right:7px;
 }
 
 .game-info-modal p {
-font-size: 16px;
-margin-right:5px;
+    font-size: 1rem;
+    margin-right:5px;
 }
 
 .game-info-modal p::selection {
-background-color: var(--green4);
+    background-color: var(--green4);
 }
 
 .links-modal {
-display: flex;
-gap:24px;
-margin-top: 15px;
+    display: flex;
+    gap:24px;
+    margin-top: 15px;
 }
 
 .links-modal a {
-font-size: 18px;
-font-weight: 700;
-text-decoration: none;
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-decoration: none;
 }
 
 .links-modal-wishlist, .links-modal-purchase {
-display:flex;
-justify-content: center;
-width: 228px;
-height: 47px;
-border-radius: 6px;
+    display:flex;
+    justify-content: center;
+    width: 228px;
+    height: 47px;
+    border-radius: 6px;
 }
 
 .links-modal-wishlist {
-background-color: var(--green4);
-gap:8px;
+    background-color: var(--green4);
+    gap:8px;
 }
 
 .playstation-icon-modal {
@@ -899,52 +963,52 @@ gap:8px;
 }
 
 .links-modal-wishlist a {
-color: var(--white);
-align-self:center;
+    color: var(--white);
+    align-self:center;
 }
 
 .links-modal-purchase {
-border: 2px solid var(--green2);
+    border: 2px solid var(--green2);
 }
 
 .links-modal-purchase a {
-color: var(--green2);
-align-self:center;
+    color: var(--green2);
+    align-self:center;
 }
 
 .details-modal {
-display:flex;
-margin-top: 20px;
+    display:flex;
+    margin-top: 20px;
 }
 
 .right-column, .left-column {
-display:flex;
-flex-direction: column;
-gap: 24px;
+    display:flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .platforms-modal, .release-modal, .publisher-modal, .website-modal, .genre-modal, .developer-modal, .age-modal {
-display:flex;
-flex-direction: column;
-gap: 5px;
+    display:flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .platforms-modal-title, .release-modal-title, .publisher-modal-title, .website-modal-title, .genre-modal-title, .developer-modal-title, .age-modal-title {
-color: var(--fair-grey2);
+    color: var(--fair-grey2);
 }
 
 
 .left-column {
-width: 226px;
-margin-right: 45px;
+    width: 226px;
+    margin-right: 45px;
 }
 
 .images-modal {
-display: flex;
-flex-wrap: wrap;
-gap: 16px 14px;
-align-self: flex-end;
-padding-bottom: 46px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 14px;
+    align-self: flex-end;
+    padding-bottom: 46px;
 }
 
 .images-modal-one, .images-modal-two {
@@ -1009,7 +1073,7 @@ hr:last-child {
 .games-list li {
     padding: 10px 0px 10px 0px;
     list-style-type: none;
-    font-size: 15px;
+    font-size: 0.938rem;
     color: var(--dark-grey);
     cursor:pointer;
 }
@@ -1017,6 +1081,10 @@ hr:last-child {
 /*-----------Dark mode------------*/
 
 .dark-mode-change .game-devices-icon{
+    filter: brightness(0) invert(1);
+}
+
+.dark-mode-change .game-devices-icon-sc {
     filter: brightness(0) invert(1);
 }
 
@@ -1154,11 +1222,11 @@ hr:last-child {
 
     .user-name {
         font-weight: 800;
-        font-size:18px;
+        font-size:1.125rem;
     }
 
     .at-user {
-        font-size:14px;
+        font-size:0.875rem;
     }
 
     .dark-mobile-container {
@@ -1169,7 +1237,7 @@ hr:last-child {
         display:flex;
         flex-direction: column;
         font-weight: 700;
-        font-size: 20px;
+        font-size: 1.25rem;
         gap: 32px;
     }
 
@@ -1178,6 +1246,7 @@ hr:last-child {
     }
 
     .search-bar {
+        display:block;
         margin-right: 140px;
         z-index:1;
     }
@@ -1320,6 +1389,7 @@ hr:last-child {
     
     .button-dark-off {
         margin-left: 10px;
+        cursor: pointer;
     }
 
     .dot-pulse {
@@ -1343,7 +1413,11 @@ hr:last-child {
         top:55px;
     }
 
-    .block-search {
+    .block-none {
+        display:none;
+    }
+
+    .block-on {
         display:block;
     }
 
@@ -1417,6 +1491,14 @@ hr:last-child {
 
     .navigation-links {
         gap: 14px;
+    }
+
+    .modal-error, .modal-logout {
+        width: 300px;
+    }
+
+    .title-error, .title-logout {
+        font-size: 1rem;
     }
 
 }

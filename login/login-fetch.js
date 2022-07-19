@@ -21,6 +21,6 @@ function fetchApi(apiUrl, payload) {
             }
         })
         .catch (() => {
-            renderError()
+            renderModalError()
         })
 }

@@ -49,17 +49,18 @@ function showError(error) {
     document.querySelector('#error-container').innerHTML = `<small>${error}</small>`
 }
 
-// Render error
-function renderError() {
-    Swal.fire({
-        title: 'Error!',
-        text: 'Sorry, something went wrong, try again!',
-        icon: 'error',
-        confirmButtonText: 'Ok',
-        confirmButtonColor: '#36B972'
-    })
+
+//Render modal error
+const errorModal = document.querySelector('.container-modal-error')
+const confirmButton = document.querySelector('.confirm-error')
+
+function renderModalError() {
+  errorModal.style.display = "flex"
 }
 
+confirmButton.addEventListener('click', function() {
+    errorModal.style.display = "none"
+})
 
 // Slider logic
 dotColor(1)
