@@ -506,7 +506,7 @@ nav {
 }
 
 .last-search.selected {
-    color: var(--green3);
+    color: var(--green2);
     font-weight: bold;
 }
 
@@ -788,7 +788,7 @@ img.playstation-sc-icon, img.xbox-sc-icon, img.windows-sc-icon, img.icon {
     height: 20px;
 }
 
-img.playstation-sc-icon, img.xbox-sc-icon {
+img.playstation-sc-icon, img.xbox-sc-icon, img.windows-sc-icon {
     margin-right:10px;
 }
 
@@ -843,8 +843,7 @@ img.playstation-sc-icon, img.xbox-sc-icon {
 }
 
 .modal {
-    padding-right: 32px;
-    padding-left: 32px;
+    padding: 0 32px 0 32px;
     border-radius: 24px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -904,7 +903,7 @@ img.playstation-sc-icon, img.xbox-sc-icon {
 }
 
 .game-info-modal {
-    max-height: 122px;
+    height: 122px;
     overflow:auto;
     text-align:justify;
 }
@@ -999,6 +998,11 @@ img.playstation-sc-icon, img.xbox-sc-icon {
     color: var(--fair-grey2);
 }
 
+.platforms-modal-sp {
+    inline-size: 221px;
+    overflow-wrap: break-word;
+}
+
 
 .left-column {
     width: 226px;
@@ -1007,10 +1011,15 @@ img.playstation-sc-icon, img.xbox-sc-icon {
 
 .images-modal {
     display: flex;
-    flex-wrap: wrap;
-    gap: 16px 14px;
+    flex-direction: column;
+    gap: 10px 14px;
     align-self: flex-end;
-    padding-bottom: 46px;
+    padding-bottom: 91px;
+}
+
+.video {
+    width: 384px;
+    height: 217px;
 }
 
 .images-modal-one, .images-modal-two {
@@ -1021,6 +1030,15 @@ img.playstation-sc-icon, img.xbox-sc-icon {
 .details-icons-modal {
     margin-top: auto;
 }
+
+.icon-modal-switch {
+    height: 34px;
+    margin-bottom:7px;
+    margin-left: 8px;
+    filter: brightness(100);
+}
+
+
 
 /*-----------Footer------------*/
 
@@ -1301,16 +1319,40 @@ hr:last-child {
 
     .container-cards {
         justify-content: flex-start;
+        gap: 18px;
     }
 
     .modal {
+        position: relative;
         width: 96%;
         height: 97%;
         max-height: 1024px;
     }
 
+    .platforms-modal-sp {
+        width: 300px;
+    }
+
+    .images-modal {
+        position: absolute;
+        left: 376px;
+        padding-bottom:0;
+        bottom: 160px;
+    }
+
+    .video {
+        width: 318px;
+        height: 180px;
+    }
+
+    .images-modal-one img, .images-modal-two img {
+        width: 152px;
+        height: 86px;
+    }
+
     .details-modal {
-        display: grid;
+        display: flex;
+        flex-direction: column;
     }
 
     .images-modal-one img {
@@ -1330,8 +1372,14 @@ hr:last-child {
         margin-right: 40px;
     }
 
+    .right-column {
+        position:relative;
+    }
+
     .details-icons-modal {
-        margin-top: 0px;
+        position: absolute;
+        left: 345px;
+        bottom: 0;
     }
 
     .left-column {

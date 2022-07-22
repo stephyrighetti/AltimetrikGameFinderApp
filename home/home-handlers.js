@@ -67,6 +67,7 @@ function inputBarHandler(event) {
         recordSearch(store[0])
         recordSearch(store[1])
         renderCards(store)
+        console.log(store);
         renderSingleCard(store)
     }
   }
@@ -341,7 +342,6 @@ homeLink.addEventListener('click', function() {
 
 })
 
-let maincont = document.querySelector('.container-cards')
 //Last Searches redirection
 const last = document.querySelector('.last-search')
 
@@ -350,7 +350,12 @@ last.addEventListener('click', function() {
     last.classList.add("selected")
 
     if (lastSearches.length === 0) {
-     return document.querySelector('.container-cards').innerHTML = `<p class="searches-not-found">No last searches were found</p>` 
+        document.querySelector('.container-single').style = "margin-left:0;"
+
+        let notFoundAll = document.querySelector('.container-cards').innerHTML = `<p class="searches-not-found">No last searches were found</p>` 
+        let notFoundSingle = document.querySelector('.container-single').innerHTML = `<p class="searches-not-found">No last searches were found</p>` 
+        
+        return [notFoundAll, notFoundSingle]
     }
 
     clearCards()

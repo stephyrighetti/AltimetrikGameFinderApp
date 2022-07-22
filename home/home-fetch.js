@@ -2,7 +2,7 @@
 const BASE_URL = 'https://api.rawg.io/api' 
 const API_KEY = '2b2a787b5904427a991cdc2a59670674'
 
-// Fetch of games per search queary and page.
+// Fetch of games per search query and page.
 function fetchGames(search = '', page = 1, parentPlatform) {
     
     let URL = `${BASE_URL}/games?key=${API_KEY}&page=${page}&search=${search}`

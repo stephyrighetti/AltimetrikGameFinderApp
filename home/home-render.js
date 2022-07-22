@@ -162,18 +162,17 @@ function renderModal(game) {
         .then(trailer => {
             const video = document.querySelector('.video-preview')
             const screenshot = getImages(game.short_screenshots)[5]
-            const style = "width: 392px; height: 217px;"
             const loading = document.querySelector('.loading-video')
 
             if (trailer) {
                 loading.style.display = "none"
                 video.innerHTML = `
-                <video style="${style}" poster="${screenshot}" controls="">
+                <video poster="${screenshot}" controls="" class="video">
                     <source src="${trailer}" type="video/mp4">
                 </video>`
             } else {
                 loading.style.display = "none"
-                video.innerHTML = `<img src="${screenshot}" style="${style}" />`
+                video.innerHTML = `<img src="${screenshot}" class="video"/>`
             }
         })
 
@@ -187,7 +186,7 @@ function renderModal(game) {
                 ${getIconsPlay(game?.platforms || "", "modal", "playstation-icon-modal")}
                 ${getIconsXbox(game?.platforms || "", "modal", "")}
                 ${getIconsPc(game?.platforms || "","modal", "")}
-                ${getIconsSwitch(game?.platforms || "","modal", "")}
+                ${getIconsSwitch(game?.platforms || "","icons-cards", "icon-modal-switch")}
                 </div>
                 <div class="title-modal">
                     <h2>${game.name}</h2>
@@ -215,7 +214,7 @@ function renderModal(game) {
                     <div class="left-column">
                         <div class="platforms-modal">
                             <span class="platforms-modal-title">Platforms</span>
-                            <p class="platforms-modal-sp line">${getPlatforms(game.platforms)}</p>
+                            <p class="platforms-modal-sp line">${getPlatforms(game.parent_platforms)}</p>
                         </div>
                         <div class="release-modal">
                             <span class="platforms-modal-title">Release date</span>
@@ -223,7 +222,7 @@ function renderModal(game) {
                         </div>
                         <div class="publisher-modal">
                             <span class="platforms-modal-title">Publisher</span>
-                            <p class="platforms-modal-sp line">${getName(game.publishers)}</p>
+                            <p class="platforms-modal-sp line">${getName(game?.publishers.slice(0,4) || "Not defined")}</p>
                         </div>
                         <div class="website-modal">
                             <span class="platforms-modal-title">Website</span>
@@ -233,7 +232,7 @@ function renderModal(game) {
                     <div class="right-column">
                         <div class="genre-modal">
                             <span class="platforms-modal-title">Genre</span>
-                            <p class="platforms-modal-sp line">${getGenre(game.genres)}</p>
+                            <p class="platforms-modal-sp line">${getGenre(game?.genres || "Not defined")}</p>
                         </div>
                         <div class="developer-modal">
                             <span class="platforms-modal-title">Developer</span>
