@@ -17,7 +17,7 @@ function renderModalGeneric(name) {
 //Render information of user for the hamburger container
 function renderHamburgerInfo(info) {
     const profile = document.querySelector('.container-user')
-    profile.innerHTML = 
+    profile.innerHTML =
     `<span class="avatar">
         <img src="${info.profile}" alt="Avatar user">
     </span>
@@ -27,17 +27,7 @@ function renderHamburgerInfo(info) {
     </div>
     <div class="cross-hamburger"><img src= "assets/cross.svg"></div>
     `
-    const crossHam = document.querySelector('.cross-hamburger')
-    crossHam.addEventListener('click', function(event) {
-            event.stopPropagation()
-            
-             hamburger.style.display = "block"
-             containerHam.style.display= "none"
-             menuHam.style.display = "none"
-             body.style = "overflow-y: visible;"
-         
-    })
-
+    document.querySelector('.cross-hamburger').addEventListener('click', closeHamburger)
 }
 
 //Render three column cards
@@ -94,12 +84,12 @@ function renderCards(list) {
 
 //Render one column cards
 function renderSingleCard(list) {
-    
+
     const container = document.querySelector('.container-single')
 
     list.forEach((card, i) => {
-        
-        const article = `<article class="single-card" key="${card.id}">           
+
+        const article = `<article class="single-card" key="${card.id}">
             <div class="heart-icon-sc">
                 <img src="./assets/icons-cards/Heart.svg" alt="Heart icon">
             </div>
@@ -140,25 +130,30 @@ function renderSingleCard(list) {
 
     list.forEach(card => {
         const key = document.querySelector(`.container-single article[key="${card.id}"]`)
-        key.addEventListener ('click', function (event) {
+        key.addEventListener('click', function (event) {
             event.stopPropagation()
             renderModal(card)
         })
     })
 }
 
-const lightGradient = "background-image:  linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #F0F0F0 63.23%, #F0F0F0 75.85%)"
-const darkModeGradient = "background-image: linear-gradient(180deg, rgba(48, 48, 48, 0.0001) 0%, #303030 84.4%)"
 
 //Render modal
 function renderModal(game) {
 
-    const mode = getCurrentMode()
-    const gradient = mode == 'light' ? lightGradient : darkModeGradient
     const footer = document.querySelector("footer")
     const modalContainer = document.querySelector('.container-modal')
 
-    fetchTrailer(game.id)  
+    // Gradient
+    const mode = getCurrentMode()
+    const lightGradient = "background-image:  linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #F0F0F0 63.23%, #F0F0F0 75.85%)"
+    const darkModeGradient = "background-image: linear-gradient(180deg, rgba(48, 48, 48, 0.0001) 0%, #303030 84.4%)"
+    const gradient = mode == 'light' ? lightGradient : darkModeGradient
+
+    // Change icon on mobile
+    hamburger.classList.add('modal-open')
+
+    fetchTrailer(game.id)
         .then(trailer => {
             const video = document.querySelector('.video-preview')
             const screenshot = getImages(game.short_screenshots)[5]

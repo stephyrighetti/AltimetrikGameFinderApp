@@ -10,7 +10,7 @@
     --fair-grey2: #939393;
     --dark-grey: #303030;
     --black-gradient: rgba(255,255,255, 0);
-    --red: #ff0000; 
+    --red: #ff0000;
     --black: #000000;
     --shadow: #141414;
     --crimson: #DC143C;
@@ -29,7 +29,7 @@
 body {
     width: 100vw;
     height: 100vh;
-    background-color: var(--whiteboard); 
+    background-color: var(--whiteboard);
     color: var(--grey);
     overflow-y: visible;
     overflow-x: hidden;
@@ -88,7 +88,7 @@ html {
 }
 
 /*---------------Dot pulse---------------*/
- 
+
 .dot-pulse {
     display: none;
     position: absolute;
@@ -104,7 +104,7 @@ html {
     animation: dotPulse 1.5s infinite linear;
     animation-delay: .25s;
   }
-  
+
   .dot-pulse::before, .dot-pulse::after {
     content: '';
     display: inline-block;
@@ -116,19 +116,19 @@ html {
     background-color: var(--green2);
     color: var(--green2);
   }
-  
+
   .dot-pulse::before {
     box-shadow: 9984px 0 0 -5px var(--green2);
     animation: dotPulseBefore 1.5s infinite linear;
     animation-delay: 0s;
   }
-  
+
   .dot-pulse::after {
     box-shadow: 10014px 0 0 -5px var(--green2);
     animation: dotPulseAfter 1.5s infinite linear;
     animation-delay: .5s;
   }
-  
+
   @keyframes dotPulseBefore {
     0% {
       box-shadow: 9984px 0 0 -5px var(--green2);
@@ -141,7 +141,7 @@ html {
       box-shadow: 9984px 0 0 -5px var(--green2);
     }
   }
-  
+
   @keyframes dotPulse {
     0% {
       box-shadow: 9999px 0 0 -5px var(--green2);
@@ -154,7 +154,7 @@ html {
       box-shadow: 9999px 0 0 -5px var(--green2);
     }
   }
-  
+
   @keyframes dotPulseAfter {
     0% {
       box-shadow: 10014px 0 0 -5px var(--green2);
@@ -264,14 +264,14 @@ html {
 .container-modal-error, .container-modal-logout {
     display:none;
     position: fixed;
-    z-index: 1; 
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
+    width: 100%;
+    height: 100%;
+    overflow: auto;
     background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4); 
+    background-color: rgba(0,0,0,0.4);
     justify-content: center;
     align-items: center;
     margin-right:5px;
@@ -379,17 +379,17 @@ header {
   width: 100vw;
   height: 100vh;
   background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4); 
+  background-color: rgba(0,0,0,0.4);
   z-index:1;
 }
 
-.search-bar { 
-    display:block;
-    position: relative; 
+.search-bar {
+    display: block;
+    position: relative;
     align-self: center;
     margin-right: 120px;
     z-index:2;
-}    
+}
 
 .search-bar img {
     position:absolute;
@@ -397,6 +397,14 @@ header {
     height: 18px;
     top:15px;
     margin-left: 11px;
+}
+
+.search-bar.show-search {
+  display: block;
+}
+
+.search-bar.hide-search {
+  display: none;
 }
 
 img.close-icon {
@@ -455,7 +463,6 @@ img.close-icon {
     font-size: 3rem;
     font-weight: 800;
     color: var(--grey);
-    
 }
 
 .title h2 {
@@ -463,7 +470,6 @@ img.close-icon {
     font-weight: 400;
     color: var(--grey);
 }
-
 
 .container-title-mode {
     display:flex;
@@ -628,7 +634,7 @@ article {
 
 .game-information {
     padding: 16px 16px 10px 16px;
-    
+
 }
 
 .game-devices-icon {
@@ -738,7 +744,7 @@ img.heart-icon-sc {
 
 .game-information-sc {
     padding: 16px 16px 10px 16px;
-    
+
 }
 
 .game-devices-icon-sc {
@@ -819,16 +825,16 @@ img.playstation-sc-icon, img.xbox-sc-icon, img.windows-sc-icon {
 
 /*-----------Modal card-------------*/
 .container-modal {
-    display: none; 
+    display: none;
     position: fixed;
-    z-index: 1; 
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
+    width: 100%;
+    height: 100%;
+    overflow: auto;
     background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4); 
+    background-color: rgba(0,0,0,0.4);
     justify-content: center;
     align-items: center;
     margin-right:5px;
@@ -1075,7 +1081,7 @@ img.playstation-sc-icon, img.xbox-sc-icon, img.windows-sc-icon {
 .games-list ol {
     background-color: var(--white);
     box-shadow: 0px 0px 4px rgba(140, 140, 140, 0.25);
-    border-radius: 4px; 
+    border-radius: 4px;
     padding: 10px 8px 10px 14px;
     max-height: 180px;
     overflow: auto;
@@ -1163,7 +1169,7 @@ hr:last-child {
     .logo img {
         display: none;
     }
-    
+
     .side {
         display:none;
     }
@@ -1184,16 +1190,24 @@ hr:last-child {
         cursor: pointer;
     }
 
+    .hamburger img {
+      content: url(../assets/icons-home/hamburguer.svg);
+    }
+
     .container-hamburger {
         background-color: var(--white);
         width: 100%;
+    }
+
+    .container-hamburger.show-container {
+      display: block;
     }
 
     @keyframes Anim-menu {
         0% {
             transform: translateX(250px);
         }
-    
+
         100% {
             transform: translateX(0);
         }
@@ -1231,9 +1245,9 @@ hr:last-child {
         display:flex;
         flex-direction: column;
     }
-    
+
     .cross-hamburger {
-        height: 18px; 
+        height: 18px;
         margin-left: auto;
         padding-right: 15px;
         align-self: flex-start;
@@ -1266,13 +1280,8 @@ hr:last-child {
     }
 
     .search-bar {
-        display:block;
         margin-right: 140px;
         z-index:1;
-    }
-
-    .block-search {
-        display:none;
     }
 
     .navigation-links a {
@@ -1300,7 +1309,7 @@ hr:last-child {
     .navigation-links a:first-child {
         color: var(--green2);
     }
-    
+
     .skeleton {
         justify-content: center;
     }
@@ -1420,6 +1429,10 @@ hr:last-child {
       margin-left: 0;
     }
 
+    .hamburger img.modal-open {
+      content: url(../assets/modal/GoBack.svg);
+    }
+
     .h img {
         height: 14px;
     }
@@ -1440,7 +1453,7 @@ hr:last-child {
         display:flex;
         margin-top: 10px;
     }
-    
+
     .button-dark-off {
         margin-left: 10px;
         cursor: pointer;
@@ -1453,7 +1466,7 @@ hr:last-child {
     .title h1 {
         font-size: 1.75rem;
     }
-    
+
     .title h2 {
         font-size: 0.875rem;
     }
@@ -1465,14 +1478,6 @@ hr:last-child {
         display:none;
         right:318px;
         top:55px;
-    }
-
-    .block-none {
-        display:none;
-    }
-
-    .block-on {
-        display:block;
     }
 
     .search-games {
@@ -1517,7 +1522,7 @@ hr:last-child {
     .title-skeleton {
         width: 85%;
     }
-    
+
     article {
         width: 94%;
     }
@@ -1534,7 +1539,7 @@ hr:last-child {
         justify-content: flex-start;
         margin-top:16px;
     }
-    
+
     .single-game-info-plus {
         white-space: normal;
     }

@@ -21,9 +21,7 @@ const completeList = document.querySelector('.list')
 const containerModal = document.querySelector('.container-modal')
 const main = document.querySelector('main')
 
-containerModal.addEventListener('click', function () {
-    containerModal.style.display = "none"
-})
+containerModal.addEventListener('click', closeModal)
 
 //Redirect user to login if there's not a jwt
 const tokenSession = localStorage.getItem('jwt')
@@ -78,11 +76,11 @@ const dotLoad = document.querySelector('.dot-pulse')
 function inputBarKeyHandler(event) {
 
     dotLoad.style.display = "block";
-    
+
     const currentWord = event.target.value
-    
+
     function handlerSearch() {
-        
+
         pageNumber = 1
 
         const [ text, parentPlatform ] = parseSearchQuery(currentWord)
@@ -104,7 +102,7 @@ function inputBarKeyHandler(event) {
                 renderModalGeneric("error")
             })
     }
-        
+
     clearTimeout(searchTimeout)
     searchTimeout = setTimeout(handlerSearch, 500)
 }
@@ -116,20 +114,20 @@ function recordSearch(game) {
 }
 
 
-//Handle search query for console 
+//Handle search query for console
 function parseSearchQuery(currentWord) {
-   
+
     let text = currentWord
-    let parentPlatform = '' 
+    let parentPlatform = ''
 
     for (let i = 0; i < platforms.length; i++) {
         if(currentWord.toLowerCase() === platforms[i].name.toLowerCase()) {
             text = ""
             parentPlatform = platforms[i].id
            }
-        
+
         }
-    
+
     return [ text, parentPlatform ]
 }
 
@@ -142,7 +140,7 @@ const oneCard = document.querySelector(".container-single")
 
 function clearContainer () {
     container.style.display = "none"
-    oneCard.style.display = "flex"   
+    oneCard.style.display = "flex"
 }
 
 function showContainer() {
@@ -152,26 +150,26 @@ function showContainer() {
 
 
 singleCard.addEventListener("click", function () {
-    
+
     if (singleCard.src.match("assets/icons-mode/Single-Active.svg")) {
         return
     }
-    
+
     clearContainer()
-    
+
     singleCard.src = "assets/icons-mode/Single-Active.svg"
     multipleCards.src = "assets/icons-mode/Multiple-Inactive.svg"
 })
 
 
 multipleCards.addEventListener ("click", function () {
-    
+
     if (multipleCards.src.match("assets/icons-mode/Multiple-Active.svg")) {
         return
     }
-    
+
     showContainer()
-    
+
     multipleCards.src = "assets/icons-mode/Multiple-Active.svg"
     singleCard.src = "assets/icons-mode/Single-Inactive.svg"
 })
@@ -203,9 +201,9 @@ function getImages(list) {
 }
 
 function getIconsPlay(list, folder, className) {
-    
+
     const platforms =  list.map(g=> g.platform.name)
-    
+
     if (
         platforms.includes('PlayStation') ||
         platforms.includes('PlayStation 2') ||
@@ -214,15 +212,15 @@ function getIconsPlay(list, folder, className) {
         platforms.includes("Playstation 5")
     ) {
         return `<img src="./assets/${folder}/Playstation.svg" class="${className}" alt="${className}">`
-    } 
-    
+    }
+
     return ""
 }
 
 function getIconsXbox(list, folder, className) {
-    
+
     const platforms = list.map(g=> g.platform.name)
-    
+
     if (platforms.includes('Xbox') || platforms.includes('Xbox 360') || platforms.includes('Xbox One')) {
         return `<img src="./assets/${folder}/Xbox.svg" class="${className}" alt="${className}">`
     }
@@ -231,24 +229,24 @@ function getIconsXbox(list, folder, className) {
 }
 
 function getIconsPc(list, folder, className) {
-    
+
     const platforms = list.map(g=> g.platform.name)
-    
+
     if (platforms.includes('PC') || platforms.includes('macOS') || platforms.includes('Linux')) {
         return `<img src="./assets/${folder}/Windows.svg" class="${className}" alt="${className}">`
     }
-    
+
     return ""
 }
 
 function getIconsSwitch(list, folder, className = '') {
-    
+
     const platforms = list.map(g=> g.platform.name)
-    
+
     if (platforms.includes('Nintendo Switch') || platforms.includes('Nintendo')) {
         return `<img src="./assets/${folder}/Switch.svg" class="${className}" alt="${className}">`
     }
-   
+
     return ""
 }
 
@@ -264,7 +262,7 @@ let isScrolled=false
 function infiniteScroll() {
     if (window.scrollY > (document.body.offsetHeight - 100) && !isScrolled) {
         isScrolled = true
-        pageNumber++ 
+        pageNumber++
         getCards().then(() => {
             isScrolled = false
         })
@@ -283,6 +281,7 @@ function closeModal() {
     modal.innerHTML = ''
     modal.style.display = 'none'
     footer.style.display = 'block'
+    hamburger.classList.remove('modal-open')
 }
 
 
@@ -295,7 +294,7 @@ function getCards() {
             renderCards(games)
             renderSingleCard(games)
             console.log(games);
-        }) 
+        })
         .catch(() => {
             renderModalGeneric("error")
         })
@@ -303,7 +302,7 @@ function getCards() {
 
 //Window on load display
 window.onload = () => {
-    
+
 
     fetchPlatforms()
     const userId = JSON.parse(window.localStorage.getItem('id'))
@@ -325,15 +324,15 @@ window.onload = () => {
 
 }
 
-const homeLink = document.querySelector('.links-home') 
+const homeLink = document.querySelector('.links-home')
 homeLink.addEventListener('click', function() {
     last.classList.remove("selected")
-    
+
     currentSearch = ""
     pageNumber = 1
     parentPlatformId = ""
     clearCards()
-    
+
     skeleton.style.display = "flex"
     getCards().then(() => {
         skeleton.style.display = "none"
@@ -352,9 +351,9 @@ last.addEventListener('click', function() {
     if (lastSearches.length === 0) {
         document.querySelector('.container-single').style = "margin-left:0;"
 
-        let notFoundAll = document.querySelector('.container-cards').innerHTML = `<p class="searches-not-found">No last searches were found</p>` 
-        let notFoundSingle = document.querySelector('.container-single').innerHTML = `<p class="searches-not-found">No last searches were found</p>` 
-        
+        let notFoundAll = document.querySelector('.container-cards').innerHTML = `<p class="searches-not-found">No last searches were found</p>`
+        let notFoundSingle = document.querySelector('.container-single').innerHTML = `<p class="searches-not-found">No last searches were found</p>`
+
         return [notFoundAll, notFoundSingle]
     }
 
@@ -407,22 +406,23 @@ const body = document.querySelector('body')
 
 hamburger.addEventListener('click', function(event) {
     event.stopPropagation()
-    //inputSearchBar.style.display = "none"
+    inputSearchBar.classList.add('hide-search')
+    containerHam.classList.add('show-container')
     hamburger.style.display = "none"
-    containerHam.style.display= "block"
     menuHam.style.display = "flex"
     footer.style.display = "none"
     body.style = "overflow-y: hidden;"
 })
 
 
-function closeHamburger() {
-   // inputSearchBar.style.display = "block"
-     hamburger.style.display = "block;"
-     containerHam.style.display= "none;"
-     menuHam.style.display = "none;"
-     body.style = "overflow-y: visible;"
-     footer.style.display = "block;"
+function closeHamburger(event) {
+    event.stopPropagation()
+    inputSearchBar.classList.remove('hide-search')
+    containerHam.classList.remove('show-container')
+    hamburger.style.display = "block"
+    menuHam.style.display = "none"
+    body.style = "overflow-y: visible;"
+    footer.style.display = "block"
  }
 
 crossHam.addEventListener('click', function(event) {
@@ -431,6 +431,7 @@ crossHam.addEventListener('click', function(event) {
 })
 
 home.addEventListener('click', closeHamburger)
+
 logoutHam.addEventListener('click', function() {
     renderModalGeneric('logout')
 })
@@ -438,9 +439,9 @@ logoutHam.addEventListener('click', function() {
 //Mobile search handlers
 let smallSearch = document.querySelector('.search-mobile')
 
-smallSearch.addEventListener('click', function(event) { 
-    event.stopPropagation()   
-    inputSearchBar.classList.toggle('block-on')
+smallSearch.addEventListener('click', function(event) {
+    event.stopPropagation()
+    inputSearchBar.classList.toggle('show-search')
 })
 
 
@@ -450,9 +451,9 @@ const containerMain = document.querySelector('.container-main')
 const darkOff = document.querySelector('.dark-off')
 
 function swapMode() {
-    
+
     const mode = getCurrentMode()
-    
+
     if (mode == 'light') {
         darkOff.src = "assets/icons-mode/Dark-mode-on.svg"
         darkOffMobile.src = "assets/icons-mode/Dark-mode-on.svg"
@@ -465,7 +466,7 @@ function swapMode() {
     singleCard.classList.toggle('dark-mode-filter')
     multipleCards.classList.toggle('dark-mode-filter')
 
-    
+
 }
 
 function getCurrentMode() {
@@ -474,5 +475,3 @@ function getCurrentMode() {
 
 darkOff.addEventListener('click', swapMode)
 darkOffMobile.addEventListener('click', swapMode)
-
-
