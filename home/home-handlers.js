@@ -1,4 +1,4 @@
-//Global variables
+//Global state variables
 let pageNumber = 1
 let currentSearch = ""
 let lastSearches = []
@@ -282,6 +282,7 @@ function closeModal() {
     modal.style.display = 'none'
     footer.style.display = 'block'
     hamburger.classList.remove('modal-open')
+    body.style = "overflow-y: visible;"
 }
 
 

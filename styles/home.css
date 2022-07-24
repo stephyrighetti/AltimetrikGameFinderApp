@@ -842,6 +842,7 @@ img.playstation-sc-icon, img.xbox-sc-icon, img.windows-sc-icon {
 
 .cross-icon {
     position:absolute;
+    display:block;
     right: 0;
     margin: 34px;
     cursor: pointer;
@@ -1558,6 +1559,86 @@ hr:last-child {
 
     .title-error, .title-logout {
         font-size: 1rem;
+    }
+
+    .modal {
+        padding: 0 5px 0 5px;
+        margin-top: 574px;
+        border-radius: 0;
+        width: 100%;
+        background: center;
+        height: 1577px;
+    }
+
+    .container-modal {
+        background-color: transparent;
+    }
+
+    .cross-icon {
+        display: none;
+    }
+
+    .title-modal h2 {
+        font-size: 1.75rem;
+        inline-size: 270px;
+        overflow-wrap: break-word;
+    }
+
+     .icons-modal img  {
+        height: 30px;
+     }
+
+    .extra-info-modal p, .extra-info-modal div {
+        width: 95px;
+        height:28px;
+    }
+
+    .first-letter, .extra-info-modal p, .extra-info-modal div  {
+        font-size: 0.875rem;
+    }
+
+    .game-info-modal {
+        height: auto;
+        overflow: auto;
+    }
+
+    .links-modal {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .links-modal-wishlist {
+        gap:0;
+    }
+
+    .links-modal-wishlist a {
+        margin-right: 20px;
+    }
+
+    .links-modal-purchase, .links-modal-wishlist {
+        width: 288px;
+        height: 47px;
+    }
+
+    .details-icons-modal {
+        position: initial;
+    }
+
+    .video {
+        width: 288px;
+    }
+
+    .images-modal-one img, .images-modal-two img {
+        width: 135px;
+    }
+
+    .images-modal {
+        left:0;
+        align-items: center;
+        bottom: -330px;
+        right: 3px;
+        background-color: var(--very-light-grey);
+        padding-bottom: 5px;
     }
 
 }
