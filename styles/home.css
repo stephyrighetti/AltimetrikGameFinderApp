@@ -1477,7 +1477,7 @@ hr:last-child {
 
     .search-bar {
         display:none;
-        right:318px;
+        right:316px;
         top:55px;
     }
 
@@ -1508,7 +1508,7 @@ hr:last-child {
 
     .skeleton {
         display:flex;
-        justify-content: flex-start;
+        justify-content: normal;
     }
 
     .card-skeleton {
@@ -1522,6 +1522,14 @@ hr:last-child {
 
     .title-skeleton {
         width: 85%;
+    }
+
+    .container-title-mode {
+        margin-left: 10px;
+    }
+
+    .container-cards {
+        justify-content: normal;
     }
 
     article {
@@ -1563,15 +1571,20 @@ hr:last-child {
 
     .modal {
         padding: 0 5px 0 5px;
-        margin-top: 574px;
+        margin-top: 556px;
         border-radius: 0;
         width: 100%;
         background: center;
         height: 1577px;
     }
 
+    .modal-text {
+        margin-left: 3px;
+    }
+
     .container-modal {
         background-color: transparent;
+        overflow-x:hidden;
     }
 
     .cross-icon {
@@ -1597,9 +1610,14 @@ hr:last-child {
         font-size: 0.875rem;
     }
 
-    .game-info-modal {
-        height: auto;
-        overflow: auto;
+    .game-info-modal::-webkit-scrollbar {
+       display:none;
+    }
+
+    .game-info-modal p {
+        inline-size: 280px;
+        overflow-wrap: break-word;
+        font-size: 0.875rem;
     }
 
     .links-modal {
@@ -1632,11 +1650,16 @@ hr:last-child {
         width: 135px;
     }
 
+
+    .dark-mode-change .images-modal {
+        background-color: var(--dark-grey);
+    }
+
     .images-modal {
         left:0;
         align-items: center;
         bottom: -330px;
-        right: 3px;
+        right: 1px;
         background-color: var(--very-light-grey);
         padding-bottom: 5px;
     }

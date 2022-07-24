@@ -147,7 +147,7 @@ function renderModal(game) {
     // Gradient
     const mode = getCurrentMode()
     const lightGradient = "background-image:  linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, var(--very-light-grey) 63.23%, var(--very-light-grey) 75.85%)"
-    const darkModeGradient = "background-image: linear-gradient(180deg, rgba(48, 48, 48, 0.0001) 0%, #303030 84.4%)"
+    const darkModeGradient = "background-image: linear-gradient(180deg, rgba(48, 48, 48, 0.0001) 0%, var(--dark-grey) 84.4%)"
     const gradient = mode == 'light' ? lightGradient : darkModeGradient
 
     // Change icon on mobile
@@ -225,7 +225,7 @@ function renderModal(game) {
                         </div>
                         <div class="website-modal">
                             <span class="platforms-modal-title">Website</span>
-                            <a href="${game?.website|| "Not available"}" class="platforms-modal-sp">${game?.website|| "Not available"}</a>
+                            <a href="${game?.website || "#"}" class="platforms-modal-sp">${game?.website || "Not available"}</a>
                         </div>
                     </div>
                     <div class="right-column">
