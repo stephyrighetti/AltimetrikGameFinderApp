@@ -30,12 +30,14 @@ if (!tokenSession) {
 }
 
 //Search functionality and handlers
-inputSearchBar.addEventListener("click", function() {
-    closeIcon.style.display = "flex"
-    gameList.style.display = "flex"
-    completeList.style.display = "block"
-})
+inputSearchBar.addEventListener("click", showOverlayList)
 
+function showOverlayList() {
+  overlay.style.display = "block"
+  closeIcon.style.display = "flex"
+  gameList.style.display = "flex"
+  completeList.style.display = "block"
+}
 
 closeIcon.addEventListener("click", function (e) {
     e.stopPropagation()
@@ -45,7 +47,6 @@ closeIcon.addEventListener("click", function (e) {
     currentSearch = ""
 })
 
-
 inputBar.addEventListener('click', function() {
     overlay.style.display = "block"
 })
@@ -53,29 +54,39 @@ inputBar.addEventListener('click', function() {
 inputBar.addEventListener('keydown', inputBarHandler)
 inputBar.addEventListener('input', inputBarKeyHandler)
 
-function inputBarHandler(event) {
-  if (event.keyCode === 13) {
-    event.preventDefault()
-    overlay.style.display = "none"
-    list.style.display = "none"
-    clearCards()
-    if (store.length === 0) {
-        container.innerHTML += `<span class="searches-not-found">No matches found for your search</span>`
-    } else {
-        recordSearch(store[0])
-        recordSearch(store[1])
-        renderCards(store)
-        console.log(store);
-        renderSingleCard(store)
-    }
-  }
-}
-
 const dotLoad = document.querySelector('.dot-pulse')
+
+function inputBarHandler(event) {
+
+  if (event.keyCode !== 13) {
+    return
+  }
+
+  event.preventDefault()
+
+  if (dotLoad.style.display === 'block') {
+    return
+  }
+
+  overlay.style.display = "none"
+  list.style.display = "none"
+  clearCards()
+
+  if (store.length === 0) {
+      container.innerHTML += `<span class="searches-not-found">No matches found for your search</span>`
+  } else {
+      recordSearch(store[0])
+      recordSearch(store[1])
+      renderCards(store)
+      console.log(store);
+      renderSingleCard(store)
+}
+}
 
 function inputBarKeyHandler(event) {
 
     dotLoad.style.display = "block";
+    showOverlayList()
 
     const currentWord = event.target.value
 
@@ -91,15 +102,17 @@ function inputBarKeyHandler(event) {
                 currentSearch = text
                 parentPlatformId = parseSearchQuery(currentWord)[1]
                 if(store.some(game => game.name.toLowerCase().includes(currentSearch))) {
-                    dotLoad.style.display = "none";
-                    renderList(store)
+                  renderList(store)
                 } else {
-                    olList.innerHTML = ""
-                   olList.innerHTML += `<span>No matches found for your search</span>`
+                  olList.innerHTML = ""
+                  olList.innerHTML += `<span>No matches found for your search</span>`
                 }
             })
             .catch(() => {
                 renderModalGeneric("error")
+            })
+            .finally(() => {
+              dotLoad.style.display = "none";
             })
     }
 
