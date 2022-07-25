@@ -293,7 +293,6 @@ function renderList(list) {
             recordSearch(element)
             renderSingleCard([ element ])
             renderCards([ element ])
-            renderModal([ element ])
         })
     })
 }

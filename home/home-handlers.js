@@ -270,14 +270,14 @@ function formatDate(string) {
 }
 
 //Scroll handler
-let isScrolled=false
-
+let isFetching = false
 function infiniteScroll() {
-    if (window.scrollY > (document.body.offsetHeight - 100) && !isScrolled) {
-        isScrolled = true
+    const shouldFetch = window.scrollY + document.body.offsetHeight > document.body.scrollHeight - 700
+    if (shouldFetch && !isFetching) {
+        isFetching = true
         pageNumber++
         getCards().then(() => {
-            isScrolled = false
+            isFetching = false
         })
     }
 }
