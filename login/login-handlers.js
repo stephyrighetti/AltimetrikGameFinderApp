@@ -2,6 +2,14 @@
 const API_URL = 'http://localhost:3000'
 let currentSlide = 1
 
+
+const token = localStorage.getItem("jwt");
+(function () {
+    if (token) {
+        location.href = ('/home.html')
+    }
+})();
+
 window.addEventListener('load', function(){
     const form = this.document.forms[0]
     form.addEventListener('submit', submitForm)
@@ -36,10 +44,10 @@ togglePassword.addEventListener("click", function () {
     
     password.setAttribute("type", type)
 
-    if (togglePassword.src.match("assets/icons-login/Eye-off.svg")) {
-        togglePassword.src = "assets/icons-login/Eye.svg"
+    if (togglePassword.src.match("assets/icons-login/eye-off.svg")) {
+        togglePassword.src = "assets/icons-login/eye.svg"
     } else {
-        togglePassword.src = "assets/icons-login/Eye-off.svg"
+        togglePassword.src = "assets/icons-login/eye-off.svg"
     }
 })
 
@@ -67,7 +75,7 @@ dotColor(1)
 const buttonSlideRight = document.querySelector('.slide2')
 buttonSlideRight.addEventListener('click', function() {
  currentSlide++
- if (currentSlide == 7) currentSlide = 1 
+ if (currentSlide === 7) currentSlide = 1 
     slide(currentSlide)
     dotColor(currentSlide)
 })    
@@ -75,7 +83,7 @@ buttonSlideRight.addEventListener('click', function() {
 const buttonSlideLeft = document.querySelector('.slide1')
 buttonSlideLeft.addEventListener('click', function() {
     currentSlide--
-    if (currentSlide == 0) currentSlide = 6
+    if (currentSlide === 0) currentSlide = 6
     slide(currentSlide)
     dotColor(currentSlide)
 })    
@@ -98,7 +106,7 @@ clickSlide(6)
 
 // Function for changing the background image
 function slide(num) {
-    document.querySelector('body').style = `background-image: url(../assets/background-${num}.jpg)`
+    document.querySelector('body').style = `background-image: url(../assets/background-images/background-${num}.jpg)`
 }
 
 // Function for changing the opacity of the dot

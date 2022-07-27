@@ -2,7 +2,7 @@
 //Render profile picture of user
 function renderProfile(info) {
     const profile = document.querySelector('.avatar-user')
-    profile.innerHTML = `<img src="${info}" alt="Avatar user">`
+    profile.innerHTML = `<img src="${info}" alt="User avatar">`
 }
 
 
@@ -19,13 +19,13 @@ function renderHamburgerInfo(info) {
     const profile = document.querySelector('.container-user')
     profile.innerHTML =
     `<span class="avatar">
-        <img src="${info.profile}" alt="Avatar user">
+        <img src="${info.profile}" alt="User avatar">
     </span>
     <div class="user-info">
         <p class="user-name">${info.name}</p>
         <p class="at-user">${info.username}</p>
     </div>
-    <div class="cross-hamburger"><img src= "assets/cross.svg"></div>
+    <div class="cross-hamburger"><img src="assets/cross.svg" alt="Close icon"></div>
     `
     document.querySelector('.cross-hamburger').addEventListener('click', closeHamburger)
 }
@@ -39,10 +39,10 @@ function renderCards(list) {
 
         const article = `<article key="${card.id}" class="cards-t">
             <div class="heart-icon">
-                <img src="./assets/icons-cards/Heart.svg" alt="Heart icon">
+                <img src="./assets/icons-cards/heart.svg" alt="Heart icon">
             </div>
             <div class="game-ph">
-                <img src="${card.background_image}" alt="Game image">
+                <img src="${card.background_image}" alt="${card.name} image">
             </div>
             <div class="game-information">
                 <div class="game-title">
@@ -91,10 +91,10 @@ function renderSingleCard(list) {
 
         const article = `<article class="single-card" key="${card.id}">
             <div class="heart-icon-sc">
-                <img src="./assets/icons-cards/Heart.svg" alt="Heart icon">
+                <img src="./assets/icons-cards/heart.svg" alt="Heart icon">
             </div>
             <div class="game-ph-sc">
-                <img src="${card.background_image}" alt="Game image">
+                <img src="${card.background_image}" alt="${card.name} image">
             </div>
             <div class="game-information-sc">
                 <div class="game-title-sc">
@@ -141,21 +141,17 @@ function renderSingleCard(list) {
 //Render modal
 function renderModal(game) {
 
-    const footer = document.querySelector("footer")
     const modalContainer = document.querySelector('.container-modal')
 
     // Gradient
     const mode = getCurrentMode()
     const lightGradient = "background-image:  linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, var(--very-light-grey) 63.23%, var(--very-light-grey) 75.85%)"
     const darkModeGradient = "background-image: linear-gradient(180deg, rgba(48, 48, 48, 0.0001) 0%, var(--dark-grey) 84.4%)"
-    const gradient = mode == 'light' ? lightGradient : darkModeGradient
+    const gradient = mode === 'light' ? lightGradient : darkModeGradient
 
     // Change icon on mobile
     hamburger.classList.add('modal-open')
     body.style = "overflow-y:hidden;"
-
-
-
 
     fetchTrailer(game.id)
         .then(trailer => {
@@ -171,14 +167,14 @@ function renderModal(game) {
                 </video>`
             } else {
                 loading.style.display = "none"
-                video.innerHTML = `<img src="${screenshot}" class="video"/>`
+                video.innerHTML = `<img src="${screenshot}" alt="Screenshot of game" class="video"/>`
             }
         })
 
     const modal = `
         <div class="modal" style="${gradient}, url('${game.background_image}');">
             <div class="cross-icon" onclick="closeModal()">
-                <img src="./assets/modal/Cross.svg">
+                <img src="./assets/modal/cross.svg" alt= "Cross icon">
             </div>
             <div class="modal-text">
                 <div class="icons-modal">
@@ -202,7 +198,7 @@ function renderModal(game) {
                     <div class="links-modal-wishlist">
                         <a href="#">Add to wishlist</a>
                         <div class="heart-icon-modal">
-                            <img src="./assets/modal/Heart.svg">
+                            <img src="./assets/modal/heart.svg" alt="Heart icon">
                         </div>
                     </div>
                     <div class="links-modal-purchase">
@@ -235,16 +231,16 @@ function renderModal(game) {
                         </div>
                         <div class="developer-modal">
                             <span class="platforms-modal-title">Developer</span>
-                            <p class="platforms-modal-sp line">${getName(game?.developers || "Not defined")}</p>
+                            <p class="platforms-modal-sp line">${getName(game?.developers.slice(0,4) || "Not defined")}</p>
                         </div>
                         <div class="age-modal">
                             <span class="platforms-modal-title">Age rating</span>
                             <p class="platforms-modal-sp">${game.esrb_rating?.name || "Not defined"}</p>
                         </div>
                         <div class="details-icons-modal">
-                            <img src="./assets/modal/ChatBubbles.svg" alt="chat bubbles icon">
-                            <img src="./assets/modal/Thumbs-Up.svg" alt="thumbs up icon">
-                            <img src="./assets/modal/Upload.svg" alt="upload icon">
+                            <img src="./assets/modal/chat-bubbles.svg" alt="Chat bubbles icon">
+                            <img src="./assets/modal/thumbs-up.svg" alt="Thumbs up icon">
+                            <img src="./assets/modal/upload.svg" alt="Upload icon">
                         </div>
                     </div>
                 </div>
@@ -253,12 +249,12 @@ function renderModal(game) {
                 <div class="loading-video"></div>
                 <div class="video-preview"></div>
                 <div class="images-modal-one">
-                    <img src="${getImages(game.short_screenshots)[1]}" style="max-width: 184px;">
-                    <img src="${getImages(game.short_screenshots)[2]}" style="max-width: 184px;">
+                    <img src="${getImages(game.short_screenshots)[1]}" alt="Screenshot of ${game.name}" style="max-width: 184px;">
+                    <img src="${getImages(game.short_screenshots)[2]}" alt="Screenshot of ${game.name}" style="max-width: 184px;">
                 </div>
                 <div class= "images-modal-two">
-                    <img src="${getImages(game.short_screenshots)[3]}" style="max-width: 184px;">
-                    <img src="${getImages(game.short_screenshots)[4]}" style="max-width: 184px;">
+                    <img src="${getImages(game.short_screenshots)[3]}" alt="Screenshot of ${game.name}" style="max-width: 184px;">
+                    <img src="${getImages(game.short_screenshots)[4]}" alt="Screenshot of ${game.name}" style="max-width: 184px;">
                 </div>
             </div>
         </div>

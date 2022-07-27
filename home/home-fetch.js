@@ -1,8 +1,8 @@
 
 const BASE_URL = 'https://api.rawg.io/api' 
-const API_KEY = '2b2a787b5904427a991cdc2a59670674'
+const API_KEY = 'fb3d07a2f6e84938a02e1512b9f60018'
 
-// Fetch of games per search query and page.
+//Fetch of games per search query and page.
 function fetchGames(search = '', page = 1, parentPlatform) {
     
     let URL = `${BASE_URL}/games?key=${API_KEY}&page=${page}&search=${search}`
@@ -22,7 +22,7 @@ function fetchGames(search = '', page = 1, parentPlatform) {
         })
 }
 
-// Fetch of particular game at endpoint /games/:id merged with general game 
+//Fetch of particular game at endpoint /games/:id merged with general game 
 function fetchGame(generalGame) {
     
     const URL = `${BASE_URL}/games/${generalGame.id}?key=${API_KEY}`
@@ -30,10 +30,8 @@ function fetchGame(generalGame) {
     return fetch(URL)
         .then(response => response.json())
         .then(game => Object.assign(generalGame, game))
-        .catch(() => {
-            renderModalGeneric("error")
-        })
 }
+
 
 // Fetch trailer for the modal 
 function fetchTrailer(gameId) {
@@ -42,9 +40,7 @@ function fetchTrailer(gameId) {
     
     return fetch(URL)
         .then(response => response.json())
-        .then(data => {
-            return data.results[0]?.data.max
-        })
+        .then(data => data.results[0]?.data.max)
 }
 
 
@@ -52,12 +48,11 @@ function fetchTrailer(gameId) {
 function fetchPlatforms() {
     let URL = `${BASE_URL}/platforms/lists/parents?key=${API_KEY}`
 
-    fetch(URL)
+    return fetch(URL)
         .then (response => response.json())
-        .then(data => {
-            return platforms = data.results
-        })
+        .then(data => data.results)
 }
+
 
 // Fetch user info
 function fetchUser(userId) {

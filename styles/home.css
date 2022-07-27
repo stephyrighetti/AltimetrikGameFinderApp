@@ -1031,7 +1031,8 @@ img.playstation-sc-icon, img.xbox-sc-icon, img.windows-sc-icon {
 
 .images-modal-one, .images-modal-two {
     display:flex;
-    gap:14px
+    gap:14px;
+    height: 104px;
 }
 
 .details-icons-modal {
@@ -1039,7 +1040,7 @@ img.playstation-sc-icon, img.xbox-sc-icon, img.windows-sc-icon {
 }
 
 .icon-modal-switch {
-    height: 34px;
+    height: 30px;
     margin-bottom:7px;
     margin-left: 8px;
     filter: brightness(100);
@@ -1049,7 +1050,7 @@ img.playstation-sc-icon, img.xbox-sc-icon, img.windows-sc-icon {
 
 /*-----------Footer------------*/
 
-.footer:after {
+footer:after {
     content: "";
     position: fixed;
     z-index: 1;
@@ -1355,7 +1356,7 @@ hr:last-child {
         height: 180px;
     }
 
-    .images-modal-one img, .images-modal-two img {
+    .images-modal-one, .images-modal-two {
         width: 152px;
         height: 86px;
     }
@@ -1431,7 +1432,7 @@ hr:last-child {
     }
 
     .hamburger img.modal-open {
-      content: url(../assets/modal/GoBack.svg);
+      content: url(../assets/modal/go-back.svg);
     }
 
     .h img {
@@ -1657,7 +1658,6 @@ hr:last-child {
 
     .images-modal {
         left:0;
-        align-items: center;
         bottom: -330px;
         right: 1px;
         background-color: var(--very-light-grey);

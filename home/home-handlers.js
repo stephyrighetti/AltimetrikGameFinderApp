@@ -57,9 +57,9 @@ inputBar.addEventListener('input', inputBarKeyHandler)
 const dotLoad = document.querySelector('.dot-pulse')
 
 function inputBarHandler(event) {
-
-  if (event.keyCode !== 13) {
-    return
+    
+    if (event.keyCode !== 13) {
+        return
   }
 
   event.preventDefault()
@@ -78,7 +78,6 @@ function inputBarHandler(event) {
       recordSearch(store[0])
       recordSearch(store[1])
       renderCards(store)
-      console.log(store);
       renderSingleCard(store)
 }
 }
@@ -164,27 +163,27 @@ function showContainer() {
 
 singleCard.addEventListener("click", function () {
 
-    if (singleCard.src.match("assets/icons-mode/Single-Active.svg")) {
+    if (singleCard.src.match("assets/icons-mode/single-active.svg")) {
         return
     }
 
     clearContainer()
 
-    singleCard.src = "assets/icons-mode/Single-Active.svg"
-    multipleCards.src = "assets/icons-mode/Multiple-Inactive.svg"
+    singleCard.src = "assets/icons-mode/single-active.svg"
+    multipleCards.src = "assets/icons-mode/multiple-inactive.svg"
 })
 
 
 multipleCards.addEventListener ("click", function () {
 
-    if (multipleCards.src.match("assets/icons-mode/Multiple-Active.svg")) {
+    if (multipleCards.src.match("assets/icons-mode/multiple-active.svg")) {
         return
     }
 
     showContainer()
 
-    multipleCards.src = "assets/icons-mode/Multiple-Active.svg"
-    singleCard.src = "assets/icons-mode/Single-Inactive.svg"
+    multipleCards.src = "assets/icons-mode/multiple-active.svg"
+    singleCard.src = "assets/icons-mode/single-inactive.svg"
 })
 
 function clearCards() {
@@ -289,7 +288,7 @@ window.onscroll = () => {
 
 //Modal handler
 function closeModal() {
-    const footer = document.querySelector(".footer")
+    const footer = document.querySelector("footer")
     const modal = document.querySelector('.container-modal')
     modal.innerHTML = ''
     modal.style.display = 'none'
@@ -307,7 +306,6 @@ function getCards() {
         .then(games => {
             renderCards(games)
             renderSingleCard(games)
-            console.log(games);
         })
         .catch(() => {
             renderModalGeneric("error")
@@ -318,7 +316,7 @@ function getCards() {
 window.onload = () => {
 
 
-    fetchPlatforms()
+   fetchPlatforms().then(data => platforms = data)
     const userId = JSON.parse(window.localStorage.getItem('id'))
     fetchUser(userId).then(user => {
         renderProfile(user.profile)
@@ -380,6 +378,9 @@ last.addEventListener('click', function() {
 function logOut() {
     localStorage.removeItem('jwt')
     localStorage.removeItem('id')
+    localStorage.removeItem('name')
+    localStorage.removeItem('username')
+    localStorage.removeItem('profilePic')
     location.href = '/index.html';
 }
 
@@ -468,12 +469,12 @@ function swapMode() {
 
     const mode = getCurrentMode()
 
-    if (mode == 'light') {
-        darkOff.src = "assets/icons-mode/Dark-mode-on.svg"
-        darkOffMobile.src = "assets/icons-mode/Dark-mode-on.svg"
+    if (mode === 'light') {
+        darkOff.src = "assets/icons-mode/dark-mode-on.svg"
+        darkOffMobile.src = "assets/icons-mode/dark-mode-on.svg"
     } else {
-        darkOff.src = "assets/icons-mode/Dark-mode-off.svg"
-        darkOffMobile.src = "assets/icons-mode/Dark-mode-off.svg"
+        darkOff.src = "assets/icons-mode/dark-mode-off.svg"
+        darkOffMobile.src = "assets/icons-mode/dark-mode-off.svg"
     }
 
     body.classList.toggle('dark-mode-change')
@@ -484,7 +485,7 @@ function swapMode() {
 }
 
 function getCurrentMode() {
-    return darkOff.src.match("assets/icons-mode/Dark-mode-off.svg") ? 'light' : 'dark'
+    return darkOff.src.match("assets/icons-mode/dark-mode-off.svg") ? 'light' : 'dark'
 }
 
 darkOff.addEventListener('click', swapMode)

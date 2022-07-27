@@ -23,7 +23,7 @@ html {
 }
 
 body {
-    background-image: url("../assets/background-1.jpg");
+    background-image: url("../assets/background-images/background-1.jpg");
     height: 100vh;
     width: 100vw;
     background-repeat: no-repeat;
@@ -282,7 +282,7 @@ input[type=checkbox] {
 
 input[type=checkbox]:checked {
     background-color: var(--secondary-green);
-    background-image: url("../assets/icons-login/Tick.png");
+    background-image: url("../assets/icons-login/tick.png");
     background-repeat: no-repeat;
     background-position: center;
 } 
