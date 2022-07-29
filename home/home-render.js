@@ -217,7 +217,7 @@ function renderModal(game) {
                         </div>
                         <div class="publisher-modal">
                             <span class="platforms-modal-title">Publisher</span>
-                            <p class="platforms-modal-sp line">${getName(game?.publishers.slice(0,4) || "Not defined")}</p>
+                            <p class="platforms-modal-sp line">${getName(game?.publishers || "Not defined")}</p>
                         </div>
                         <div class="website-modal">
                             <span class="platforms-modal-title">Website</span>
@@ -231,7 +231,7 @@ function renderModal(game) {
                         </div>
                         <div class="developer-modal">
                             <span class="platforms-modal-title">Developer</span>
-                            <p class="platforms-modal-sp line">${getName(game?.developers.slice(0,4) || "Not defined")}</p>
+                            <p class="platforms-modal-sp line">${getName(game?.developers || "Not defined")}</p>
                         </div>
                         <div class="age-modal">
                             <span class="platforms-modal-title">Age rating</span>
@@ -249,12 +249,12 @@ function renderModal(game) {
                 <div class="loading-video"></div>
                 <div class="video-preview"></div>
                 <div class="images-modal-one">
-                    <img src="${getImages(game.short_screenshots)[1]}" alt="Screenshot of ${game.name}" style="max-width: 184px;">
-                    <img src="${getImages(game.short_screenshots)[2]}" alt="Screenshot of ${game.name}" style="max-width: 184px;">
+                    <img src="${getImages(game.short_screenshots)[1]}" alt="Screenshot of ${game.name}" class="images-modal-width">
+                    <img src="${getImages(game.short_screenshots)[2]}" alt="Screenshot of ${game.name}" class="images-modal-width">
                 </div>
                 <div class= "images-modal-two">
-                    <img src="${getImages(game.short_screenshots)[3]}" alt="Screenshot of ${game.name}" style="max-width: 184px;">
-                    <img src="${getImages(game.short_screenshots)[4]}" alt="Screenshot of ${game.name}" style="max-width: 184px;">
+                    <img src="${getImages(game.short_screenshots)[3]}" alt="Screenshot of ${game.name}" class="images-modal-width">
+                    <img src="${getImages(game.short_screenshots)[4]}" alt="Screenshot of ${game.name}" class="images-modal-width">
                 </div>
             </div>
         </div>

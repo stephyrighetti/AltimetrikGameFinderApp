@@ -13,6 +13,7 @@
 - HTML5
 - CSS3
 - JavaScript
+- Consuming the public API [RAWG](https://api.rawg.io/docs/) and [JSONServer](https://www.npmjs.com/package/json-server-auth)
 
 
 ## What can you do with the application? 

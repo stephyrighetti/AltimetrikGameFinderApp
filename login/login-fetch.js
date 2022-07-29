@@ -1,6 +1,7 @@
 
-// Fetch for login
-function fetchApi(apiUrl, payload) {
+import { renderModalError } from "./login-handlers.js";
+
+export function fetchApi(apiUrl, payload) {
 
     const settings = {
         method: 'POST',

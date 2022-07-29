@@ -1,4 +1,4 @@
-//Global state variables
+
 let pageNumber = 1
 let currentSearch = ""
 let lastSearches = []
@@ -7,7 +7,7 @@ let store
 let parentPlatformId
 let platforms
 
-//Search bar handlers
+
 const inputBar = document.querySelector(".search-games")
 const list = document.querySelector('.list')
 const liGame = document.querySelector(".games-list-game")
@@ -23,13 +23,12 @@ const main = document.querySelector('main')
 
 containerModal.addEventListener('click', closeModal)
 
-//Redirect user to login if there's not a jwt
+
 const tokenSession = localStorage.getItem('jwt')
 if (!tokenSession) {
     location.href = ('/index.html')
 }
 
-//Search functionality and handlers
 inputSearchBar.addEventListener("click", showOverlayList)
 
 function showOverlayList() {
@@ -115,8 +114,8 @@ function inputBarKeyHandler(event) {
             })
     }
 
-    clearTimeout(searchTimeout)
     searchTimeout = setTimeout(handlerSearch, 500)
+    clearTimeout(searchTimeout)
 }
 
 
@@ -126,7 +125,7 @@ function recordSearch(game) {
 }
 
 
-//Handle search query for console
+
 function parseSearchQuery(currentWord) {
 
     let text = currentWord
@@ -143,7 +142,7 @@ function parseSearchQuery(currentWord) {
     return [ text, parentPlatform ]
 }
 
-//Display of cards handlers
+
 const multipleCards = document.querySelector(".column-active")
 const singleCard = document.querySelector(".one-card-inactive")
 const container =  document.querySelector(".container-cards")
@@ -191,10 +190,6 @@ function clearCards() {
     document.querySelector('.container-single').innerHTML = ""
 }
 
-//Card information handlers
-function getData(list) {
-    return list.map(g => g.data)
-}
 
 function getGenre(list) {
     return list.map(g => g.name).join(", ")
@@ -262,13 +257,13 @@ function getIconsSwitch(list, folder, className = '') {
     return ""
 }
 
-//Format date
+
 function formatDate(string) {
     const d = new Date(string);
     return d.toLocaleDateString('en-us', { month: 'short', day: 'numeric', year: 'numeric' })
 }
 
-//Scroll handler
+
 let isFetching = false
 function infiniteScroll() {
     const shouldFetch = window.scrollY + document.body.offsetHeight > document.body.scrollHeight - 700
@@ -286,7 +281,6 @@ window.onscroll = () => {
 }
 
 
-//Modal handler
 function closeModal() {
     const footer = document.querySelector("footer")
     const modal = document.querySelector('.container-modal')
@@ -298,7 +292,7 @@ function closeModal() {
 }
 
 
-//Get cards handler
+
 let skeleton = document.querySelector('.skeleton')
 
 function getCards() {
@@ -312,7 +306,7 @@ function getCards() {
         })
 }
 
-//Window on load display
+
 window.onload = () => {
 
 
@@ -338,6 +332,9 @@ window.onload = () => {
 
 const homeLink = document.querySelector('.links-home')
 homeLink.addEventListener('click', function() {
+
+    document.querySelector('.container-single').style = "margin-left:250px;"
+   
     last.classList.remove("selected")
 
     currentSearch = ""
@@ -353,7 +350,7 @@ homeLink.addEventListener('click', function() {
 
 })
 
-//Last Searches redirection
+
 const last = document.querySelector('.last-search')
 
 last.addEventListener('click', function() {
@@ -374,7 +371,7 @@ last.addEventListener('click', function() {
     renderSingleCard(lastSearches)
 })
 
-//Logout
+
 function logOut() {
     localStorage.removeItem('jwt')
     localStorage.removeItem('id')
@@ -384,8 +381,6 @@ function logOut() {
     location.href = '/index.html';
 }
 
-
-//Handlers for the modals of error and logout
 const error = document.querySelector('.container-modal-error')
 const logoutModal = document.querySelector('.container-modal-logout')
 
@@ -397,8 +392,7 @@ error.addEventListener('click', function() {
 const confirm = document.querySelector('.confirm-logout')
 const cancel = document.querySelector('.cancel-logout')
 
-confirm.addEventListener('click', function(event) {
-    event.stopPropagation()
+confirm.addEventListener('click', function() {
     logOut()
 })
 
@@ -408,7 +402,7 @@ cancel.addEventListener('click', function() {
 })
 
 
-//Tablet and mobile hamburger handlers
+
 const hamburger = document.querySelector('.h')
 const containerHam = document.querySelector('.container-hamburger')
 const menuHam = document.querySelector('.menu-hamburger')
@@ -451,7 +445,7 @@ logoutHam.addEventListener('click', function() {
     renderModalGeneric('logout')
 })
 
-//Mobile search handlers
+
 let smallSearch = document.querySelector('.search-mobile')
 
 smallSearch.addEventListener('click', function(event) {
@@ -460,7 +454,6 @@ smallSearch.addEventListener('click', function(event) {
 })
 
 
-//Dark mode functionality
 const darkOffMobile = document.querySelector('.button-dark-off')
 const containerMain = document.querySelector('.container-main')
 const darkOff = document.querySelector('.dark-off')

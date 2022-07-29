@@ -40,133 +40,6 @@ html {
     max-width:1440px;
 }
 
-.loading-video {
-    display: flex;
-    margin-bottom: 70px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.loading-video::after {
-    content:"";
-    width: 10px;
-    height: 10px;
-    border: 5px solid var(--very-light-grey);
-    border-top-color: var(--green3);
-    border-radius: 50%;
-    animation: loading 1s linear infinite;
-}
-
-@keyframes loading {
-    to {
-        transform: rotate(1turn);
-    }
-}
-
-/*---------------Tooltip---------------*/
-
-.tooltip {
-    position: relative;
-    display: inline-block;
-    color: var(--whiteboard);
-}
-
-.tooltip .tiptext {
-    visibility: hidden;
-    width: 150px;
-    background-color: var(--green);
-    text-align: center;
-    border-radius: 3px;
-    padding: 6px 0;
-    position: absolute;
-    z-index: 1;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-.tooltip:hover .tiptext {
-    visibility: visible;
-}
-
-/*---------------Dot pulse---------------*/
-
-.dot-pulse {
-    display: none;
-    position: absolute;
-    left: -9999px;
-    margin-left: 285px;
-    margin-top: 18px;
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
-    background-color: var(--green2);
-    color: var(--green2);
-    box-shadow: 9999px 0 0 -5px var(--green2);
-    animation: dotPulse 1.5s infinite linear;
-    animation-delay: .25s;
-  }
-
-  .dot-pulse::before, .dot-pulse::after {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
-    background-color: var(--green2);
-    color: var(--green2);
-  }
-
-  .dot-pulse::before {
-    box-shadow: 9984px 0 0 -5px var(--green2);
-    animation: dotPulseBefore 1.5s infinite linear;
-    animation-delay: 0s;
-  }
-
-  .dot-pulse::after {
-    box-shadow: 10014px 0 0 -5px var(--green2);
-    animation: dotPulseAfter 1.5s infinite linear;
-    animation-delay: .5s;
-  }
-
-  @keyframes dotPulseBefore {
-    0% {
-      box-shadow: 9984px 0 0 -5px var(--green2);
-    }
-    30% {
-      box-shadow: 9984px 0 0 2px var(--green2);
-    }
-    60%,
-    100% {
-      box-shadow: 9984px 0 0 -5px var(--green2);
-    }
-  }
-
-  @keyframes dotPulse {
-    0% {
-      box-shadow: 9999px 0 0 -5px var(--green2);
-    }
-    30% {
-      box-shadow: 9999px 0 0 2px var(--green2);
-    }
-    60%,
-    100% {
-      box-shadow: 9999px 0 0 -5px var(--green2);
-    }
-  }
-
-  @keyframes dotPulseAfter {
-    0% {
-      box-shadow: 10014px 0 0 -5px var(--green2);
-    }
-    30% {
-      box-shadow: 10014px 0 0 2px var(--green2);
-    }
-    60%,
-    100% {
-      box-shadow: 10014px 0 0 -5px var(--green2);
-    }
-  }
 
 /*---------------Skeleton---------------*/
 
@@ -673,7 +546,7 @@ article {
 }
 
 .single-game-info-genres {
-    gap: 61px;
+    gap: 58px;
     margin-top:10px;
 }
 
@@ -686,7 +559,6 @@ article {
     font-size: 0.875rem;
     color: var(--grey);
     white-space: nowrap;
-    overflow: hidden;
 }
 
 img.playstation-icon, img.xbox-icon, img.windows-icon, img.icon, img.switch-icon {
@@ -1024,9 +896,36 @@ img.playstation-sc-icon, img.xbox-sc-icon, img.windows-sc-icon {
     padding-bottom: 91px;
 }
 
+.images-modal-width {
+    max-width: 184px;
+}
+
 .video {
     width: 384px;
     height: 217px;
+}
+
+.loading-video {
+    display: flex;
+    margin-bottom: 70px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loading-video::after {
+    content:"";
+    width: 10px;
+    height: 10px;
+    border: 5px solid var(--very-light-grey);
+    border-top-color: var(--green3);
+    border-radius: 50%;
+    animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+    to {
+        transform: rotate(1turn);
+    }
 }
 
 .images-modal-one, .images-modal-two {
@@ -1047,6 +946,86 @@ img.playstation-sc-icon, img.xbox-sc-icon, img.windows-sc-icon {
 }
 
 
+/*---------------Dot pulse---------------*/
+
+.dot-pulse {
+    display: none;
+    position: absolute;
+    left: -9999px;
+    margin-left: 285px;
+    margin-top: 18px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: var(--green2);
+    color: var(--green2);
+    box-shadow: 9999px 0 0 -5px var(--green2);
+    animation: dotPulse 1.5s infinite linear;
+    animation-delay: .25s;
+  }
+
+  .dot-pulse::before, .dot-pulse::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: var(--green2);
+    color: var(--green2);
+  }
+
+  .dot-pulse::before {
+    box-shadow: 9984px 0 0 -5px var(--green2);
+    animation: dotPulseBefore 1.5s infinite linear;
+    animation-delay: 0s;
+  }
+
+  .dot-pulse::after {
+    box-shadow: 10014px 0 0 -5px var(--green2);
+    animation: dotPulseAfter 1.5s infinite linear;
+    animation-delay: .5s;
+  }
+
+  @keyframes dotPulseBefore {
+    0% {
+      box-shadow: 9984px 0 0 -5px var(--green2);
+    }
+    30% {
+      box-shadow: 9984px 0 0 2px var(--green2);
+    }
+    60%,
+    100% {
+      box-shadow: 9984px 0 0 -5px var(--green2);
+    }
+  }
+
+  @keyframes dotPulse {
+    0% {
+      box-shadow: 9999px 0 0 -5px var(--green2);
+    }
+    30% {
+      box-shadow: 9999px 0 0 2px var(--green2);
+    }
+    60%,
+    100% {
+      box-shadow: 9999px 0 0 -5px var(--green2);
+    }
+  }
+
+  @keyframes dotPulseAfter {
+    0% {
+      box-shadow: 10014px 0 0 -5px var(--green2);
+    }
+    30% {
+      box-shadow: 10014px 0 0 2px var(--green2);
+    }
+    60%,
+    100% {
+      box-shadow: 10014px 0 0 -5px var(--green2);
+    }
+  }
 
 /*-----------Footer------------*/
 
@@ -1340,6 +1319,12 @@ hr:last-child {
         max-height: 1024px;
     }
 
+    .platforms-modal-sp:nth-child(3) {
+        height: 40px;
+        overflow:scroll;
+        overflow-x:hidden;
+    }
+
     .platforms-modal-sp {
         width: 300px;
     }
@@ -1349,6 +1334,10 @@ hr:last-child {
         left: 376px;
         padding-bottom:0;
         bottom: 160px;
+    }
+
+    .images-modal-width {
+        max-width: 152px;
     }
 
     .video {
@@ -1364,10 +1353,6 @@ hr:last-child {
     .details-modal {
         display: flex;
         flex-direction: column;
-    }
-
-    .images-modal-one img {
-        max-width: 152px;
     }
 
     .game-info-modal {
@@ -1407,10 +1392,14 @@ hr:last-child {
 
     main {
         padding: 0 7px;
+        margin-top: 50px;
     }
 
     header {
         height: 50px;
+        position: fixed;
+        top: 0;
+        z-index: 1;
     }
 
     .header-elem {

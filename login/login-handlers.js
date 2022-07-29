@@ -1,21 +1,21 @@
+import {fetchApi} from './login-fetch.js';
 
 const API_URL = 'http://localhost:3000'
 let currentSlide = 1
 
 
 const token = localStorage.getItem("jwt");
-(function () {
     if (token) {
         location.href = ('/home.html')
     }
-})();
+
 
 window.addEventListener('load', function(){
     const form = this.document.forms[0]
     form.addEventListener('submit', submitForm)
 })
 
-// Function for the form submit logic
+
 function submitForm(event) {
 
     event.preventDefault()
@@ -51,18 +51,16 @@ togglePassword.addEventListener("click", function () {
     }
 })
 
-// Renders error
+
 function showError(error) {
     document.querySelector('#error-container').classList.remove('hidden')
     document.querySelector('#error-container').innerHTML = `<small>${error}</small>`
 }
 
-
-//Render modal error
 const errorModal = document.querySelector('.container-modal-error')
 const confirmButton = document.querySelector('.confirm-error')
 
-function renderModalError() {
+export function renderModalError() {
   errorModal.style.display = "flex"
 }
 
@@ -70,7 +68,7 @@ confirmButton.addEventListener('click', function() {
     errorModal.style.display = "none"
 })
 
-// Slider logic
+
 dotColor(1)
 const buttonSlideRight = document.querySelector('.slide2')
 buttonSlideRight.addEventListener('click', function() {
@@ -104,28 +102,28 @@ clickSlide(5)
 clickSlide(6)
 
 
-// Function for changing the background image
+
 function slide(num) {
     document.querySelector('body').style = `background-image: url(../assets/background-images/background-${num}.jpg)`
 }
 
-// Function for changing the opacity of the dot
+
 function dotColor(num) {
     document.querySelectorAll('.carrousel > div').forEach(element => element.style = "opacity:25%;")
     document.querySelector('.carrousel-dot-' + num).style = "opacity: 100%;"
 }
 
-// Simple regex for email validation
+
 function isEmailValid(string) {
     return /\S+@\S+\.\S+/.test(string)
 }
 
-// Password validation
+
 function isPasswordValid(string) {
     return string.length >=6 && string.length <=14
 }
 
-// Sends formated data to the database
+
 function normalizeData(email, password) {
     
     const user = {
