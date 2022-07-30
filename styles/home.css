@@ -226,11 +226,18 @@ main {
 
 header {
     display: flex;
-    justify-content: space-between;
     background-image: linear-gradient(var(--green1), var(--green2), var(--green3));
     height: 94px;
     box-shadow: 1px -3px 36px rgba(0, 0, 0, 0.5);
     width: 100vw;
+}
+
+.header-content {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1440px;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .container-hamburger, .hamburger {
