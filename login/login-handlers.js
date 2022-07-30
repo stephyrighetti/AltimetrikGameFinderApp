@@ -1,4 +1,4 @@
-import {fetchApi} from './login-fetch.js';
+import {fetchLogin} from './login-fetch.js';
 
 const API_URL = 'http://localhost:3000'
 let currentSlide = 1
@@ -23,25 +23,42 @@ function submitForm(event) {
     const inputEmail = document.querySelector('#username')
     const inputPassword =  document.querySelector('#input-password')
     const dataUser = normalizeData(inputEmail.value, inputPassword.value)
-    
+
     if (!isEmailValid(inputEmail.value) || !isPasswordValid(inputPassword.value)) {
-        showError("Some of the data entered is not valid") 
-    } 
+        showError("Some of the data entered is not valid")
+    }
 
     if(inputEmail.value === "" || inputPassword.value ==="") {
         showError("Credentials cannot be empty")
     }
 
-    fetchApi(`${API_URL}/login`, dataUser)
+
+    fetchLogin(`${API_URL}/login`, dataUser)
+      .then(response => {
+
+        if (response.status !== 200) {
+            throw Error(response.statusText)
+        }
+
+        return response.json()
+      })
+      .then(data => {
+          localStorage.setItem('jwt', data.accessToken)
+          localStorage.setItem('id', data.user.id)
+          location.href = '/home.html'
+      })
+      .catch(() => {
+          showError("Some of the data entered is not valid")
+      })
 }
 
 // Password visibility
 const togglePassword = document.querySelector(".toggle-password")
 togglePassword.addEventListener("click", function () {
-    
+
     const password = document.querySelector("#input-password")
     const type = password.getAttribute("type") === "password" ? "text" : "password"
-    
+
     password.setAttribute("type", type)
 
     if (togglePassword.src.match("assets/icons-login/eye-off.svg")) {
@@ -57,26 +74,15 @@ function showError(error) {
     document.querySelector('#error-container').innerHTML = `<small>${error}</small>`
 }
 
-const errorModal = document.querySelector('.container-modal-error')
-const confirmButton = document.querySelector('.confirm-error')
-
-export function renderModalError() {
-  errorModal.style.display = "flex"
-}
-
-confirmButton.addEventListener('click', function() {
-    errorModal.style.display = "none"
-})
-
 
 dotColor(1)
 const buttonSlideRight = document.querySelector('.slide2')
 buttonSlideRight.addEventListener('click', function() {
  currentSlide++
- if (currentSlide === 7) currentSlide = 1 
+ if (currentSlide === 7) currentSlide = 1
     slide(currentSlide)
     dotColor(currentSlide)
-})    
+})
 
 const buttonSlideLeft = document.querySelector('.slide1')
 buttonSlideLeft.addEventListener('click', function() {
@@ -84,7 +90,7 @@ buttonSlideLeft.addEventListener('click', function() {
     if (currentSlide === 0) currentSlide = 6
     slide(currentSlide)
     dotColor(currentSlide)
-})    
+})
 
 
 function clickSlide(num) {
@@ -94,14 +100,9 @@ function clickSlide(num) {
     })
 }
 
-clickSlide(1)
-clickSlide(2)
-clickSlide(3)
-clickSlide(4)
-clickSlide(5)
-clickSlide(6)
-
-
+for (let i = 1; i <= 6; i++) {
+  clickSlide(i)
+}
 
 function slide(num) {
     document.querySelector('body').style = `background-image: url(../assets/background-images/background-${num}.jpg)`
@@ -125,7 +126,7 @@ function isPasswordValid(string) {
 
 
 function normalizeData(email, password) {
-    
+
     const user = {
         email: email.toLowerCase().trim(),
         password: password.trim(),
