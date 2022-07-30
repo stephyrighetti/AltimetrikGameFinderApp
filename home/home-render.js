@@ -1,12 +1,10 @@
 
-//Render profile picture of user
 function renderProfile(info) {
     const profile = document.querySelector('.avatar-user')
     profile.innerHTML = `<img src="${info}" alt="User avatar">`
 }
 
 
-//Render generic modals for errors or logout
 function renderModalGeneric(name) {
     document.querySelector('.container-modal-' + name).style.display = "flex"
     inputSearchBar.style = "z-index:1;"
@@ -14,7 +12,6 @@ function renderModalGeneric(name) {
 }
 
 
-//Render information of user for the hamburger container
 function renderHamburgerInfo(info) {
     const profile = document.querySelector('.container-user')
     profile.innerHTML =
@@ -30,7 +27,7 @@ function renderHamburgerInfo(info) {
     document.querySelector('.cross-hamburger').addEventListener('click', closeHamburger)
 }
 
-//Render three column cards
+
 function renderCards(list) {
 
     const container = document.querySelector('.container-cards')
@@ -82,7 +79,6 @@ function renderCards(list) {
     })
 }
 
-//Render one column cards
 function renderSingleCard(list) {
 
     const container = document.querySelector('.container-single')
@@ -138,18 +134,15 @@ function renderSingleCard(list) {
 }
 
 
-//Render modal
 function renderModal(game) {
 
     const modalContainer = document.querySelector('.container-modal')
 
-    // Gradient
     const mode = getCurrentMode()
     const lightGradient = "background-image:  linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, var(--very-light-grey) 63.23%, var(--very-light-grey) 75.85%)"
     const darkModeGradient = "background-image: linear-gradient(180deg, rgba(48, 48, 48, 0.0001) 0%, var(--dark-grey) 84.4%)"
     const gradient = mode === 'light' ? lightGradient : darkModeGradient
 
-    // Change icon on mobile
     hamburger.classList.add('modal-open')
     body.style = "overflow-y:hidden;"
 
@@ -267,7 +260,6 @@ function renderModal(game) {
 
 }
 
-//Render list of games - searchbar
 function renderList(list) {
 
     const olList = document.querySelector(".list")

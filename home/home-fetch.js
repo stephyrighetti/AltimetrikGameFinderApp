@@ -32,7 +32,6 @@ function fetchGame(generalGame) {
         .then(game => Object.assign(generalGame, game))
 }
 
-
 function fetchTrailer(gameId) {
     
     const URL = `${BASE_URL}/games/${gameId}/movies?key=${API_KEY}`

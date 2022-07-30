@@ -75,7 +75,6 @@ function inputBarHandler(event) {
       container.innerHTML += `<span class="searches-not-found">No matches found for your search</span>`
   } else {
       recordSearch(store[0])
-      recordSearch(store[1])
       renderCards(store)
       renderSingleCard(store)
 }
@@ -114,8 +113,8 @@ function inputBarKeyHandler(event) {
             })
     }
 
-    searchTimeout = setTimeout(handlerSearch, 500)
     clearTimeout(searchTimeout)
+    searchTimeout = setTimeout(handlerSearch, 500)
 }
 
 

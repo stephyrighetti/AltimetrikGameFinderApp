@@ -399,8 +399,12 @@ nav {
 }
 
 .links-home {
-    color: var(--green2) !important;
+    color: var(--green2);
     font-size:1.25rem;
+}
+
+.links-home.selected {
+    color: var(--green2);
 }
 
 .links-dark {
@@ -877,9 +881,25 @@ img.playstation-sc-icon, img.xbox-sc-icon, img.windows-sc-icon {
     color: var(--fair-grey2);
 }
 
-.platforms-modal-sp {
+
+ .platforms-modal-sp {
+    max-height:75px;
+    overflow: scroll;
+    overflow-x: hidden;
     inline-size: 221px;
     overflow-wrap: break-word;
+}
+
+.platforms-modal-sp::-webkit-scrollbar {
+    width: 7px;
+}
+
+.platforms-modal-sp::-webkit-scrollbar-track {
+    background: var(--very-light-grey);
+}
+
+.platforms-modal-sp::-webkit-scrollbar-thumb {
+    background-color: var(--green4);
 }
 
 
@@ -1319,21 +1339,16 @@ hr:last-child {
         max-height: 1024px;
     }
 
-    .platforms-modal-sp:nth-child(3) {
-        height: 40px;
-        overflow:scroll;
-        overflow-x:hidden;
-    }
-
     .platforms-modal-sp {
+        max-height: 40px;
         width: 300px;
     }
 
     .images-modal {
         position: absolute;
-        left: 376px;
+        left: 377px;
         padding-bottom:0;
-        bottom: 160px;
+        bottom: 150px;
     }
 
     .images-modal-width {
