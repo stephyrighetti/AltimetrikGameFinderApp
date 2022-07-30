@@ -6,7 +6,7 @@ let searchTimeout
 let store
 let parentPlatformId
 let platforms
-
+let isFetching = false
 
 const inputBar = document.querySelector(".search-games")
 const list = document.querySelector('.list')
@@ -56,7 +56,7 @@ inputBar.addEventListener('input', inputBarKeyHandler)
 const dotLoad = document.querySelector('.dot-pulse')
 
 function inputBarHandler(event) {
-    
+
     if (event.keyCode !== 13) {
         return
   }
@@ -191,15 +191,11 @@ function clearCards() {
 }
 
 
-let isFetching = false
 function infiniteScroll() {
     const shouldFetch = window.scrollY + document.body.offsetHeight > document.body.scrollHeight - 700
     if (shouldFetch && !isFetching) {
-        isFetching = true
         pageNumber++
-        getCards().then(() => {
-            isFetching = false
-        })
+        getCards()
     }
 }
 
@@ -223,6 +219,13 @@ function closeModal() {
 let skeleton = document.querySelector('.skeleton')
 
 function getCards() {
+
+    if (isFetching) {
+      return
+    }
+
+    isFetching = true
+
     return fetchGames(currentSearch, pageNumber, parentPlatformId)
         .then(games => {
             renderCards(games)
@@ -230,6 +233,9 @@ function getCards() {
         })
         .catch(() => {
             renderModalGeneric("error")
+        })
+        .finally(() => {
+            isFetching = false
         })
 }
 
@@ -242,7 +248,6 @@ window.onload = () => {
         renderProfile(user.profile)
         renderHamburgerInfo(user)
     })
-
 
     skeleton.style.display = "flex"
     getCards().then(() => {
@@ -260,7 +265,7 @@ const homeLink = document.querySelector('.links-home')
 homeLink.addEventListener('click', function() {
 
     document.querySelector('.container-single').style = "margin-left:250px;"
-   
+
     last.classList.remove("selected")
 
     currentSearch = ""
