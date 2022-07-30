@@ -1,4 +1,3 @@
-
 import { renderModalError } from "./login-handlers.js";
 
 export function fetchApi(apiUrl, payload) {
