@@ -1,5 +1,5 @@
 
-export function fetchLogin(apiUrl, payload) {
+function fetchLogin(apiUrl, payload) {
 
     const settings = {
         method: 'POST',

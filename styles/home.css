@@ -1139,6 +1139,11 @@ hr:last-child {
     color: var(--white);
 }
 
+
+.dark-mode-change .links-home {
+    color: var(--green2);
+}
+
 .dark-mode-change article {
     background-color: var(--dark-grey);
 }
@@ -1153,6 +1158,10 @@ hr:last-child {
     background-image: linear-gradient(to bottom, var(--black-gradient), var(--black) 90%);
     width: 100%;
     height: 4em;
+}
+
+.dark-mode-change .platforms-modal-sp::-webkit-scrollbar-track {
+    background: var(--grey);
 }
 
 .menu-hamburger, .container-hamburger {
@@ -1612,6 +1621,13 @@ hr:last-child {
      .icons-modal img  {
         height: 30px;
      }
+
+     .icon-modal-switch {
+        height: 20px;
+        margin-bottom:7px;
+        margin-left: 8px;
+        filter: brightness(100);
+    }    
 
     .extra-info-modal p, .extra-info-modal div {
         width: 95px;

@@ -1,4 +1,3 @@
-import {fetchLogin} from './login-fetch.js';
 
 const API_URL = 'http://localhost:3000'
 let currentSlide = 1
