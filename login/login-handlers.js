@@ -105,7 +105,12 @@ for (let i = 1; i <= 6; i++) {
 }
 
 function slide(num) {
-    document.querySelector('body').style = `background-image: url(../assets/background-images/background-${num}.jpg)`
+    const mode = getCurrentMode()
+    if (mode === "light") {
+        document.querySelector('body').style = `background-image: url(../assets/background-images/background-${num}.jpg)`
+    } else {
+        document.querySelector('body').style = `background-image: url(../assets/background-images/background-${num}-dark.jpg)`
+    }
 }
 
 
@@ -134,3 +139,38 @@ function normalizeData(email, password) {
 
     return user
 }
+
+
+const darkOff = document.querySelector('.icon-mode')
+const body = document.querySelector('body')
+const slider1 = document.querySelector('.slider1')
+const slider2 = document.querySelector('.slider2')
+
+function swapMode() {
+
+    const mode = getCurrentMode()
+
+    if (mode === 'light') {
+        darkOff.src = "assets/icons-mode/dark-mode-on.svg"
+        slider1.src = "assets/icons-mode/chevron-left-dark.svg"
+        slider2.src = "assets/icons-mode/chevron-right-dark.svg"
+        body.style = "background-image: url(/assets/background-images/background-1-dark.jpg);"
+        localStorage.setItem('theme', 'dark')
+    } else {
+        darkOff.src = "assets/icons-mode/dark-mode-off.svg"
+        slider1.src = "assets/icons-login/chevron-left-light.svg"
+        slider2.src = "assets/icons-login/chevron-right-light.svg"
+        body.style = "background-image: url(/assets/background-images/background-1.jpg);"
+        localStorage.setItem('theme', 'light')
+    }
+
+    body.classList.toggle('dark-mode-on')
+
+
+}
+
+function getCurrentMode() {
+    return darkOff.src.match("assets/icons-mode/dark-mode-off.svg") ? 'light' : 'dark'
+}
+
+darkOff.addEventListener('click', swapMode)

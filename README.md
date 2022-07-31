@@ -1,6 +1,6 @@
 # Game Finder App 🎮 
 
-### This is a proyect developed for the "Become a Frontend Developer with Altimetrik" 2nd edition bootcamp. 
+ This is a proyect developed for the "Become a Frontend Developer with Altimetrik" 2nd edition bootcamp. 
 
 
 ## Preview
@@ -37,10 +37,10 @@ npm install
 npm run server
 ```
 
-3-If you are using Visual Studio Code, you can install the extension called "Live server" to run
+3- If you are using Visual Studio Code, you can install the extension called "Live server" to run
 the application.
 
-4-The registred user to log in the application is:
+4- The registred user to log in the application is:
  
 
 ``` 

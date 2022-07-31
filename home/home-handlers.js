@@ -413,3 +413,12 @@ function getCurrentMode() {
 
 darkOff.addEventListener('click', swapMode)
 darkOffMobile.addEventListener('click', swapMode)
+
+
+    if (localStorage.getItem('theme') === "dark") {
+        darkOff.src = "assets/icons-mode/dark-mode-on.svg"
+        darkOffMobile.src = "assets/icons-mode/dark-mode-on.svg"
+        body.classList.toggle('dark-mode-change')
+        singleCard.classList.toggle('dark-mode-filter')
+        multipleCards.classList.toggle('dark-mode-filter')
+    }

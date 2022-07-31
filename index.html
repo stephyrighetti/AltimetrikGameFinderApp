@@ -17,11 +17,15 @@
 </head>
 <body>
     <header>
-        <img src="./assets/logos/game-finder-logo.png" alt="Game finder logo">
+        <img src="./assets/logos/game-finder-logo.png" class= "logo" alt="Game finder logo">
     </header>
-    <main>  
+    <main> 
+        <div class="dark-mode-container"> 
+            <h3 class= "dark-title">Dark mode</h3>
+            <img src="./assets/icons-mode/dark-mode-off.svg" class= "icon-mode" alt= "Dark mode off">
+        </div>
         <div class="auth-page-container">
-            <div class="slide1"><img src="./assets/icons-login/chevron-left-light.svg" alt="Left slider icon"></div>
+            <div class="slide1"><img src="./assets/icons-login/chevron-left-light.svg" class="slider1" alt="Left slider icon"></div>
             <div class="auth-page-card">
                 <div class="container-words">
                     <h1 class="welcome">Welcome! Log in or register </h1>
@@ -49,24 +53,20 @@
         </form>
             <div class="registration">
                 <span class="registration-none"> Not registred yet?</span>
-                <div class="tooltip top">-<span class="tiptext">Coming soon...</span></div>
                 <a href="#" class="registration-now"> Register now </a>
         </div>
         <div class="line">or</div>
         <div class="social-media-list">
             <a href="#" class="social-button1">
-                <div class="tooltip top">-<span class="tiptext">Coming soon...</span></div>
             <img src="./assets/icons-login/facebook.svg" alt="Facebook icon"> 
             <div class="social-tittle">Login with Facebook</div></a>
             <a href="#" class="social-button2">
-                <div class="tooltip top">-<span class="tiptext">Coming soon...</span></div>
                 <img src="./assets/icons-login/twitter.svg" alt="Twitter icon"><div class="social-tittle">Login with Twitter</div></a>
             <a href="#" class="social-button3">
-                <div class="tooltip top">-<span class="tiptext">Coming soon...</span></div>
                 <img src="./assets/icons-login/google.svg" alt="Google icon"><div class="social-tittle">Login with Google</div></a>
         </div>
         </div>
-        <div class="slide2"><img src="./assets/icons-login/chevron-right-light.svg" alt="Right icon"></div>
+        <div class="slide2"><img src="./assets/icons-login/chevron-right-light.svg" class="slider2" alt="Right icon"></div>
      </main>
      <div class="container-carrousel">
         <div class="carrousel">
@@ -77,12 +77,6 @@
             <div class="carrousel-dot-5"></div>
             <div class="carrousel-dot-6"></div>
         </div>
-        <div class="container-modal-error">
-            <div class="modal-error">
-                <span class="warning-error">⚠</span>
-                <span class="title-error">Sorry, something went wrong!</span>
-                <button class="confirm-error">Ok</button>
-            </div>
      </div>
 </body>
 </html>
